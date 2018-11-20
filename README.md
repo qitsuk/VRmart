@@ -12,13 +12,13 @@ Hvordan kan vi give fysisk eller psykisk udfordrede mere selvstændighed ifm. in
 Så ideén er grundlæggende at gøre supermarkeder tilgængelige for alle ved at gøre brug af internettet som platform. Det skal føles ægte og give sensationen i at man virkelig af der, ved brug af VR teknologien.
 
 Idéen er brugbar for folk som har mistet førligheden til selv at kunne udføre deres egne indkøb. Så de kan føle sig mere selvstændige og mindre afhængig af andres hjælp på en daglig basis.
-<br>
+<br><br>
 
 <b>Beskrivelse af produktet:</b><br>
 Produktet vil fungere som enhver anden hjemmeside, i den forstand at du skriver en URL i din browser, for så at ende inde på hjemmesiden.
 Selvom produktet er lavet i Virtual Reality er det ikke en nødvendighed at have “VR briller” for at kunne benytte sig af sidens funktioner, men vil man have den sande sensation af selv at være til stede i butikken, kræver det at man har en type af VR-brillerne.
 (om det de billige Mobile VR HMDs (The Cardboard Headgear), Premium Mobile VR HMDs (The VR Gear), eller de dyre Tethered HMDs  (The HTC Vive, Oculus Rift) er irrelevant, da de alle vil kunne vise produktet i fuld forstand).
-<br>
+<br><br>
 
 
 <b>Kundesegmentet</b><br>
