@@ -8,19 +8,19 @@
 <body class="a-body ">
     <a-scene>
         <a-assets>
-            
+
         </a-assets>
 
         <a-entity id="cameraRig">
             <a-entity id="head" camera wasd-controls look-controls position="0 2.5 0" user-height="2" rotation="0 -90 0">
-                    <a-cursor color="#FF0000" fuse="true" fuseTimeout="1500" maxDistance="3000"/>
+                    <a-cursor color="#000000" fuse="true" fuseTimeout="1500" maxDistance="3000"/>
             </a-entity>
             <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
             <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
         </a-entity>
 
-        <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
-        <a-plane width="50" height="50" rotation="-90 0 0" src="#plane" scale="2 2 2" repeat="50 50" geometry="" position="0.761 0 6.107" ></a-plane>
+        <a-sky id="The Sky" src="#" geometry=""></a-sky>
+        <a-plane width="30" height="30" rotation="-90 0 0" color="gray" scale="2 2 2" repeat="50 50" geometry="" position="0 0 0" ></a-plane>
 
 
     </a-scene>
