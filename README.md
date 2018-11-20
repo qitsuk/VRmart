@@ -2,10 +2,10 @@
 
 <b>Problemformulering</b><br>
 Hvordan kan vi give fysisk eller psykisk udfordrede mere selvstændighed ifm. indkøb af dagligvarer vha. VR teknologi?<br>
-Hvad er kundesegmentets udfordringer og hvordan kan produktet hjælpe dem? <br>
-Er det muligt at lave en fuld webshop i VR?<br>
-Hvilke teknologier kan/skal bruges?<br>
-Hvilke krav er der til udstyr for at det fungerer optimalt? <br>
+- Hvad er kundesegmentets udfordringer og hvordan kan produktet hjælpe dem? <br>
+- Er det muligt at lave en fuld webshop i VR?<br>
+- Hvilke teknologier kan/skal bruges?<br>
+- Hvilke krav er der til udstyr for at det fungerer optimalt? <br>
 <br>
 
 <b>Ideén</b><br>
