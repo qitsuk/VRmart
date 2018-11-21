@@ -9,14 +9,14 @@
 </head>
 
 <body class="a-body ">
-    <a-scene physics="debug: false; friction: 0.1; restitution: 0.5">
+    <a-scene physics="debug: false;">
         <a-assets>
             <img id="blueprint" src="blueprint.png">
 
         </a-assets>
 
-        <a-entity dynamic-body id="cameraRig">
-            <a-entity id="head" camera wasd-controls look-controls position="0 2.5 0" user-height="2" rotation="0 -90 0">
+        <a-entity id="cameraRig">
+            <a-entity id="head" camera wasd-controls look-controls position="-2 2.5 0" user-height="2" rotation="0 -90 0">
                 <a-cursor color="#000000" fuse="true" fuseTimeout="1500" maxDistance="3000" />
             </a-entity>
             <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
