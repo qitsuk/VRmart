@@ -1,28 +1,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8" />
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="aframe-physics-system.min.js"></script>
     <title>VRmart</title>
 </head>
+
 <body class="a-body ">
-    <a-scene>
+    <a-scene physics="debug: false; friction: 0.1; restitution: 0.5">
         <a-assets>
 
         </a-assets>
 
-        <a-entity id="cameraRig">
+        <a-entity dynamic-body id="cameraRig">
             <a-entity id="head" camera wasd-controls look-controls position="0 2.5 0" user-height="2" rotation="0 -90 0">
-                    <a-cursor color="#000000" fuse="true" fuseTimeout="1500" maxDistance="3000"/>
+                <a-cursor color="#000000" fuse="true" fuseTimeout="1500" maxDistance="3000" />
             </a-entity>
             <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
             <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
         </a-entity>
 
+        <a-box dynamic-body position="1 5 1" width="1" height="1" depth="1" color="red"></a-box>
+        <a-box static-body position="2 -10 2" width="1" height="1" depth="1" color="red"></a-box>
+
         <a-sky id="The Sky" src="#" geometry=""></a-sky>
-        <a-plane width="30" height="30" rotation="-90 0 0" color="gray" scale="2 2 2" repeat="50 50" geometry="" position="0 0 0" ></a-plane>
+        <a-plane static-body width="30" height="30" rotation="-90 0 0" color="gray" scale="2 2 2" repeat="50 50"
+            geometry="" position="0 -10 0"></a-plane>
 
 
     </a-scene>
+
+    <script>
+        var playerEl = document.querySelector('[camera]');
+        playerEl.addEventListener('collide', function (e) {
+            console.log('Player has collided with body #' + e.detail.body.id);
+
+            e.detail.target.el;  // Original entity (playerEl).
+            e.detail.body.el;    // Other entity, which playerEl touched.
+            e.detail.contact;    // Stats about the collision (CANNON.ContactEquation).
+            e.detail.contact.ni; // Normal (direction) of the collision (CANNON.Vec3).
+        });
+    </script>
 </body>
+
 </html>
