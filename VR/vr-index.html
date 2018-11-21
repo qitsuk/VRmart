@@ -12,6 +12,7 @@
     <a-scene physics="debug: false;">
         <a-assets>
             <img id="blueprint" src="assets/blueprint.png">
+            <img id="wall_texture" src="assets/grey_tiles.jpg">
 
         </a-assets>
 
@@ -23,7 +24,7 @@
             <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
         </a-entity>
 
-        <a-box dynamic-body position="1 5 1" width="1" height="1" depth="1" color="red"></a-box>
+        <a-box dynamic-body position="1 12 1" width="1" height="1" depth="1" color="red"></a-box>
         <a-box static-body position="2 -10 2" width="1" height="1" depth="1" color="red"></a-box>
 
         <a-sky id="The Sky" src="#" geometry=""></a-sky>
@@ -31,10 +32,10 @@
             geometry="" position="0 0 0" src="#blueprint"></a-plane>
 
         /* Walls */
-        <a-box position="0 2.493 14.944916444510458" width="1" height="1" depth="1" color="red" rotation="-0.06 -0.002 -0.017" material="" geometry="width:30;height:5;depth:0.1" velocity=""></a-box>
-        <a-box position="0 2.493 -14.947699646981706" width="1" height="1" depth="1" color="red" rotation="-0.06 -0.002 -0.017" material="" geometry="width:30;height:5;depth:0.1" velocity=""></a-box>
-        <a-box position="-14.9482529384003 2.493 0" width="1" height="1" depth="1" color="red" rotation="-0.06 90 -0.017" material="" geometry="width:30;height:5;depth:0.1" velocity=""></a-box>
-        <a-box position="14.959326183957138 2.493 0" width="1" height="1" depth="1" color="red" rotation="-0.06 90 -0.017" material="" geometry="width:30;height:5;depth:0.1" velocity=""></a-box>
+        <a-box position="0 4 15" width="1" height="1" depth="1" color="" rotation="-0 -0 -0" material="src: #wall_texture; repeat: 7 2;" geometry="width:30;height:8;depth:0.1" velocity=""></a-box>
+        <a-box position="0 4 -15" width="1" height="1" depth="1" color="" rotation="-0 -0 -0" material="src: #wall_texture; repeat: 7 2;" geometry="width:30;height:8;depth:0.1" velocity=""></a-box>
+        <a-box position="-15 4 0" width="1" height="1" depth="1" color="" rotation="-0 90 -0" material="src: #wall_texture; repeat: 7 2;" geometry="width:30;height:8;depth:0.1" velocity=""></a-box>
+        <a-box position="15 4 0" width="1" height="1" depth="1" color="" rotation="-0 90 -0" material="src: #wall_texture ;repeat: 7 2;" geometry="width:30;height:8;depth:0.1" velocity=""></a-box>
 
 
     </a-scene>
