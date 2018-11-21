@@ -11,6 +11,7 @@
 <body class="a-body ">
     <a-scene physics="debug: false; friction: 0.1; restitution: 0.5">
         <a-assets>
+            <img id="blueprint" src="blueprint.png">
 
         </a-assets>
 
@@ -26,23 +27,11 @@
         <a-box static-body position="2 -10 2" width="1" height="1" depth="1" color="red"></a-box>
 
         <a-sky id="The Sky" src="#" geometry=""></a-sky>
-        <a-plane static-body width="30" height="30" rotation="-90 0 0" color="gray" scale="2 2 2" repeat="50 50"
-            geometry="" position="0 -10 0"></a-plane>
+        <a-plane static-body width="30" height="30" rotation="-90 0 0" color="gray" scale="2 2 2"
+            geometry="" position="0 -10 0" src="#blueprint"></a-plane>
 
 
     </a-scene>
-
-    <script>
-        var playerEl = document.querySelector('[camera]');
-        playerEl.addEventListener('collide', function (e) {
-            console.log('Player has collided with body #' + e.detail.body.id);
-
-            e.detail.target.el;  // Original entity (playerEl).
-            e.detail.body.el;    // Other entity, which playerEl touched.
-            e.detail.contact;    // Stats about the collision (CANNON.ContactEquation).
-            e.detail.contact.ni; // Normal (direction) of the collision (CANNON.Vec3).
-        });
-    </script>
 </body>
 
 </html>
