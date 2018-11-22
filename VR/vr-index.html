@@ -29,7 +29,7 @@
 
 
         <a-sky id="The Sky" src="#" geometry=""></a-sky>
-        <a-plane static-body="sphereRadius:NaN" width="30" height="30" rotation="-90 0 0" color="" geometry="height:31.8" position="0 0 0.8998282614486417" src="#blueprint" material="color:#FFF" velocity=""></a-plane>
+        <a-plane static-body="sphereRadius:NaN" width="30" height="30" rotation="-90 0 0" geometry="height:31.8" position="0 0 0.8998282614486417" src="#blueprint" material="color:#FFF"></a-plane>
 
         <!--Lys-->
         <a-entity light="intensity:0.6;castShadow:true" position="12.49073075572284 4.500811208049429 -12.430845045592315" data-aframe-default-light="" aframe-injected=""></a-entity>
@@ -37,41 +37,52 @@
 
         <!--Taget-->
 
+        <!-- #region Vægge -->
+        <a-box id="innerwall_1" position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1"></a-box>
+        <a-box id="innerwall_2" position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
+        <a-box id="innerwall_3" position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
+        <a-box id="innerwall_4" position="15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
 
-        <!--Vægge-->
-        <a-box position="3.5 2.5 15" width="1" height="1" depth="1" color="" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1" velocity=""></a-box>
-        <a-box position="0 2.5 -15" width="1" height="1" depth="1" color="" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1" velocity=""></a-box>
-        <a-box position="-15 2.5 0" width="1" height="1" depth="1" color="" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1" velocity=""></a-box>
-        <a-box position="15 2.5 0" width="1" height="1" depth="1" color="" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1" velocity=""></a-box>
-
+        <a-box id="outerwall_1" position="3.6730003656464634 2.5 15.10767582070222" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:red;repeat:8 2" geometry="width:23.179999999999996;height:5;depth:0.1"></a-box>
+        <a-box id="outerwall_2" position="15.202839050117527 2.5 0.004533618116581817" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="color:red;repeat:8 2" geometry="width:30.29;height:5;depth:0.1"></a-box>
+        <a-box id="outerwall_3" position="0.09404463456994346 2.5 -15.197" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:red;repeat:8 2" geometry="width:30.25;height:5;depth:0.1"></a-box>
+        <a-box id="outerwall_4" position="-15.077640397081407 2.5 -0.10108245613094269" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="color:red;repeat:8 2" geometry="width:30.29;height:5;depth:0.1"></a-box>
+        <!-- endregion -->
+        
         <!--Indgang-->
-        <a-box position="-11.47 4.373 15" width="1" height="1" depth="1" color="" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 2 0.5;" geometry="width:7.15;height:1.25;depth:0.1" velocity=""></a-box>
-        <a-text value="VRmart" position="-15 4.44 15.21" scale="1.5 1 1" text="width:30;alphaTest:0"></a-text>
+        <a-box id="entrance_box1" position="-11.40508146707056 4.378193271051162 8.000426781988928" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5" geometry="width:7.180000000000001;height:1.25;depth:0.1" ></a-box>
+        <a-box id="entrance_box2" position="-7.859842744155859 4.368477978174847 11.486268254298775" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5" geometry="width:7.05;height:1.25;depth:0.1" ></a-box>
 
-        <!--Bakeoff-->
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.12770370466901 2.839736658205316 1.805" rotation="0 90 0" material="color:#3f2a14" geometry="depth:1.6500000000000001;height:0.7;width:7.1"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.91 1.24 1.805" rotation="0 90 0" material="color:#242424" geometry="depth:0.1;height:2.5;width:7"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.124321322940913 0.018501284135189866 1.805" rotation="90 90 0" material="color:#242424" geometry="depth:0.05;height:1.5;width:7"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.117 1.24 5.254" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.11155612991003 1.24 -1.6436708460679783" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+        <!-- #region Bakeoff -->
+        <a-box depth="2" height="4" width="0.5" position="-14.12770370466901 2.839736658205316 1.805" rotation="0 90 0" material="color:#3f2a14" geometry="depth:1.6500000000000001;height:0.7;width:7.1"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.91 1.24 1.805" rotation="0 90 0" material="color:#242424" geometry="depth:0.1;height:2.5;width:7"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.124321322940913 0.018501284135189866 1.805" rotation="90 90 0" material="color:#242424" geometry="depth:0.05;height:1.5;width:7"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.117 1.24 5.254" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.11155612991003 1.24 -1.6436708460679783" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
 
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.124 1.8 1.805" rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.124 1.2 1.805" rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.124 0.6 1.805" rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.124 1.8 1.805" rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.124 1.2 1.805" rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.124 0.6 1.805" rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
 
-        <a-box color="" depth="2" height="4" width="0.5" position="-13.371 1.6752104338604916 1.805" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07;width:6.8"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-13.371 1.0753150712558028 1.805" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07000000000000002;width:6.8"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-13.371 0.2526912745986588 1.805" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.51;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-13.371 1.6752104338604916 1.805" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-13.371 1.0753150712558028 1.805" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07000000000000002;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-13.371 0.2526912745986588 1.805" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.51;width:6.8"></a-box>
 
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 2.9027" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 0.5873" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 2.9027" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 0.5873" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
 
-        <a-box color="" depth="2" height="4" width="0.5" position="-13.418600289900285 2.251456653885017 1.805" rotation="0 90 0" material="color:#7FFAFF;opacity:0.1" geometry="depth:0.01;height:0.49;width:6.8"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-13.418600289900285 1.5012815069996575 1.805" rotation="0 90 0" material="color:#7FFAFF;opacity:0.1" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
-        <a-box color="" depth="2" height="4" width="0.5" position="-13.419 0.9033963807268064 1.805" rotation="0 90 0" material="color:#7FFAFF;opacity:0.1" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-13.418600289900285 2.251456653885017 1.805" rotation="0 90 0" material="color:#7FFAFF;opacity:0.1" geometry="depth:0.01;height:0.49;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-13.418600289900285 1.5012815069996575 1.805" rotation="0 90 0" material="color:#7FFAFF;opacity:0.1" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
+        <a-box depth="2" height="4" width="0.5" position="-13.419 0.9033963807268064 1.805" rotation="0 90 0" material="color:#7FFAFF;opacity:0.1" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
+        <!-- endregion -->
 
 
+        <!-- #region Marmelade/Chokolade-->
 
+        <!-- endregion -->
+
+
+<<<<<<< HEAD
         <!--Marmelade/Chokolade-->
         <a-box color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -1.8628952314954694" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
         <a-box color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.246709023963693" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
@@ -86,8 +97,13 @@
         <a-box color="" depth="2" height="4" width="0.5" position="-13.370348191438758 1.516435970688553 -3.556734198277924" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
         <a-box color="" depth="2" height="4" width="0.5" position="-13.375 0.7656752842555152 -3.556734198277924" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
         <a-box color="" depth="2" height="4" width="0.5" position="-13.393060590239026 0.08202992418277075 -3.556734198277924" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.17;width:3.3"></a-box>
+=======
+        <!-- #region Øko Grønt-->
+>>>>>>> 8748c44d01d3b8d2e34ac60a98eab7c9ec9042b7
 
+        <!-- endregion -->
 
+<<<<<<< HEAD
         <!--Øko Grønt-->
         <a-box color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.4512462361084815" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
         <a-box color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -13.027532991592029" material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
@@ -100,63 +116,79 @@
         <a-box color="" depth="2" height="4" width="0.5" position="-13.375 1.8701434533427919 -9.241" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.1;width:7.48"></a-box>
         <a-box color="" depth="2" height="4" width="0.5" position="-13.37547083669862 1.0254647707413511 -9.241101139201064" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.1;width:7.48"></a-box>
         <a-box color="" depth="2" height="4" width="0.5" position="-13.37547083669862 0.07677876666577366 -9.241101139201064" rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.16;width:7.48"></a-box>
+=======
+        <!-- #region Alm Grønt-->
+>>>>>>> 8748c44d01d3b8d2e34ac60a98eab7c9ec9042b7
+
+        <!-- endregion -->
+
+        <!-- #region Frugt Ø-->
+
+        <!-- endregion -->
 
 
-        <!--Alm Grønt-->
+        <!-- #region Konserves-->
+
+        <!-- endregion -->
 
 
-        <!--Frugt Ø-->
+        <!-- #region Køl-->
+
+        <!-- endregion -->
 
 
-        <!--Konserves-->
+        <!-- #region Spot Fryser-->
+
+        <!-- endregion -->
 
 
-        <!--Køl-->
+        <!-- #region Fryser 1-->
+
+        <!-- endregion -->
 
 
-        <!--Spot Fryser-->
+        <!-- #region Fryser 2-->
+
+        <!-- endregion -->
 
 
-        <!--Fryser 1-->
+        <!-- #region Mejjeri/Æg/osv.-->
+
+        <!-- endregion -->
 
 
-        <!--Fryser 2-->
+        <!-- #region Pasta/Ris/Andet kolonial-->
+
+        <!-- endregion -->
 
 
-        <!--Mejjeri/Æg//osv.-->
+        <!-- #region Drikkevarer-->
+
+        <!-- endregion -->
 
 
-        <!--Pasta/Ris/Andet kolonial-->
+        <!-- #region Vin & Spiritus-->
+
+        <!-- endregion -->
 
 
-        <!--Drikkevarer-->
+        <!-- #region Diverse nonfood ting (husholdning)-->
+
+        <!-- endregion -->
 
 
-        <!--Vin & Spiritus-->
+        <!-- #region Baby stuff og personlig pleje-->
+
+        <!-- endregion -->
 
 
-        <!--Diverse nonfood ting (husholdning)-->
+        <!-- #region Slik og Snacks-->
 
+        <!-- endregion -->
 
-        <!--Baby stuff og personlig pleje-->
+        <!-- #region Kasse/Kiosk-->
 
-
-        <!--Slik og Snacks-->
-
-
-        <!--Kasse/Kiosk-->
-
-        <!-- Testing Text -->
-        <a-entity position="1.8 7.5 16" geometry="depth: 0.6; height: 0.2; width: 5" color="blue">
-                <a-animation attribute="rotation" dur="25000" fill="forwards" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
-            </a-entity>
-            <a-entity id="logo_parent" position="-0.4 7.7 16">
-                <a-entity id="logo" text-geometry="value: VRmart; size: 1; height: 0.2" color="yellow" size="1"></a-entity>
-                <a-animation id="logospin" attribute="rotation" dur="25000" fill="forwards" easing="linear" to="0 360 0" repeat="indefinte"></a-animation>
-            </a-entity>
-
-
-        <a-entity position="1.8 3.5 16" scale="0.1 1 0.1" geometry="primitive:cylinder;height:7.7;segmentsHeight:1"></a-entity>
+        <!-- endregion -->
 
 
 
