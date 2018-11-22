@@ -15,6 +15,8 @@
         <a-assets>
             <img id="blueprint" src="assets/blueprint.png">
             <img id="wall_texture" src="assets/grey_tiles.jpg">
+            <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
+
             <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
 
         </a-assets>
@@ -43,10 +45,10 @@
         <a-box id="innerwall_3" position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
         <a-box id="innerwall_4" position="15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
 
-        <a-box id="outerwall_1" position="3.6730003656464634 2.5 15.10767582070222" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:red;repeat:8 2" geometry="width:23.179999999999996;height:5;depth:0.1"></a-box>
-        <a-box id="outerwall_2" position="15.202839050117527 2.5 0.004533618116581817" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="color:red;repeat:8 2" geometry="width:30.29;height:5;depth:0.1"></a-box>
-        <a-box id="outerwall_3" position="0.09404463456994346 2.5 -15.197" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:red;repeat:8 2" geometry="width:30.25;height:5;depth:0.1"></a-box>
-        <a-box id="outerwall_4" position="-15.077640397081407 2.5 -0.10108245613094269" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="color:red;repeat:8 2" geometry="width:30.29;height:5;depth:0.1"></a-box>
+        <a-box id="outerwall_1" position="3.6730003656464634 2.5 15.10767582070222" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:23.179999999999996;height:5;depth:0.1"></a-box>
+        <a-box id="outerwall_2" position="15.202839050117527 2.5 0.004533618116581817" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.29;height:5;depth:0.1"></a-box>
+        <a-box id="outerwall_3" position="0.09404463456994346 2.5 -15.197" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.25;height:5;depth:0.1"></a-box>
+        <a-box id="outerwall_4" position="-15.077640397081407 2.5 -0.10108245613094269" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.29;height:5;depth:0.1"></a-box>
         <!-- endregion -->
 
         <!--Indgang-->
