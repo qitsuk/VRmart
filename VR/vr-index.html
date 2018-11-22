@@ -22,6 +22,9 @@
             <img id="wall_texture" src="assets/grey_tiles.jpg">
             <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
 
+            <a-asset-item id="canned_goods" src="assets/marmalade_and_choolade_drawer.gltf"></a-asset-item> 
+            <a-asset-item id="vegetables" src="assets/organic_vege.gltf"></a-asset-item>
+
             <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
 
         </a-assets>
@@ -44,8 +47,9 @@
 
         <!--Taget-->
 
-    <a-entity id="walls_and_entrance">
+    
         <!-- #region Vægge -->
+        <a-entity id="walls_and_entrance"></a-entity>
         <a-box id="innerwall_1" position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1"></a-box>
         <a-box id="innerwall_2" position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
         <a-box id="innerwall_3" position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
@@ -130,6 +134,7 @@
 
         <!-- #region Alm Grønt-->
 
+        <a-gltf-model id="vegetable_shelf" src="#vegetables" position="-18.773384328805058 0 0" rotation="0 -90 0" gltf-model="assets/organic_vege.gltf"></a-gltf-model>
 
         <!-- endregion -->
 
@@ -175,6 +180,8 @@
 
 
         <!-- #region Konserves-->
+
+        <a-gltf-model id="canned_goods_shelf" src="#canned_goods" position="-6.877294942197571 0 0" rotation="0 -90 0" gltf-model="assets/marmalade_and_choolade_drawer.gltf"></a-gltf-model>
 
         <!-- endregion -->
 
