@@ -14,6 +14,7 @@
 
 <body class="a-body ">
 
+
     <a-scene id="VRmartScene" physics="debug: false;" gltf-exporter>
 
         <a-entity gltf-exporter></a-entity>
@@ -50,7 +51,7 @@
 
 
         <!-- #region Vægge -->
-        <a-entity id="walls_and_entrance"></a-entity>
+    <a-entity id="walls_and_entrance">
         <a-box id="innerwall_1" position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1"></a-box>
         <a-box id="innerwall_2" position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
         <a-box id="innerwall_3" position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
@@ -59,14 +60,39 @@
         <a-box id="outerwall_1" position="3.6730003656464634 2.5 15.10767582070222" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:23.179999999999996;height:5;depth:0.1"></a-box>
         <a-box id="outerwall_2" position="15.202839050117527 2.5 0.004533618116581817" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.29;height:5;depth:0.1"></a-box>
         <a-box id="outerwall_3" position="0.09404463456994346 2.5 -15.197" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.25;height:5;depth:0.1"></a-box>
-        <a-box id="outerwall_4" position="-15.077640397081407 2.5 -0.10108245613094269" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.29;height:5;depth:0.1"></a-box>
-        <!-- endregion -->
+        <a-box id="outerwall_4" position="-15.077640397081407 2.5 -0.03579503719629429" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.419999999999998;height:5;depth:0.1"></a-box>        <!-- endregion -->
 
         <!--Indgang-->
         <a-box id="entrance_box1" position="-11.40508146707056 4.378193271051162 8.000426781988928" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5" geometry="width:7.180000000000001;height:1.25;depth:0.1" ></a-box>
         <a-box id="entrance_box2" position="-7.859842744155859 4.368477978174847 11.486268254298775" width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5" geometry="width:7.05;height:1.25;depth:0.1" ></a-box>
+        
+        <!-- Glass -->
+        <a-box id="entrance_glass_panel" depth="2" height="4" width="0.5" position="-13.735956176656767 2.486509693493699 15.10" material="color:#7FFAFF;opacity:0.3" geometry="depth:0.01;height:5;width:2.61"></a-box>
+        <a-box id="entrance_glass_panel_2" depth="2" height="4" width="0.5" position="-8.956094981089306 2.444670681085263 15.10" material="color:#7FFAFF;opacity:0.3" geometry="depth:0.01;height:4.9;width:2.1"></a-box>
+        <a-box id="entrance_glass_panel_3" depth="2" height="4" width="0.5" position="-11.230739674123631 4.191 15.1" material="color:#7FFAFF;opacity:0.3" geometry="depth:0.01;height:1.5;width:2.4"></a-box>
+        <a-triangle id="entrance_glass_triangle_1" material="side:double;color:#7FFAFF;opacity:0.3" position="-11.480287628538154 5.416570288885511 14.842024735590698" rotation="-35.848926617784926 0 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
+        <a-triangle id="entrance_glass_triangle_2" material="side:double;color:#7FFAFF;opacity:0.3" position="-14.75948637743945 5.417 11.531" rotation="-35.849 -90 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
+        <a-triangle id="entrance_glass_triangle_3" material="side:double;color:#7FFAFF;opacity:0.3" position="-11.431627074993251 5.417 8.291177594776842" rotation="-35.849 -180 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
+        <a-triangle id="entrance_glass_triangle_4" material="side:double;color:#7FFAFF;opacity:0.3" position="-8.15691646386476 5.417 11.61234635985537" rotation="-35.849 -270 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
 
+
+
+        <!-- Crossbars -->
+        <a-box id="entrance_crossbar_1" color="gray" position="-12.467663504511634 2.465928323242208 15.1" material="" geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
+        <a-box id="entrance_crossbar_2" color="gray" position="-11.453652914200193 4.950090243932034 15.1" material="" geometry="depth:0.1;height:0.1;width:7.119999999999999"></a-box>
+        <a-box id="entrance_crossbar_3" color="gray" position="-10.012809865333013 2.465928323242208 15.1" material="" geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
+        <a-box id="entrance_crossbar_4" color="gray" position="-11.22704354187545 3.3624582852290645 15.1" material="" geometry="depth:0.1;height:0.1;width:2.5"></a-box>
+        <a-box id="entrance_crossbar_5" color="gray" position="-14.978176393863409 2.466 15.1" material="" geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
+        <a-box id="entrance_crossbar_6" color="gray" position="-7.962654802611064 2.466 15.1" material="" geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
+        <a-box id="entrance_crossbar_7" color="gray" position="-8.956248175909245 0.051292002609708565 15.1" material="" geometry="depth:0.1;height:0.1;width:2.07"></a-box>
+        <a-box id="entrance_crossbar_8" color="gray" position="-13.766573924091112 0.051292002609708565 15.1" material="" geometry="depth:0.1;height:0.1;width:2.5599999999999996"></a-box>
+        <a-box id="entrance_crossbar_9" color="gray" position="-9.696497386645603 7.5 13.349910464671167" material="" geometry="depth:0.1;height:0.1;width:7.05" rotation="45 -135 -90"></a-box>
+        <a-box id="entrance_crossbar_10" color="gray" position="-13.235117311102726 7.5 13.35" material="" geometry="depth:0.1;height:0.1;width:7.05" rotation="44.99999999999999 135 -89.99999999999999"></a-box>
+        <a-box id="entrance_crossbar_11" color="gray" position="-13.21423617278304 7.540081314173948 9.846669873265293" material="" geometry="depth:0.1;height:0.1;width:7.05" rotation="45 45 -90"></a-box>
+        <a-box id="entrance_crossbar_12" color="gray" position="-9.65614005586507 7.463097408519945 9.75538013321273" material="" geometry="depth:0.1;height:0.1;width:7.1" rotation="45.00000000000003 -45 -90.00000000000007"></a-box>        
+        
     </a-entity>
+    
 
         <!-- #region Bakeoff -->
     <a-entity id="bakeoff_skab">
