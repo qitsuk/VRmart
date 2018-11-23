@@ -22,6 +22,7 @@
             <img id="blueprint" src="assets/blueprint.png">
             <img id="wall_texture" src="assets/grey_tiles.jpg">
             <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
+            <img id="sky" src="assets/sky.jpg">
 
             <a-asset-item id="canned_goods" src="assets/small_shelf.gltf"></a-asset-item>
             <a-asset-item id="vegetables" src="assets/organic_vege.gltf"></a-asset-item>
@@ -42,7 +43,7 @@
         </a-entity>
 
 
-        <a-sky id="The Sky" src="#" geometry=""></a-sky>
+        <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
         <a-plane static-body="sphereRadius:NaN" width="30" height="30" rotation="-90 0 0" geometry="height:31.8" position="0 0 0.8998282614486417" src="#blueprint" material="color:#FFF"></a-plane>
 
         <!--Lys-->
@@ -176,7 +177,7 @@
         <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.9890212507001996 -8.002469724752897" material="color:#808080" geometry="height:2;radius:0.02"></a-cylinder>
         <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.99901963394356 0.9745648220537588 -8.002469724752897" material="color:#808080" geometry="height:2;radius:0.02"></a-cylinder>
 
-        <a-box id="frugt_ø_bund" color="" depth="2" height="4" width="0.5" position="-8.010458959491668 0.8689724895284214 -8.000350641362662" material="color:#595959" geometry="depth:0.05;height:4.1;width:4.05" rotation="90 0 0"></a-box>
+        <a-box id="frugt_ø_bund" color="" depth="2" height="4" width="0.5" position="-8.010458959491668 0.8689724895284214 -8.000350641362662" material="color:#242424" geometry="depth:0.05;height:4.1;width:4.05" rotation="90 0 0"></a-box>
         <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-9.999043604506083 0.8126840700493152 -8.002469724752897" material="color:#808080" geometry="height:4.05;radius:0.01" rotation="90 0 0"></a-cylinder>
         <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-6.01679286358271 0.8126840700493152 -8.002469724752897" material="color:#808080" geometry="height:4.05;radius:0.01" rotation="90 0 0"></a-cylinder>
         <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-8.008232479116707 0.8126840700493152 -10.013671234645686" material="color:#808080" geometry="height:4;radius:0.01" rotation="90 90 0"></a-cylinder>
