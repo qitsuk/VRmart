@@ -23,6 +23,7 @@
             <img id="wall_texture" src="assets/grey_tiles.jpg">
             <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
             <img id="sky" src="assets/sky.jpg">
+            <img id="ceiling_test" src="assets/ceiling_texture_test_1.jpg">
 
             <a-asset-item id="canned_goods" src="assets/small_shelf.gltf"></a-asset-item>
             <a-asset-item id="vegetables" src="assets/organic_vege.gltf"></a-asset-item>
@@ -54,8 +55,8 @@
         <!--Taget-->
 
         <a-entity id="roof">
-                <a-box id="roof_part_1" color="grey" position="0.057950258640787844 4.969211414447982 -3.5962897355459558" material="" geometry="width:30.36;height:0.1;depth:23.28"></a-box>
-                <a-box id="roof_part_1-2" color="grey" position="3.645233046100428 4.969 11.389213499783349" material="" geometry="width:23.18;height:0.1;depth:7.5"></a-box>
+                <a-box id="roof_part_1" position="0.057950258640787844 4.969211414447982 -3.5962897355459558" material="src:#ceiling_test; repeat: 20 20" geometry="width:30.36;height:0.1;depth:23.28"></a-box>
+                <a-box id="roof_part_2" position="3.645233046100428 4.969 11.389213499783349" material="src:#ceiling_test; repeat: 10 10;" geometry="width:23.18;height:0.1;depth:7.5"></a-box>
         </a-entity>
 
 
