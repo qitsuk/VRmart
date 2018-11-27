@@ -25,7 +25,7 @@
             <img id="sky" src="assets/sky.jpg">
             <img id="ceiling_test" src="assets/ceiling_texture_test_3.jpg">
 
-            <a-asset-item id="canned_goods" src="assets/small_shelf.gltf"></a-asset-item>
+            <a-asset-item id="small_shelf" src="assets/small_shelf.gltf"></a-asset-item>
             <a-asset-item id="vegetables" src="assets/organic_vege.gltf"></a-asset-item>
             <a-asset-item id="big_shelf" src="assets/big_shelf.gltf"></a-asset-item>
             <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
@@ -330,7 +330,7 @@
 
 
         <!-- #region Konserves-->
-        <a-gltf-model id="canned_goods_shelf" src="#canned_goods" position="-6.877 0 0" rotation="0 -90 0" gltf-model="assets/small_shelf.gltf" scale="1 1.2 1"></a-gltf-model>
+        <a-gltf-model id="canned_goods_shelf" src="#small_shelf" position="-6.877 0 0" rotation="0 -90 0" gltf-model="assets/small_shelf.gltf" scale="1 1.2 1"></a-gltf-model>
         <!-- endregion -->
 
 
@@ -428,6 +428,10 @@
         <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.498570763663627 0.17278035216008725 14.138899658690972" rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
         <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 0.1085610061609048 13.38842740066098" material="color:#595959" geometry="depth:0.02;height:0.22000000000000003;width:14.88"></a-box>
     </a-entity>
+        <!-- endregion -->
+
+        <!-- #region Krydderier/mel/køkken-->
+        <a-gltf-model id="spices_flour_and_kitchen" src="#small_shelf" position="-3.1467727255285585 -0.0068279998165956535 -7.034527198479602" rotation="0 90 0" gltf-model="assets/small_shelf.gltf"></a-gltf-model>
         <!-- endregion -->
 
         <!-- #region Kasse/Kiosk-->
