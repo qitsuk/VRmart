@@ -13,7 +13,7 @@
 
 
 <body class="a-body ">
-    <a-scene id="VRmartScene" physics="debug: false;" gltf-exporter>
+    <a-scene id="VRmartScene" physics="debug: false; gravity: 1; driver:local" gltf-exporter>
         <a-entity gltf-exporter></a-entity>
         <a-assets>
             <img id="blueprint" src="assets/blueprint.png">
@@ -43,7 +43,7 @@
         </a-entity> -->
 
         <a-entity id="cameraRig" position="-11 2 21">
-            <a-entity id="head" camera look-controls wasd-controls>
+            <a-entity id="head" camera look-controls wasd-controls static-body>
                 <a-entity position="0 0 -3" geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.07;" material="color: red; shader: flat"
                     cursor="maxDistance: 15; fuse: true">
                 </a-entity>
@@ -51,11 +51,11 @@
         </a-entity>
 
         <a-box id="door_test" position="-11.245 1.603 14.99853990382453" material="color:#7FFAFF;opacity:0.2" geometry="depth:0.1;height:3.5;width:2.44">
-            <a-animation begin="3000" attribute="position" from="-11.245 1.603 14.99853990382453" to="-8.805 1.603 14.99853990382453" dur="2000" easing="linear" fill="forwards"></a-animation>
-            <a-animation begin="8000" attribute="position" from="-8.805 1.603 14.99853990382453" to="-11.245 1.603 14.99853990382453" dur="3000" easing="linear" fill="forwards"></a-animation>
+            <a-animation delay="3000" attribute="position" from="-11.245 1.603 14.99853990382453" to="-8.805 1.603 14.99853990382453"
+                dur="2000" easing="linear" fill="forwards"></a-animation>
+            <a-animation delay="8000" attribute="position" from="-8.805 1.603 14.99853990382453" to="-11.245 1.603 14.99853990382453"
+                dur="3000" easing="linear" fill="forwards"></a-animation>
         </a-box>
-
-
 
         <!-- #region Himlen, have og lys -->
         <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
@@ -84,13 +84,13 @@
 
         <!-- #region Vægge og Entré Parti -->
         <a-entity id="walls_and_entrance">
-            <a-box id="innerwall_1" position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
+            <a-box id="innerwall_1" static-body position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
                 material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1"></a-box>
-            <a-box id="innerwall_2" position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
+            <a-box id="innerwall_2" static-body position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
                 material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
-            <a-box id="innerwall_3" position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
+            <a-box id="innerwall_3" static-body position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
                 material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
-            <a-box id="innerwall_4" position="15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
+            <a-box id="innerwall_4" static-body position="15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
                 material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
 
             <a-box id="outerwall_1" position="3.6730003656464634 2.5 15.10767582070222" width="1" height="1" depth="1"
@@ -715,6 +715,16 @@
         <!-- #region Kasse/Kiosk-->
 
         <!-- endregion -->
+
+
+        <script>
+            var playerEl = document.querySelector('#head');
+            console.log("This is the head " + playerEl)
+
+            playerEl.addEventListener('collide', function (e) {
+                console.log('Player has collided with body #' + e.detail.body.id);
+            });
+        </script>
 
     </a-scene>
 
