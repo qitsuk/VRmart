@@ -169,13 +169,11 @@
 
 
         <!-- #region Alm Grønt-->
-
         <a-gltf-model id="vegetable_shelf" src="#vegetables" position="-18.773384328805058 0 0" rotation="0 -90 0" gltf-model="assets/organic_vege.gltf"></a-gltf-model>
-
         <!-- endregion -->
 
         <!-- #region Frugt Ø-->
-        <a-entity id="fruit_island">
+      <a-entity id="fruit_island">
         <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.998995225271198 0.6213002725412748 -5.982490438661892" material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
         <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.6174522886669437 -5.982490438661892" material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
         <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.999050233081594 0.6176186596757036 -10.014490748451838" material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
@@ -294,7 +292,6 @@
         <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.394811919418012 1.08618462574279 -10.014" material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
         <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.210130298964861 1.08618462574279 -10.014" material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
 
-
         <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.011005666772935 1.6203065031129278 -7.713814609026583" rotation="100 0 0" material="color:#808080" geometry="depth:0.03;height:0.58;width:3.95"></a-box>
         <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.006506170160215 1.1261725690188424 -7.600399815605115" rotation="100 0 0" material="color:#808080" geometry="depth:0.03;height:0.8;width:3.95"></a-box>
         <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.003074223466408 1.622494362319767 -8.288397197083103" rotation="-100 0 0" material="color:#808080" geometry="depth:0.03;height:0.58;width:3.95"></a-box>
@@ -304,7 +301,7 @@
         <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 0.9962544457101932 -7.209157959728518" material="color:#595959" geometry="depth:0.02;height:0.2;width:4.000000000000001"></a-box>
         <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 1.5716109403084604 -8.585369809444675" material="color:#595959" geometry="depth:0.02;height:0.1;width:4.000000000000001"></a-box>
         <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 0.9962544457101932 -8.787054148817587" material="color:#595959" geometry="depth:0.02;height:0.2;width:4.000000000000001"></a-box>
-        </a-entity>
+      </a-entity>
         <!-- endregion -->
 
         <!-- #region Slagter Køl-->
@@ -333,13 +330,43 @@
 
 
         <!-- #region Konserves-->
-
         <a-gltf-model id="canned_goods_shelf" src="#canned_goods" position="-6.877 0 0" rotation="0 -90 0" gltf-model="assets/small_shelf.gltf" scale="1 1.2 1"></a-gltf-model>
         <!-- endregion -->
 
 
         <!-- #region Køl-->
+      <a-entity id="køl">
+        <a-box id="køl_bund" color="" depth="2" height="4" width="0.5" position="5.518596980036763 0.020117169477509522 -13.73683321948068" material="color:#B0B0B0" geometry="depth:2.5;height:0.05;width:12"></a-box>
+        <a-box id="køl_frontvæg" color="" depth="2" height="4" width="0.5" position="5.5185 0.5013736406537435 -12.541182740602853" material="color:#B0B0B0" geometry="depth:0.1;height:1;width:12"></a-box>
+        <a-box id="køl_midtervæg" color="" depth="2" height="4" width="0.5" position="5.5185 0.5013736406537435 -13.809936930915024" material="color:#B0B0B0" geometry="depth:0.1;height:1;width:12"></a-box>
+        <a-box id="køl_bagvæg" color="" depth="2" height="4" width="0.5" position="5.5185 1.4973493525036243 -14.91126109179625" material="color:#B0B0B0" geometry="depth:0.1;height:3;width:12"></a-box>
+        <a-box id="køl_sidevæg_stor-1" color="" depth="2" height="4" width="0.5" position="-0.4313489689705746 1.4973493525036243 -14.302317935928064" material="color:#B0B0B0" geometry="depth:0.1;height:3;width:1.3" rotation="0 90 0"></a-box>
+        <a-box id="køl_sidevæg_stor-2" color="" depth="2" height="4" width="0.5" position="11.46724921718603 1.4973493525036243 -14.302317935928064" material="color:#B0B0B0" geometry="depth:0.1;height:3;width:1.3" rotation="0 90 0"></a-box>
+        <a-box id="køl_sidevæg_lille-1" color="" depth="2" height="4" width="0.5" position="-0.4313489689705746 0.501 -13.125484446078415" material="color:#B0B0B0" geometry="depth:0.1;height:1;width:1.1" rotation="0 90 0"></a-box>
+        <a-box id="køl_sidevæg_lille-2" color="" depth="2" height="4" width="0.5" position="11.46724921718603 0.501 -13.125484446078415" material="color:#B0B0B0" geometry="depth:0.1;height:1;width:1.1" rotation="0 90 0"></a-box>
+        <a-box id="køl_top" color="" depth="2" height="4" width="0.5" position="5.518596980036763 3.3357205193530257 -14.223162731931176" material="color:#808080" geometry="depth:1.5;height:0.7;width:12.06"></a-box>
 
+        <a-cylinder id="køl_frontvæg_panel" height="3" radius="1.5" position="5.518 0.974110789282951 -12.542" rotation="90 90 0" material="color:#808080" geometry="height:12.002;radius:0.06"></a-cylinder>
+        <a-cylinder id="køl_sidevæg_lille_panel-1" height="3" radius="1.5" position="-0.4286145983660204 0.974 -13.070246343999196" rotation="90 0 0" material="color:#808080" geometry="height:1.165;radius:0.06"></a-cylinder>
+        <a-cylinder id="køl_sidevæg_lille_panel-2" height="3" radius="1.5" position="11.464299978115191 0.974 -13.070246343999196" rotation="90 0 0" material="color:#808080" geometry="height:1.165;radius:0.06"></a-cylinder>
+        <a-cylinder id="køl_sidevæg_stor_panel-1" height="3" radius="1.5" position="-0.4286145983660204 1.9656621352001147 -13.653853931038402" material="color:#808080" geometry="height:2.04;radius:0.06"></a-cylinder>
+        <a-cylinder id="køl_sidevæg_stor_panel-2" height="3" radius="1.5" position="11.464299978115191 1.9656621352001147 -13.653853931038402" material="color:#808080" geometry="height:2.04;radius:0.06"></a-cylinder>
+        <a-box id="køl_hjørne-1" color="" depth="2" height="4" width="0.5" position="-0.42932022137238945 0.5241395360679305 -12.541021453383243" material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+        <a-box id="køl_hjørne-2" color="" depth="2" height="4" width="0.5" position="11.464299978115191 0.5241395360679305 -12.541021453383243" material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+        <a-box id="køl_hjørne-3" color="" depth="2" height="4" width="0.5" position="-0.44924705839183365 1.4941533282502857 -14.898472699717841" material="color:#808080" geometry="depth:0.12;height:3;width:0.12"></a-box>
+        <a-box id="køl_hjørne-4" color="" depth="2" height="4" width="0.5" position="11.485527153391104 1.4941533282502857 -14.898472699717841" material="color:#808080" geometry="depth:0.12;height:3;width:0.12"></a-box>
+        <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="11.464498717773086 0.012908921140919682 -13.796967638565464" material="color:#808080" geometry="depth:0.12;height:2.4;width:0.12" rotation="90 0 0"></a-box>
+        <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="-0.42918221706862636 0.012908921140919682 -13.796967638565464" material="color:#808080" geometry="depth:0.12;height:2.4;width:0.12" rotation="90 0 0"></a-box>
+        <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="5.51346229983849 0.012908921140919682 -12.542474478240184" material="color:#808080" geometry="depth:0.12;height:11.84;width:0.12" rotation="90 0 90"></a-box>
+
+        <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 1.0705673969743663 -14.287306669696244" rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
+        <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 1.738 -14.287306669696244" rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
+        <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 2.4046 -14.287306669696244" rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
+
+        <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 2.2972254122449987 -13.702599180942816" material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
+        <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 1.6327823335695644 -13.702599180942816" material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
+        <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 0.9669908324361172 -13.702599180942816" material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
+      </a-entity>
         <!-- endregion -->
 
 
