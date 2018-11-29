@@ -17,6 +17,7 @@
         <a-entity gltf-exporter></a-entity>
         <a-assets>
             <img id="blueprint" src="assets/blueprint.png">
+            <img id="floor" src="assets/floor.jpg">
             <img id="wall_texture" src="assets/grey_tiles.jpg">
             <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
             <img id="sky" src="assets/sky.jpg">
@@ -65,7 +66,7 @@
         <!-- #region Himlen, have og lys -->
         <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
         <a-plane static-body="sphereRadius:NaN" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
-            position="0 0 0.8998282614486417" src="#blueprint" material="color:#FFF"></a-plane>
+            position="0 0 0.8998282614486417" src="#floor" material="repeat: 15 15"></a-plane>
         <a-plane width="100" height="100" rotation="-90 0 0" static-body="mass: 9999" position="0 -.1 0" color="lime"></a-plane>
 
         <!--Lys-->
@@ -227,7 +228,7 @@
 
 
         <!-- #region Bakeoff -->
-        <a-entity id="bakeoff_skab" dynamic-body="shape: box">
+        <a-entity id="bakeoff_skab" static-body="shape: box">
 
             <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
                 rotation="0 90 0"></a-entity>
@@ -273,7 +274,7 @@
         <a-entity dynamic-body="shape: cylinder" id="bread_model" obj-model="obj:#bread-obj;mtl:#bread-mtl" position="-11.268660492638965 1.559997238698954 12.18451595299944" rotation="0 0 0" scale=""></a-entity>
         <!-- endregion -->
 
-wd
+
         <!-- #region Marmelade/Chokolade-->
         <a-entity id="marmalade_and_choolade_drawer">
             <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -1.8628952314954694"
