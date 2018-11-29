@@ -47,7 +47,7 @@
         </a-entity> -->
 
         <a-entity id="cameraRig" position="-11 2 21">
-            <a-entity id="head" camera look-controls wasd-controls kinematic-body>
+            <a-entity id="head" camera look-controls wasd-controls body="type: static; mass: 5; shape: sphere;">
                 <a-entity position="0 0 -3" geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.07;" material="color: red; shader: flat"
                     cursor="maxDistance: 15; fuse: true">
                 </a-entity>
