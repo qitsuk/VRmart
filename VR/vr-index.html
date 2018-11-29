@@ -227,7 +227,7 @@
 
 
         <!-- #region Bakeoff -->
-        <a-entity id="bakeoff_skab">
+        <a-entity id="bakeoff_skab" dynamic-body="shape: box">
 
             <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
                 rotation="0 90 0"></a-entity>
@@ -270,10 +270,10 @@
                 rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
         </a-entity>
 
-        <a-entity  id="bread_model" obj-model="obj:#bread-obj;mtl:#bread-mtl" position="-11.268660492638965 1.559997238698954 12.18451595299944" rotation="-90 0 0" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity dynamic-body="shape: cylinder" id="bread_model" obj-model="obj:#bread-obj;mtl:#bread-mtl" position="-11.268660492638965 1.559997238698954 12.18451595299944" rotation="0 0 0" scale=""></a-entity>
         <!-- endregion -->
 
-
+wd
         <!-- #region Marmelade/Chokolade-->
         <a-entity id="marmalade_and_choolade_drawer">
             <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -1.8628952314954694"
