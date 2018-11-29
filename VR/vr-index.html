@@ -29,6 +29,7 @@
             <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
             <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
 
+
             <!-- Varer -->
 
             <a-asset-item id="bread-mtl" src="assets/bread.mtl"></a-asset-item>
@@ -38,13 +39,14 @@
 
         </a-assets>
 
+
         <!-- <a-entity id="cameraRig" position="-11 2 16.5">
             <a-entity id="head" camera wasd-controls look-controls user-height="2" rotation="0 -90 0">
                 <a-cursor color="red" fuse="true" fuseTimeout="1500" maxDistance="30" />
             </a-entity>
             <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
             <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
-        </a-entity> -->
+        </a-entity>
 
         <a-entity id="cameraRig" position="-11 2 21">
             <a-entity id="head" camera look-controls wasd-controls body="type: static; mass: 5; shape: sphere;">
@@ -52,7 +54,16 @@
                     cursor="maxDistance: 15; fuse: true">
                 </a-entity>
             </a-entity>
-        </a-entity>
+        </a-entity> -->
+
+        <a-entity id="rig" movement-controls kinematic-body rotation="0 -90 0">
+  <a-entity id="camera"
+            camera
+            position="0 1.6 0"
+            look-controls="pointerLockEnabled: true"></a-entity>
+</a-entity>
+
+
 
         <a-box id="door_test" position="-11.245 1.603 14.99853990382453" material="color:#7FFAFF;opacity:0.2" geometry="depth:0.1;height:3.5;width:2.44">
             <a-animation delay="3000" attribute="position" from="-11.245 1.603 14.99853990382453" to="-8.805 1.603 14.99853990382453"
@@ -90,7 +101,7 @@
 
         <!-- #region Vægge og Entré Parti -->
         <a-entity id="walls">
-            <a-box id="innerwall_1" position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
+            <a-box id="innerwall_1" static-body position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
                 material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1"></a-box>
             <a-box id="innerwall_2" static-body position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
                 material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
@@ -111,7 +122,7 @@
         </a-entity>
 
         <!--Indgang-->
-        <a-entity id="entrance" static-body="shape: box">
+        <a-entity id="entrance">
             <a-box id="entrance_box1" position="-11.40508146707056 4.378193271051162 8.000426781988928" width="1"
                 height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5"
                 geometry="width:7.180000000000001;height:1.25;depth:0.1"></a-box>
@@ -120,11 +131,11 @@
                 geometry="width:7.05;height:1.25;depth:0.1"></a-box>
 
             <!-- Glass -->
-            <a-box id="entrance_glass_panel" depth="2" height="4" width="0.5" position="-13.735956176656767 2.486509693493699 15.10"
+            <a-box id="entrance_glass_panel" static-body depth="2" height="4" width="0.5" position="-13.735956176656767 2.486509693493699 15.10"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:5;width:2.61"></a-box>
-            <a-box id="entrance_glass_panel_2" depth="2" height="4" width="0.5" position="-8.956094981089306 2.444670681085263 15.10"
+            <a-box id="entrance_glass_panel_2" static-body depth="2" height="4" width="0.5" position="-8.956094981089306 2.444670681085263 15.10"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:4.9;width:2.1"></a-box>
-            <a-box id="entrance_glass_panel_3" depth="2" height="4" width="0.5" position="-11.230739674123631 4.191 15.1"
+            <a-box id="entrance_glass_panel_3" static-body depth="2" height="4" width="0.5" position="-11.230739674123631 4.191 15.1"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:1.5;width:2.4"></a-box>
             <a-triangle id="entrance_glass_triangle_1" material="side:double;color:#7FFAFF;opacity:0.2" position="-11.480287628538154 5.416570288885511 14.842024735590698"
                 rotation="-35.848926617784926 0 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
@@ -165,61 +176,61 @@
 
         <!-- Indre vægge -->
         <a-entity id="inner_entrance_walls">
-            <a-box id="indre_væg" position="-14.354365121443022 1.8774555848413006 8.000426781988928" width="1" height="1"
+            <a-box id="indre_væg" static-body position="-14.354365121443022 1.8774555848413006 8.000426781988928" width="1" height="1"
                 depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
                 geometry="width:1.2;height:3.76;depth:0.1"></a-box>
-            <a-box id="indre_væg" position="-8.416431519577031 1.8774555848413006 8.000426781988928" width="1" height="1"
+            <a-box id="indre_væg" static-body position="-8.416431519577031 1.8774555848413006 8.000426781988928" width="1" height="1"
                 depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
                 geometry="width:1.2;height:3.76;depth:0.1"></a-box>
-            <a-box id="indre_væg" position="-7.859761923201203 1.862988848040187 8.561500362185097" width="1" height="1"
+            <a-box id="indre_væg" static-body position="-7.859761923201203 1.862988848040187 8.561500362185097" width="1" height="1"
                 depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5" geometry="width:1.2;height:3.76;depth:0.1"></a-box>
-            <a-box id="indre_væg" position="-7.86 1.8660759215442142 14.409561129477272" width="1" height="1" depth="1"
+            <a-box id="indre_væg" static-body position="-7.86 1.8660759215442142 14.409561129477272" width="1" height="1" depth="1"
                 rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5" geometry="width:1.2;height:3.76;depth:0.1"></a-box>
 
-            <a-box id="indre_glas_væg" depth="2" height="4" width="0.5" position="-13.190020915770866 1.877983059421863 7.995836712884794"
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-13.190020915770866 1.877983059421863 7.995836712884794"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14"></a-box>
-            <a-box id="indre_glas_væg_top" depth="2" height="4" width="0.5" position="-11.388 3.407120235314852 7.996"
+            <a-box id="indre_glas_væg_top" static-body depth="2" height="4" width="0.5" position="-11.388 3.407120235314852 7.996"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:0.7;width:2.4"></a-box>
-            <a-box id="indre_glas_væg" depth="2" height="4" width="0.5" position="-9.58942667119515 1.877983059421863 7.995836712884794"
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-9.58942667119515 1.877983059421863 7.995836712884794"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_big" color="gray" position="-11.386769454623959 3.705040493557511 7.998385204135042"
+            <a-box id="indre_glas_væg_panel_horizontal_big" static-body color="gray" position="-11.386769454623959 3.705040493557511 7.998385204135042"
                 material="" geometry="depth:0.1;height:0.1;width:4.739999999999999"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_medium" color="gray" position="-11.405649955400143 3.033991078080981 7.996"
+            <a-box id="indre_glas_væg_panel_horizontal_medium" static-body color="gray" position="-11.405649955400143 3.033991078080981 7.996"
                 material="" geometry="depth:0.1;height:0.1;width:2.4"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_small" color="gray" position="-9.623626326001006 0.04515017924449927 7.996"
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-9.623626326001006 0.04515017924449927 7.996"
                 material="" geometry="depth:0.1;height:0.1;width:1.14"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_small" color="gray" position="-13.163649040265355 0.04515017924449927 7.996"
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-13.163649040265355 0.04515017924449927 7.996"
                 material="" geometry="depth:0.1;height:0.1;width:1.14"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-13.70357992800745 1.8723229489174162 7.996"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-13.70357992800745 1.8723229489174162 7.996"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-12.627409288023031 1.8723229489174162 7.996"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-12.627409288023031 1.8723229489174162 7.996"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-10.182305147144726 1.8723229489174162 7.996"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-10.182305147144726 1.8723229489174162 7.996"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-9.06666975571357 1.8723229489174162 7.996"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-9.06666975571357 1.8723229489174162 7.996"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
 
-            <a-box id="indre_glas_væg" depth="2" height="4" width="0.5" position="-7.860281555576407 1.877983059421863 9.729589133517651"
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-7.860281555576407 1.877983059421863 9.729589133517651"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14" rotation="0 90 0"></a-box>
-            <a-box id="indre_glas_væg_top" depth="2" height="4" width="0.5" position="-7.86 3.407 11.48526831867891"
+            <a-box id="indre_glas_væg_top" static-body depth="2" height="4" width="0.5" position="-7.86 3.407 11.48526831867891"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:0.7;width:2.34" rotation="0 90 0"></a-box>
-            <a-box id="indre_glas_væg" depth="2" height="4" width="0.5" position="-7.86 1.877983059421863 13.23814989462669"
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-7.86 1.877983059421863 13.23814989462669"
                 material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14" rotation="0 90 0"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_big" color="gray" position="-7.86 3.705040493557511 11.485493918825302"
+            <a-box id="indre_glas_væg_panel_horizontal_big" static-body color="gray" position="-7.86 3.705040493557511 11.485493918825302"
                 material="" geometry="depth:0.1;height:0.1;width:4.6499999999999995" rotation="0 90 0"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_medium" color="gray" position="-7.86 3.033991078080981 11.484796024583696"
+            <a-box id="indre_glas_væg_panel_horizontal_medium" static-body color="gray" position="-7.86 3.033991078080981 11.484796024583696"
                 material="" geometry="depth:0.1;height:0.1;width:2.4" rotation="0 90 0"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_small" color="gray" position="-7.86 0.04515017924449927 9.747583638936847"
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-7.86 0.04515017924449927 9.747583638936847"
                 material="" geometry="depth:0.1;height:0.1;width:1.14" rotation="0 90 0"></a-box>
-            <a-box id="indre_glas_væg_panel_horizontal_small" color="gray" position="-7.86 0.04515017924449927 13.219491284065585"
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-7.86 0.04515017924449927 13.219491284065585"
                 material="" geometry="depth:0.1;height:0.1;width:1.14" rotation="0 90 0"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-7.86 1.8723229489174162 9.210395734736357"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 9.210395734736357"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-7.86 1.8723229489174162 10.284493105181221"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 10.284493105181221"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-7.86 1.8723229489174162 12.684545431759297"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 12.684545431759297"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-            <a-box id="indre_glas_væg_panel_vertical" color="gray" position="-7.86 1.8723229489174162 13.759694895230908"
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 13.759694895230908"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
 
 
@@ -228,7 +239,7 @@
 
 
         <!-- #region Bakeoff -->
-        <a-entity id="bakeoff_skab" static-body="shape: box">
+        <a-entity id="bakeoff_skab" static-body>
 
             <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
                 rotation="0 90 0"></a-entity>
@@ -275,7 +286,7 @@
 
 
         <!-- #region Marmelade/Chokolade-->
-        <a-entity id="marmalade_and_choolade_drawer">
+        <a-entity id="marmalade_and_choolade_drawer" static-body>
             <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -1.8628952314954694"
                 material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
             <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.246709023963693"
@@ -305,7 +316,7 @@
 
 
         <!-- #region Øko Grønt-->
-        <a-entity id="organic_vege">
+        <a-entity id="organic_vege" static-body>
             <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.4512462361084815"
                 material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
             <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -13.027532991592029"
@@ -331,12 +342,12 @@
 
 
         <!-- #region Alm Grønt-->
-        <a-gltf-model id="vegetable_shelf" src="#vegetables" position="-18.773384328805058 0 0" rotation="0 -90 0"
+        <a-gltf-model id="vegetable_shelf" static-body src="#vegetables" position="-18.773384328805058 0 0" rotation="0 -90 0"
             gltf-model="assets/organic_vege.gltf"></a-gltf-model>
         <!-- endregion -->
 
         <!-- #region Frugt Ø-->
-        <a-entity id="fruit_island">
+        <a-entity id="fruit_island" static-body>
             <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.998995225271198 0.6213002725412748 -5.982490438661892"
                 material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
             <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.6174522886669437 -5.982490438661892"
@@ -587,7 +598,7 @@
         <!-- endregion -->
 
         <!-- #region Slagter Køl-->
-        <a-entity id="meat_box">
+        <a-entity id="meat_box" static-body>
             <a-box id="slagterkøl_bund" color="" depth="2" height="4" width="0.5" position="-7.5690305270068405 0.04836249529945569 -0.5278351005213164"
                 material="color:#B0B0B0" geometry="depth:0.1;height:3.6;width:5" rotation="90 0 0"></a-box>
 
@@ -627,7 +638,7 @@
 
 
         <!-- #region Konserves-->
-        <a-gltf-model id="canned_goods_shelf" src="#small_shelf" position="-6.877 0 0" rotation="0 -90 0" gltf-model="assets/small_shelf.gltf"
+        <a-gltf-model id="canned_goods_shelf" static-body src="#small_shelf" position="-6.877 0 0" rotation="0 -90 0" gltf-model="assets/small_shelf.gltf"
             scale="1 1.2 1"></a-gltf-model>
         <!-- endregion -->
 
