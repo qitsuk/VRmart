@@ -28,7 +28,10 @@
             <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
             <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
 
-            <a-mixin></a-mixin>
+            <!-- Varer -->
+
+            <a-asset-item id="bread-mtl" src="assets/bread.mtl"></a-asset-item>
+            <a-asset-item id="bread-obj" src="assets/bread.obj"></a-asset-item>
 
             <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
 
@@ -266,6 +269,8 @@
             <a-box id="bakeoff_glas" depth="2" height="4" width="0.5" position="-13.419 0.9033963807268064 1.805"
                 rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
         </a-entity>
+
+        <a-entity obj-model="obj: #bread-obj; mtl: #bread-mtl"></a-entity>
         <!-- endregion -->
 
 
