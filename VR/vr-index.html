@@ -60,13 +60,13 @@
                 dur="3000" easing="linear" fill="forwards"></a-animation>
         </a-box>
 
-        <a-box id="testbox" static-body="mass: 1" position="-11 1 18"></a-box>
+        <a-box id="testbox" dynamic-body="mass: 1" position="-11 1 18" constraint="target: #grass;"></a-box>
 
         <!-- #region Himlen, have og lys -->
         <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
-        <a-plane static-body="sphereRadius:NaN" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
+        <a-plane id="blueprint" static-body="sphereRadius:NaN" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
             position="0 0 0.8998282614486417" src="#blueprint" material="color:#FFF"></a-plane>
-        <a-plane width="100" height="100" rotation="-90 0 0" static-body="mass: 9999" position="0 -.1 0" color="lime"></a-plane>
+        <a-plane id="grass" width="100" height="100" rotation="-90 0 0" static-body="mass: 9999" position="0 -.1 0" color="lime"></a-plane>
 
         <!--Lys-->
         <a-entity light="intensity:0.6;castShadow:true" position="12.49073075572284 4.500811208049429 -12.430845045592315"
@@ -227,7 +227,7 @@
 
 
         <!-- #region Bakeoff -->
-        <a-entity id="bakeoff_skab" dynamic-body="shape: box">
+        <a-entity id="bakeoff_skab" static-body="shape: box" constraint="target: #blueprint; type: lock">
 
             <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
                 rotation="0 90 0"></a-entity>
@@ -242,7 +242,6 @@
                 geometry="depth:0.1;height:2.5;width:1.5"></a-box>
             <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.11155612991003 1.24 -1.6436708460679783"
                 material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-
             <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 1.8 1.805" rotation="100 90 0"
                 material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
             <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 1.2 1.805" rotation="100 90 0"
