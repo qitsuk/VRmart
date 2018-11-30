@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="assets/aframe-physics-system.min.js"></script>
+    <script src="assets/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-gltf-exporter-component/dist/aframe-gltf-exporter-component.min.js"></script>
+    <title>VRmart</title>
+</head>
+
+
+<body class="a-body ">
+    <a-scene id="VRmartScene" physics="debug: true; driver: local; iterations: 20;" gltf-exporter>
+        <a-entity gltf-exporter></a-entity>
+
+        <a-assets>
+            <a-assets-item id="scene" src="testassets/scene.gltf"></a-assets-item>
+        </a-assets>
+
+        <a-entity id="rig" movement-controls position="-11 1.8 21">
+            <a-entity id="camera" camera position="0 1.8 0" shape: sphere; look-controls="pointerLockEnabled: true">
+            </a-entity>
+        </a-entity>
+
+        <a-sky color="#add8e6"></a-sky>
+
+        <a-gltf-model id="scene" src="#scene"></a-gltf-model>
+    </a-scene>
+</body>
