@@ -13,7 +13,7 @@
 
 
 <body class="a-body ">
-    <a-scene id="VRmartScene" physics="debug: true; driver:local" gltf-exporter>
+    <a-scene id="VRmartScene" physics="debug: true; driver:local; iterations: 40" gltf-exporter>
         <a-entity gltf-exporter></a-entity>
         <a-assets>
             <img id="blueprint" src="assets/blueprint.png">
@@ -46,7 +46,7 @@
             </a-entity>
             <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
             <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
-        </a-entity>
+        </a-entity> -->
 
         <a-entity id="cameraRig" position="-11 2 21">
             <a-entity id="head" camera look-controls wasd-controls body="type: static; mass: 5; shape: sphere;">
@@ -54,16 +54,16 @@
                     cursor="maxDistance: 15; fuse: true">
                 </a-entity>
             </a-entity>
-        </a-entity> -->
-
-        <a-entity id="rig" movement-controls kinematic-body="radius:0.2" position="-11 3 21">
-          <a-entity id="camera"
-            camera
-            position="0 3 0"
-            shape: sphere;"
-            look-controls="pointerLockEnabled: true">
-          </a-entity>
         </a-entity>
+
+        <!--
+        <a-entity id="rig" movement-controls="constrainToNavMesh: true" kinematic-body="radius: 0.3; userHeight: 2; mass: 1" position="-11 0 21" mass="999">
+          <a-entity id="camera" camera look-controls="pointerLockEnabled: true" position="0 3.75 0">
+            <a-entity id="cursor" position="0 0 -0.15" geometry="primitive: ring; radiusInner: 0.002; radiusOuter: 0.004;" material="color: red; shader: flat"
+              cursor="maxDistance: 15; fuse: true">
+            </a-entity>
+          </a-entity>
+        </a-entity> -->
 
 
 
@@ -77,9 +77,9 @@
 
         <!-- #region Himlen, have og lys -->
         <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
-        <a-plane static-body="sphereRadius:NaN" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
-            position="0 0 0.8998282614486417" src="#floor" material="repeat: 15 15"></a-plane>
-        <a-plane width="100" height="100" rotation="-90 0 0" static-body="mass: 9999" position="0 -0.1 0" color="lime"></a-plane>
+        <a-plane id="building floor" static-body="mass: 9999999" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
+            position="0 0.01 0" src="#floor" material="repeat: 15 15"></a-plane>
+        <a-plane id="outdoors floor" static-body="mass: 9999999" width="100" height="100" rotation="-90 0 0" position="0 0 0" color="lime"></a-plane>
 
         <!--Lys-->
         <a-entity light="intensity:0.6;castShadow:true" position="12.49073075572284 4.500811208049429 -12.430845045592315"
@@ -233,15 +233,12 @@
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
             <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 13.759694895230908"
                 material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-
-
         </a-entity>
         <!-- endregion -->
 
 
         <!-- #region Bakeoff -->
         <a-entity id="bakeoff_skab" static-body>
-
             <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
                 rotation="0 90 0"></a-entity>
 
@@ -282,7 +279,8 @@
                 rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
         </a-entity>
 
-        <a-entity dynamic-body="shape: cylinder" id="bread_model" obj-model="obj:#bread-obj;mtl:#bread-mtl" position="-11.268660492638965 1.559997238698954 12.18451595299944" rotation="0 0 0" scale=""></a-entity>
+        <a-entity dynamic-body="shape:cylinder" id="bread_model" obj-model="obj:assets/bread.obj;mtl:assets/bread.mtl" position="-13.806022386734831 1.7504538795192668 2.5632448654463436" rotation="10 90 0.00020000249919888317" scale="0.4 0.4 0.4" velocity=""></a-entity>
+
         <!-- endregion -->
 
 
@@ -865,7 +863,7 @@
       </a-entity>
         <!-- endregion -->
 
-
+<!--
         <script>
             var playerEl = document.querySelector('#head');
             console.log("This is the head " + playerEl)
@@ -874,7 +872,7 @@
                 console.log('Player has collided with body #' + e.detail.body.id);
             });
         </script>
-
+-->
     </a-scene>
 
 </body>
