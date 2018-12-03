@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+      <meta charset="UTF-8" />
+      <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+      <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script>
+      <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+      <script src="assets/aframe-physics-system.min.js"></script>
+      <script src="assets/aframe-extras.min.js"></script>
+      <script src="https://unpkg.com/aframe-gltf-exporter-component/dist/aframe-gltf-exporter-component.min.js"></script>
+      <title>Workspace</title>
+  </head>
+
+
+  <body class="a-body ">
+
+    <a-scene id="VRmartScene" physics="debug: true; driver:local; iterations: 40" gltf-exporter>
+
+      <a-entity gltf-exporter></a-entity>
+              <a-assets>
+
+              </a-assets>
+
+      <a-entity id="cameraRig" position="5 5 5">
+              <a-entity id="head" camera wasd-controls look-controls user-height="3" rotation="0 -90 0">
+                  <a-cursor color="red" fuse="true" fuseTimeout="1500" maxDistance="30" />
+                  <a-obj-model id="basket" position="1.1617898225143286 -1.580053721403957 -1.3014650133517436" rotation="0 90 0" scale="0.01 0.01 0.01" material="" obj-model="obj:assets/basket.obj"></a-obj-model>
+              </a-entity>
+              <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
+              <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
+      </a-entity>
+      <a-plane width="30" height="30" rotation="-90 0 0" static-body="mass: 9999" position="0 0 0" color="gray"></a-plane>
+
+<a-entity id="shopping_basket">
+      <!-- top -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.333 6.5 0" material="" geometry="depth:11;height:0.5;width:0.375"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.333 6.5 0" material="" geometry="depth:11;height:0.5;width:0.375"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 6.5 -5.315" material="" geometry="depth:8.5;height:0.5;width:0.375" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 6.5 5.315" material="" geometry="depth:8.5;height:0.5;width:0.375" rotation="0 90 0"></a-box>
+
+      <!-- corners -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.9188756782298206 3.766774282557146 -4.991684125437885" material="" geometry="depth:0.5;height:5.3" rotation="-5.14 0 -6.91"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.919 3.767 4.984100692898652" material="" geometry="depth:0.5;height:5.3" rotation="5.14 0 -6.91"></a-box>
+
+      <!-- bottom -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.666 1 0" material="" geometry="depth:10;height:0.5;width:0.375"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.666 1 0" material="" geometry="depth:10;height:0.5;width:0.375"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 1 -4.815" material="" geometry="depth:7;height:0.5;width:0.375" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 1 4.815" material="" geometry="depth:7;height:0.5;width:0.375" rotation="0 90 0"></a-box>
+</a-entity>
+
+    </a-scene>
+  </body>
+</html>
