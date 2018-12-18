@@ -2,7 +2,7 @@
 
   <head>
       <meta charset="UTF-8" />
-      <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+      <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
       <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script>
       <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
       <script src="assets/aframe-physics-system.min.js"></script>
@@ -32,21 +32,130 @@
       <a-plane width="30" height="30" rotation="-90 0 0" static-body="mass: 9999" position="0 0 0" color="gray"></a-plane>
 
 <a-entity id="shopping_basket">
+
       <!-- top -->
-      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.333 6.5 0" material="" geometry="depth:11;height:0.5;width:0.375"></a-box>
-      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.333 6.5 0" material="" geometry="depth:11;height:0.5;width:0.375"></a-box>
-      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 6.5 -5.315" material="" geometry="depth:8.5;height:0.5;width:0.375" rotation="0 90 0"></a-box>
-      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 6.5 5.315" material="" geometry="depth:8.5;height:0.5;width:0.375" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.333 6.5 0" material="" geometry="depth:11;height:0.6;width:0.375"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.333 6.5 0" material="" geometry="depth:11;height:0.6;width:0.375"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 6.5 -5.315" material="" geometry="depth:8.5;height:0.6;width:0.375" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0 6.5 5.315" material="" geometry="depth:8.5;height:0.6;width:0.375" rotation="0 90 0"></a-box>
 
       <!-- corners -->
       <a-box color="tomato" depth="2" height="4" width="0.5" position="3.9188756782298206 3.766774282557146 -4.991684125437885" material="" geometry="depth:0.5;height:5.3" rotation="-5.14 0 -6.91"></a-box>
-      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.919 3.767 4.984100692898652" material="" geometry="depth:0.5;height:5.3" rotation="5.14 0 -6.91"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.929 3.766774282557146 -4.991684125437885" material="" geometry="depth:0.5;height:5.3" rotation="-5.14 0 7.500"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.927556953902703 3.767 5.00643404852648" material="" geometry="depth:0.5;height:5.3" rotation="5.5 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.927556953902703 3.767 5.00643404852648" material="" geometry="depth:0.5;height:5.3" rotation="5.5 0 7.48"></a-box>
+
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -4.63009" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 4.63529" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.14791 4.46428 4.63472" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.14791 4.46428 -4.60026" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.50879 4.47391 -5.19894" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 90 -5.86"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.51557 4.47391 -5.19894" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 90 -5.86"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.50991 4.46724 5.22006" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 90 5.86"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.49699 4.46724 5.22006" material="" geometry="depth:0;height:3.8;width:0.2" rotation="0 90 5.86"></a-box>
 
       <!-- bottom -->
       <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.666 1 0" material="" geometry="depth:10;height:0.5;width:0.375"></a-box>
       <a-box color="tomato" depth="2" height="4" width="0.5" position="3.666 1 0" material="" geometry="depth:10;height:0.5;width:0.375"></a-box>
       <a-box color="tomato" depth="2" height="4" width="0.5" position="0 1 -4.815" material="" geometry="depth:7;height:0.5;width:0.375" rotation="0 90 0"></a-box>
       <a-box color="tomato" depth="2" height="4" width="0.5" position="0 1 4.815" material="" geometry="depth:7;height:0.5;width:0.375" rotation="0 90 0"></a-box>
+
+      <!-- Sides -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.82024 1.95733 0" material="" geometry="depth:10;height:1.5;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.83265 1.95733 0" material="" geometry="depth:10;height:1.5;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0.04249 1.95733 -4.96814" material="" geometry="depth:7.2;height:1.5;width:0.2" rotation="0 90 -5.86"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0.04249 1.95733 4.97261" material="" geometry="depth:7.2;height:1.5;width:0.2" rotation="0 90 5.86"></a-box>
+
+        <!-- Sides - middle -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.45982 0" material="" geometry="depth:10;height:0.3;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.14791 4.46 0" material="" geometry="depth:10;height:0.3;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00156 4.46 -5.19894" material="" geometry="depth:7.65;height:0.3;width:0.2" rotation="0 90 -5.86"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0.00386 4.46 5.22006" material="" geometry="depth:7.65;height:0.3;width:0.2" rotation="0 90 5.86"></a-box>
+
+        <!-- Sides - small -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -3.68995" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -3.11995" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -2.52356" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -1.95744" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -1.35418" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -0.76674" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 -0.21051" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 0.37033" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 0.93978" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 1.48256" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 2.03288" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 2.54979" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 3.12884" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-4.16363 4.47275 3.69277" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 7.48"></a-box>
+
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 -3.68995" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 -3.11995" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 -2.52356" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 -1.95744" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 -1.35418" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 -0.76674" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 -0.21051" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 0.37033" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 0.93978" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 1.48256" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 2.03288" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 2.54979" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 3.12884" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="4.165 4.47275 3.69277" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 0 -7.48"></a-box>
+
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="2.59187 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="2.00929 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="1.43813 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0.85798 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0.29487 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.278 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.8514 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-1.42993 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-2.01209 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-2.58335 4.47637 -5.22299" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 -5.51"></a-box>
+
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="2.59187 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="2.00929 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="1.43813 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0.85798 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="0.29487 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.278 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.8514 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-1.42993 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-2.01209 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-2.58335 4.47637 5.22085" material="" geometry="depth:0.3;height:3.8;width:0.2" rotation="0 90 5.46"></a-box>
+
+      <!-- bottom - outer -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="3.07897 1.11227 0" material="" geometry="depth:10;height:0.25;width:0.8"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-3.08513 1.11227 0" material="" geometry="depth:10;height:0.25;width:0.8"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 4.23959" material="" geometry="depth:6;height:0.25;width:0.8" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -4.22763" material="" geometry="depth:6;height:0.25;width:0.8" rotation="0 90 0"></a-box>
+
+      <!-- bottom - inner -->
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.01311 1.11227 0" material="" geometry="depth:10;height:0.25;width:1"></a-box>
+
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 3.47597" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 2.92858" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 2.40293" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 1.87501" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 1.33498" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 0.79952" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 0.26257" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -0.26336" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -0.78986" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -1.31327" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -1.83508" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -2.37095" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -2.91018" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+      <a-box color="tomato" depth="2" height="4" width="0.5" position="-0.00104 1.11227 -3.44862" material="" geometry="depth:6;height:0.25;width:0.3" rotation="0 90 0"></a-box>
+
+      <!-- handle -->
+      <a-cylinder color="#1C1C1C" height="3" radius="1.5" position="4.24252 6.49956 0" rotation="0 0 90" material="" geometry="height:0.75;radius:0.2"></a-cylinder>
+      <a-cylinder color="#1C1C1C" height="3" radius="1.5" position="-4.24723 6.49956 0" rotation="0 0 90" material="" geometry="height:0.75;radius:0.2"></a-cylinder>
+      <a-box color="#1C1C1C" depth="2" height="4" width="0.5" position="3.97033 8.78766 0" material="" geometry="depth:0.3;height:5;width:0.3"></a-box>
+      <a-box color="#1C1C1C" depth="2" height="4" width="0.5" position="-3.97375 8.78766 0" material="" geometry="depth:0.3;height:5;width:0.3"></a-box>
+      <a-cylinder color="#1C1C1C" height="3" radius="1.5" position="-0.00954 11.16288 0" rotation="0 0 90" material="" geometry="height:8.3;radius:0.2"></a-cylinder>
+
 </a-entity>
 
     </a-scene>

@@ -30,32 +30,30 @@
                 <a-asset-item id="big_shelf" src="assets/big_shelf.gltf"></a-asset-item>
                 <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
                 <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
+                <a-asset-item id="shopping_basket" src="assets/shopping_basket.gltf"></a-asset-item>
 
 
                 <!-- Varer -->
-
                 <a-asset-item id="bread-mtl" src="assets/bread.mtl"></a-asset-item>
                 <a-asset-item id="bread-obj" src="assets/bread.obj"></a-asset-item>
 
-                <!-- <a-asset-item id="basket-mtl" src="assets/basket.mtl"></a-asset-item> -->
-                <a-asset-item id="basket-obj" src="assets/basket.obj"></a-asset-item>
 
                 <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
 
             </a-assets>
 
-            
+
         <a-entity id="cameraRig" position="-11 2 16.5">
             <a-entity id="head" camera wasd-controls look-controls user-height="3" rotation="0 -90 0">
                 <a-cursor color="red" fuse="true" fuseTimeout="1500" maxDistance="30" />
-                <a-obj-model id="basket" position="1.1617898225143286 -1.580053721403957 -1.3014650133517436" rotation="0 90 0" scale="0.01 0.01 0.01" material="" obj-model="obj:assets/basket.obj"></a-obj-model>
+                <a-gltf-model id="basket" src="#shopping_basket" position="1.0 -1.2 0.1" rotation="0 0 0" scale="0.08 0.08 0.08" material="" gltf-model="assets/shopping_basket.gltf"></a-gltf-model>
             </a-entity>
             <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
             <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
-            
+
         </a-entity>
 
-            <!-- 
+            <!--
         <a-entity id="cameraRig" position="-11 2 21">
             <a-entity id="head" camera look-controls wasd-controls body="type: static; mass: 5; shape: sphere;">
                 <a-entity position="0 0 -3" geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.07;" material="color: red; shader: flat"
@@ -72,7 +70,7 @@
               cursor="maxDistance: 15; fuse: true">
             </a-entity>
 -->
-            
+
         <!-- <a-entity id="rig" movement-controls kinematic-body="radius:0.2" position="-11 4 21">
           <a-entity id="camera"
             camera
@@ -95,8 +93,10 @@
             <!-- #region Himlen, have og lys -->
             <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
 
-            <a-plane id="building floor" static-body="mass: 9999999" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
-                position="0 0.01 0" src="#floor" material="repeat: 15 15"></a-plane>
+          <!--  <a-plane id="building floor" static-body="mass: 9999999" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
+                position="0 0.01 0" src="#floor" material="repeat: 15 15"></a-plane> -->
+            <a-plane id="building floor" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
+                position="0 0.01 0" src="#blueprint"></a-plane>
             <a-plane id="outdoors floor" static-body="mass: 9999999" width="100" height="100" rotation="-90 0 0"
                 position="0 0 0" color="lime"></a-plane>
             <a-plane static-body="sphereRadius:NaN" width="30" position="0 0.01 0" height="30" rotation="-90 0 0"
