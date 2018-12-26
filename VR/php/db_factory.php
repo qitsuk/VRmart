@@ -4,3 +4,9 @@ if ($dbc->connect_errno) {
     printf("Connection failed: %s\n", $dbc->connect_error);
     exit();
 }
+
+/* change character set to utf8 */
+if (!$dbc->set_charset("utf8")) {
+    printf("Error loading character set utf8: %s\n", $dbc->error);
+    exit();
+}
