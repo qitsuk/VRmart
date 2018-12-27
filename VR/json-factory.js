@@ -1,10 +1,11 @@
 var xhr = new XMLHttpRequest();
 var url = "https://vrmart.qitsuk.dk/php/get_product.php";
-var id;
+var productInfoRaw;
+function getProduct(productID) {
+    xhr.open('GET', url + "?data=" + productID, false);
+    xhr.send();
+    console.log(xhr.responseText);
+    return JSON.parse(xhr.responseText);
+}
 
 
-xhr.open('GET', url + "?data=" + id, false);
-xhr.send();
-console.log(xhr.responseText);
-
-var productInfo = JSON.parse(xhr.responseText);

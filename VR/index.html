@@ -8,6 +8,7 @@
     <script src="assets/aframe-physics-system.min.js"></script>
     <script src="assets/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-gltf-exporter-component/dist/aframe-gltf-exporter-component.min.js"></script>
+    <script src="json-factory.js"></script>
     <title>VRmart</title>
 </head>
 
@@ -16,31 +17,32 @@
 
     <a-scene id="VRmartScene" physics="debug: true; driver:local; iterations: 40" gltf-exporter>
 
-            <a-entity gltf-exporter></a-entity>
-            <a-assets>
-                <img id="blueprint" src="assets/blueprint.png">
-                <img id="floor" src="assets/floor.jpg">
-                <img id="wall_texture" src="assets/grey_tiles.jpg">
-                <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
-                <img id="sky" src="assets/sky.jpg">
-                <img id="ceiling_test" src="assets/ceiling_texture_test_3.jpg">
+        <a-entity gltf-exporter></a-entity>
+        <a-assets>
+            <img id="blueprint" src="assets/blueprint.png">
+            <img id="floor" src="assets/floor.jpg">
+            <img id="wall_texture" src="assets/grey_tiles.jpg">
+            <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
+            <img id="sky" src="assets/sky.jpg">
+            <img id="ceiling_test" src="assets/ceiling_texture_test_3.jpg">
 
-                <a-asset-item id="small_shelf" src="assets/small_shelf.gltf"></a-asset-item>
-                <a-asset-item id="vegetables" src="assets/organic_vege.gltf"></a-asset-item>
-                <a-asset-item id="big_shelf" src="assets/big_shelf.gltf"></a-asset-item>
-                <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
-                <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
-                <a-asset-item id="shopping_basket" src="assets/shopping_basket.gltf"></a-asset-item>
+            <a-asset-item id="small_shelf" src="assets/small_shelf.gltf"></a-asset-item>
+            <a-asset-item id="vegetables" src="assets/organic_vege.gltf"></a-asset-item>
+            <a-asset-item id="big_shelf" src="assets/big_shelf.gltf"></a-asset-item>
+            <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
+            <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
+            <a-asset-item id="shopping_basket" src="assets/shopping_basket.gltf"></a-asset-item>
 
-
-                <!-- Varer -->
-                <a-asset-item id="bread-mtl" src="assets/bread.mtl"></a-asset-item>
-                <a-asset-item id="bread-obj" src="assets/bread.obj"></a-asset-item>
+            <a-asset-item id="music" src="assets/music.mp3"></a-asset-item>
 
 
-                <a-asset-item id="Orange-mtl" src="assets/Orange.mtl"></a-asset-item>
-                <a-asset-item id="Orange-obj" src="assets/Orange.obj"></a-asset-item>
+            <!-- Varer -->
+            <a-asset-item id="bread-mtl" src="assets/bread.mtl"></a-asset-item>
+            <a-asset-item id="bread-obj" src="assets/bread.obj"></a-asset-item>
 
+
+            <a-asset-item id="Orange-mtl" src="assets/Orange.mtl"></a-asset-item>
+            <a-asset-item id="Orange-obj" src="assets/Orange.obj"></a-asset-item>
 
                 <a-asset-item id="White_Wine-mtl" src="assets/Wine_Bottle_White.mtl"></a-asset-item>
                 <a-asset-item id="White_Wine-obj" src="assets/Wine_Bottle_White.obj"></a-asset-item>
@@ -55,22 +57,37 @@
 
 
 
-                <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
 
-            </a-assets>
+            <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
+
+        </a-assets>
 
 
-        <a-entity id="cameraRig" position="-11 2 16.5">
+        <!-- <a-entity id="cameraRig" position="-11 2 16.5">
             <a-entity id="head" camera wasd-controls look-controls user-height="3" rotation="0 -90 0">
                 <a-cursor color="red" fuse="true" fuseTimeout="1500" maxDistance="30" />
-                <a-gltf-model id="basket" src="#shopping_basket" position="1.0 -1.2 0.1" rotation="0 0 0" scale="0.08 0.08 0.08" material="" gltf-model="assets/shopping_basket.gltf"></a-gltf-model>
+                <a-gltf-model id="basket" src="#shopping_basket" position="1.0 -1.2 0.1" rotation="0 0 0" scale="0.08 0.08 0.08"
+                    material="" gltf-model="assets/shopping_basket.gltf"></a-gltf-model>
             </a-entity>
             <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
             <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
+        </a-entity> -->
 
+        <a-entity id="theCamera" position="-11 2 16.5">
+            <a-entity id="head" camera wasd-controls user-height="3" rotation="0 90 0">
+                <a-entity position="0 0 -3" geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.05; material: color: red; shader: flat;"
+                    cursor="maxDistance: 30; fuse: true;">
+                    <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1"
+                        to="1 1 1" dur="150"></a-animation>
+                    <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1"
+                        dur="1500"></a-animation>
+                </a-entity>
+                <a-gltf-model id="basket" src="#shopping_basket" position="1.0 -1.2 0.1" scale="0.08 0.08 0.08"></a-gltf-model>
+            </a-entity>
         </a-entity>
+        <!-- <a-sound id="TheMusic" src="#music" autoplay="true" loop="true"></a-sound> -->
 
-            <!--
+        <!--
         <a-entity id="cameraRig" position="-11 2 21">
             <a-entity id="head" camera look-controls wasd-controls body="type: static; mass: 5; shape: sphere;">
                 <a-entity position="0 0 -3" geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.07;" material="color: red; shader: flat"
@@ -80,7 +97,7 @@
         </a-entity> -->
 
 
-            <!--
+        <!--
         <a-entity id="rig" movement-controls="constrainToNavMesh: true" kinematic-body="radius: 0.3; userHeight: 2; mass: 1" position="-11 0 21" mass="999">
           <a-entity id="camera" camera look-controls="pointerLockEnabled: true" position="0 3.75 0">
             <a-entity id="cursor" position="0 0 -0.15" geometry="primitive: ring; radiusInner: 0.002; radiusOuter: 0.004;" material="color: red; shader: flat"
@@ -98,906 +115,921 @@
         </a-entity> -->
 
 
-            <a-box id="door_test" position="-11.245 1.603 14.99853990382453" material="color:#7FFAFF;opacity:0.2"
-                geometry="depth:0.1;height:3.5;width:2.44">
-                <a-animation delay="3000" attribute="position" from="-11.245 1.603 14.99853990382453" to="-8.805 1.603 14.99853990382453"
-                    dur="2000" easing="linear" fill="forwards"></a-animation>
-                <a-animation delay="8000" attribute="position" from="-8.805 1.603 14.99853990382453" to="-11.245 1.603 14.99853990382453"
-                    dur="3000" easing="linear" fill="forwards"></a-animation>
-            </a-box>
+        <a-box id="door_test" position="-11.245 1.603 14.99853990382453" material="color:#7FFAFF;opacity:0.2" geometry="depth:0.1;height:3.5;width:2.44">
+            <a-animation delay="3000" attribute="position" from="-11.245 1.603 14.99853990382453" to="-8.805 1.603 14.99853990382453"
+                dur="2000" easing="linear" fill="forwards"></a-animation>
+            <a-animation delay="8000" attribute="position" from="-8.805 1.603 14.99853990382453" to="-11.245 1.603 14.99853990382453"
+                dur="3000" easing="linear" fill="forwards"></a-animation>
+        </a-box>
 
 
-            <!-- #region Himlen, have og lys -->
-            <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
+        <!-- #region Himlen, have og lys -->
+        <a-sky id="The Sky" src="#sky" geometry=""></a-sky>
 
-          <!--  <a-plane id="building floor" static-body="mass: 9999999" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
+        <!--  <a-plane id="building floor" static-body="mass: 9999999" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
                 position="0 0.01 0" src="#floor" material="repeat: 15 15"></a-plane> -->
-            <a-plane id="building floor" width="30" height="30" rotation="-90 0 0" geometry="height:31.8"
-                position="0 0.01 0" src="#blueprint"></a-plane>
-            <a-plane id="outdoors floor" static-body="mass: 9999999" width="100" height="100" rotation="-90 0 0"
-                position="0 0 0" color="lime"></a-plane>
-            <a-plane static-body="sphereRadius:NaN" width="30" position="0 0.01 0" height="30" rotation="-90 0 0"
-                geometry="height:31.8" position="0 0 0.8998282614486417" src="#floor" material="repeat: 15 15"></a-plane>
-            <a-plane width="100" height="100" rotation="-90 0 0" static-body="mass: 9999" position="0 0 0" color="lime"></a-plane>
-
-            <!--Lys-->
-            <a-entity light="intensity:0.6;castShadow:true" position="12.49073075572284 4.500811208049429 -12.430845045592315"
-                data-aframe-default-light="" aframe-injected=""></a-entity>
-
-            <!-- #endregion -->
-
-
-            <!-- #region Taget-->
-
-            <a-entity id="roof">
-                <a-box id="roof_part_1" position="0.057950258640787844 4.969211414447982 -3.5962897355459558" material="src:#ceiling_test; repeat: 40 40"
-                    geometry="width:30.36;height:0.1;depth:23.28"></a-box>
-                <a-box id="roof_part_2" position="3.687 4.969 11.577004136846819" material="src:#ceiling_test;repeat:30 11"
-                    geometry="width:23.12;height:0.1;depth:7.09"></a-box>
-            </a-entity>
-
-            <!-- #endregion -->
-
-
-            <!-- #region Vægge og Entré Parti -->
-            <a-entity id="walls">
-                <a-box id="innerwall_1" static-body position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
-                    material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1"></a-box>
-                <a-box id="innerwall_2" static-body position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
-                    material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
-                <a-box id="innerwall_3" static-body position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
-                    material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
-                <a-box id="innerwall_4" static-body position="15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
-                    material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
-
-                <a-box id="outerwall_1" body="type: static; mass: 100; shape: box;" position="3.6730003656464634 2.5 15.10767582070222"
-                    width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src:#outer_wall_texture;repeat:15 4"
-                    geometry="width:23.179999999999996;height:5;depth:0.1"></a-box>
-                <a-box id="outerwall_2" position="15.202839050117527 2.5 0.004533618116581817" width="1" height="1"
-                    depth="1" rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.29;height:5;depth:0.1"></a-box>
-                <a-box id="outerwall_3" position="0.09404463456994346 2.5 -15.197" width="1" height="1" depth="1"
-                    rotation="-0.06 -0.002 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.25;height:5;depth:0.1"></a-box>
-                <a-box id="outerwall_4" position="-15.077640397081407 2.5 -0.03579503719629429" width="1" height="1"
-                    depth="1" rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.419999999999998;height:5;depth:0.1"></a-box>
-            </a-entity>
-
-            <!--Indgang-->
-            <a-entity id="entrance">
-                <a-box id="entrance_box1" position="-11.40508146707056 4.378193271051162 8.000426781988928" width="1"
-                    height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5"
-                    geometry="width:7.180000000000001;height:1.25;depth:0.1"></a-box>
-                <a-box id="entrance_box2" position="-7.859842744155859 4.368477978174847 11.486268254298775" width="1"
-                    height="1" depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5"
-                    geometry="width:7.05;height:1.25;depth:0.1"></a-box>
-
-                <!-- Glass -->
-                <a-box id="entrance_glass_panel" static-body depth="2" height="4" width="0.5" position="-13.735956176656767 2.486509693493699 15.10"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:5;width:2.61"></a-box>
-                <a-box id="entrance_glass_panel_2" static-body depth="2" height="4" width="0.5" position="-8.956094981089306 2.444670681085263 15.10"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:4.9;width:2.1"></a-box>
-                <a-box id="entrance_glass_panel_3" static-body depth="2" height="4" width="0.5" position="-11.230739674123631 4.191 15.1"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:1.5;width:2.4"></a-box>
-                <a-triangle id="entrance_glass_triangle_1" material="side:double;color:#7FFAFF;opacity:0.2" position="-11.480287628538154 5.416570288885511 14.842024735590698"
-                    rotation="-35.848926617784926 0 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
-                <a-triangle id="entrance_glass_triangle_2" material="side:double;color:#7FFAFF;opacity:0.2" position="-14.75948637743945 5.417 11.531"
-                    rotation="-35.849 -90 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
-                <a-triangle id="entrance_glass_triangle_3" material="side:double;color:#7FFAFF;opacity:0.2" position="-11.431627074993251 5.417 8.291177594776842"
-                    rotation="-35.849 -180 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
-                <a-triangle id="entrance_glass_triangle_4" material="side:double;color:#7FFAFF;opacity:0.2" position="-8.15691646386476 5.417 11.61234635985537"
-                    rotation="-35.849 -270 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
-
-
-                <!-- Crossbars -->
-                <a-box id="entrance_crossbar_1" color="gray" position="-12.467663504511634 2.465928323242208 15.1"
-                    material="" geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
-                <a-box id="entrance_crossbar_2" color="gray" position="-11.453652914200193 4.950090243932034 15.1"
-                    material="" geometry="depth:0.1;height:0.1;width:7.119999999999999"></a-box>
-                <a-box id="entrance_crossbar_3" color="gray" position="-10.012809865333013 2.465928323242208 15.1"
-                    material="" geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
-                <a-box id="entrance_crossbar_4" color="gray" position="-11.22704354187545 3.3624582852290645 15.1"
-                    material="" geometry="depth:0.1;height:0.1;width:2.5"></a-box>
-                <a-box id="entrance_crossbar_5" color="gray" position="-14.978176393863409 2.466 15.1" material=""
-                    geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
-                <a-box id="entrance_crossbar_6" color="gray" position="-7.962654802611064 2.466 15.1" material=""
-                    geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
-                <a-box id="entrance_crossbar_7" color="gray" position="-8.956248175909245 0.051292002609708565 15.1"
-                    material="" geometry="depth:0.1;height:0.1;width:2.07"></a-box>
-                <a-box id="entrance_crossbar_8" color="gray" position="-13.766573924091112 0.051292002609708565 15.1"
-                    material="" geometry="depth:0.1;height:0.1;width:2.5599999999999996"></a-box>
-                <a-box id="entrance_crossbar_9" color="gray" position="-9.696497386645603 7.5 13.349910464671167"
-                    material="" geometry="depth:0.1;height:0.1;width:7.05" rotation="45 -135 -90"></a-box>
-                <a-box id="entrance_crossbar_10" color="gray" position="-13.235117311102726 7.5 13.35" material=""
-                    geometry="depth:0.1;height:0.1;width:7.05" rotation="44.99999999999999 135 -89.99999999999999"></a-box>
-                <a-box id="entrance_crossbar_11" color="gray" position="-13.21423617278304 7.540081314173948 9.846669873265293"
-                    material="" geometry="depth:0.1;height:0.1;width:7.05" rotation="45 45 -90"></a-box>
-                <a-box id="entrance_crossbar_12" color="gray" position="-9.65614005586507 7.463097408519945 9.75538013321273"
-                    material="" geometry="depth:0.1;height:0.1;width:7.1" rotation="45.00000000000003 -45 -90.00000000000007"></a-box>
-            </a-entity>
-
-            <!-- Indre vægge -->
-            <a-entity id="inner_entrance_walls">
-                <a-box id="indre_væg" static-body position="-14.354365121443022 1.8774555848413006 8.000426781988928"
-                    width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
-                    geometry="width:1.2;height:3.76;depth:0.1"></a-box>
-                <a-box id="indre_væg" static-body position="-8.416431519577031 1.8774555848413006 8.000426781988928"
-                    width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
-                    geometry="width:1.2;height:3.76;depth:0.1"></a-box>
-                <a-box id="indre_væg" static-body position="-7.859761923201203 1.862988848040187 8.561500362185097"
-                    width="1" height="1" depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
-                    geometry="width:1.2;height:3.76;depth:0.1"></a-box>
-                <a-box id="indre_væg" static-body position="-7.86 1.8660759215442142 14.409561129477272" width="1"
-                    height="1" depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
-                    geometry="width:1.2;height:3.76;depth:0.1"></a-box>
-
-                <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-13.190020915770866 1.877983059421863 7.995836712884794"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14"></a-box>
-                <a-box id="indre_glas_væg_top" static-body depth="2" height="4" width="0.5" position="-11.388 3.407120235314852 7.996"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:0.7;width:2.4"></a-box>
-                <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-9.58942667119515 1.877983059421863 7.995836712884794"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_big" static-body color="gray" position="-11.386769454623959 3.705040493557511 7.998385204135042"
-                    material="" geometry="depth:0.1;height:0.1;width:4.739999999999999"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_medium" static-body color="gray" position="-11.405649955400143 3.033991078080981 7.996"
-                    material="" geometry="depth:0.1;height:0.1;width:2.4"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-9.623626326001006 0.04515017924449927 7.996"
-                    material="" geometry="depth:0.1;height:0.1;width:1.14"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-13.163649040265355 0.04515017924449927 7.996"
-                    material="" geometry="depth:0.1;height:0.1;width:1.14"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-13.70357992800745 1.8723229489174162 7.996"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-12.627409288023031 1.8723229489174162 7.996"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-10.182305147144726 1.8723229489174162 7.996"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-9.06666975571357 1.8723229489174162 7.996"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-
-                <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-7.860281555576407 1.877983059421863 9.729589133517651"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14" rotation="0 90 0"></a-box>
-                <a-box id="indre_glas_væg_top" static-body depth="2" height="4" width="0.5" position="-7.86 3.407 11.48526831867891"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:0.7;width:2.34" rotation="0 90 0"></a-box>
-                <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-7.86 1.877983059421863 13.23814989462669"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14" rotation="0 90 0"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_big" static-body color="gray" position="-7.86 3.705040493557511 11.485493918825302"
-                    material="" geometry="depth:0.1;height:0.1;width:4.6499999999999995" rotation="0 90 0"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_medium" static-body color="gray" position="-7.86 3.033991078080981 11.484796024583696"
-                    material="" geometry="depth:0.1;height:0.1;width:2.4" rotation="0 90 0"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-7.86 0.04515017924449927 9.747583638936847"
-                    material="" geometry="depth:0.1;height:0.1;width:1.14" rotation="0 90 0"></a-box>
-                <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-7.86 0.04515017924449927 13.219491284065585"
-                    material="" geometry="depth:0.1;height:0.1;width:1.14" rotation="0 90 0"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 9.210395734736357"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 10.284493105181221"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 12.684545431759297"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-                <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 13.759694895230908"
-                    material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-
-            <!-- #region Bakeoff -->
-            <a-entity id="bakeoff_skab" static-body>
-                <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
-                    rotation="0 90 0"></a-entity>
-
-                <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.12770370466901 2.839736658205316 1.805"
-                    rotation="0 90 0" material="color:#3f2a14" geometry="depth:1.6500000000000001;height:0.7;width:7.1"></a-box>
-                <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.91 1.24 1.805" rotation="0 90 0"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:7"></a-box>
-                <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.124321322940913 0.018501284135189866 1.805"
-                    rotation="90 90 0" material="color:#242424" geometry="depth:0.05;height:1.5;width:7"></a-box>
-                <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.117 1.24 5.254" material="color:#242424"
-                    geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-                <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.11155612991003 1.24 -1.6436708460679783"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-                <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 1.8 1.805" rotation="100 90 0"
-                    material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
-                <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 1.2 1.805" rotation="100 90 0"
-                    material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
-                <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 0.6 1.805" rotation="100 90 0"
-                    material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
-
-                <a-box id="bakeoff_paneler" depth="2" height="4" width="0.5" position="-13.371 1.6752104338604916 1.805"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07;width:6.8"></a-box>
-                <a-box id="bakeoff_paneler" depth="2" height="4" width="0.5" position="-13.371 1.0753150712558028 1.805"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07000000000000002;width:6.8"></a-box>
-                <a-box id="bakeoff_paneler" depth="2" height="4" width="0.5" position="-13.371 0.2526912745986588 1.805"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.51;width:6.8"></a-box>
-
-                <a-box id="bakeoff_midtervæg" depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 2.9027"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-                <a-box id="bakeoff_midtervæg" depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 0.5873"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-
-                <a-box id="bakeoff_glas" depth="2" height="4" width="0.5" position="-13.418600289900285 2.251456653885017 1.805"
-                    rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.49;width:6.8"></a-box>
-                <a-box id="bakeoff_glas" depth="2" height="4" width="0.5" position="-13.418600289900285 1.5012815069996575 1.805"
-                    rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
-                <a-box id="bakeoff_glas" depth="2" height="4" width="0.5" position="-13.419 0.9033963807268064 1.805"
-                    rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
-            </a-entity>
-
-            <a-entity static-body="shape:cylinder" id="bread_model" obj-model="obj:assets/bread.obj;mtl:assets/bread.mtl"
-                position="-13.806022386734831 1.7504538795192668 2.5632448654463436" rotation="10 90 0.00020000249919888317"
-                scale="0.4 0.4 0.4" velocity=""></a-entity>
-
-            <!-- endregion -->
-
-
-            <!-- #region Marmelade/Chokolade-->
-            <a-entity id="marmalade_and_choolade_drawer" static-body>
-                <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -1.8628952314954694"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-                <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.246709023963693"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-                <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.903679534667896 1.24 -3.5561797333612972"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:3.5" rotation="0 90 0"></a-box>
-
-                <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 2.2845474740141842 -3.549"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.5"></a-box>
-                <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 1.52 -3.549"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.5"></a-box>
-                <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 0.7650000000000001 -3.549"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.5"></a-box>
-                <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 0.125 -3.5489766808433525"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.45"></a-box>
-
-                <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.367141782788918 2.288 -3.557"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
-                <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.370348191438758 1.516435970688553 -3.556734198277924"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
-                <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.375 0.7656752842555152 -3.556734198277924"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
-                <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.393060590239026 0.08202992418277075 -3.556734198277924"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.17;width:3.3"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-
-            <!-- #region Øko Grønt-->
-            <a-entity id="organic_vege" static-body>
-                <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.4512462361084815"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-                <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -13.027532991592029"
-                    material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
-                <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.91 1.24 -9.240121870187442"
-                    rotation="0 90 0" material="color:#242424" geometry="depth:0.1;height:2.5;width:7.65"></a-box>
-
-                <a-box id="økogrønt_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 2 -9.241452866316452"
-                    rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:7.5"></a-box>
-                <a-box id="økogrønt_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 1.1575431103084735 -9.241452866316452"
-                    rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:7.5"></a-box>
-                <a-box id="økogrønt_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 0.25 -9.241"
-                    rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:7.5"></a-box>
-
-                <a-box id="økogrønt_paneler" color="" depth="2" height="4" width="0.5" position="-13.375 1.8701434533427919 -9.241"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.1;width:7.48"></a-box>
-                <a-box id="økogrønt_paneler" color="" depth="2" height="4" width="0.5" position="-13.37547083669862 1.0254647707413511 -9.241101139201064"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.1;width:7.48"></a-box>
-                <a-box id="økogrønt_paneler" color="" depth="2" height="4" width="0.5" position="-13.37547083669862 0.07677876666577366 -9.241101139201064"
-                    rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.16;width:7.48"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-
-            <!-- #region Alm Grønt-->
-            <a-gltf-model id="vegetable_shelf" static-body src="#vegetables" position="-18.773384328805058 0 0"
-                rotation="0 -90 0" gltf-model="assets/organic_vege.gltf"></a-gltf-model>
-            <!-- endregion -->
-
-            <!-- #region Frugt Ø-->
-            <a-entity id="fruit_island" static-body>
-                <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.998995225271198 0.6213002725412748 -5.982490438661892"
-                    material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
-                <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.6174522886669437 -5.982490438661892"
-                    material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
-                <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.999050233081594 0.6176186596757036 -10.014490748451838"
-                    material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
-                <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.6179317730124633 -10.014050542214232"
-                    material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
-                <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.9890212507001996 -8.002469724752897"
-                    material="color:#808080" geometry="height:2;radius:0.02"></a-cylinder>
-                <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.99901963394356 0.9745648220537588 -8.002469724752897"
-                    material="color:#808080" geometry="height:2;radius:0.02"></a-cylinder>
-
-                <a-box id="frugt_ø_bund" color="" depth="2" height="4" width="0.5" position="-8.010458959491668 0.8689724895284214 -8.000350641362662"
-                    material="color:#242424" geometry="depth:0.05;height:4.1;width:4.05" rotation="90 0 0"></a-box>
-                <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-9.999043604506083 0.8126840700493152 -8.002469724752897"
-                    material="color:#808080" geometry="height:4.05;radius:0.01" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-6.01679286358271 0.8126840700493152 -8.002469724752897"
-                    material="color:#808080" geometry="height:4.05;radius:0.01" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-8.008232479116707 0.8126840700493152 -10.013671234645686"
-                    material="color:#808080" geometry="height:4;radius:0.01" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-8.008232479116707 0.8126840700493152 -10.013671234645686"
-                    material="color:#808080" geometry="height:4;radius:0.01" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-8.008232479116707 0.8126840700493152 -5.983348740751858"
-                    material="color:#808080" geometry="height:4;radius:0.01" rotation="90 90 0"></a-cylinder>
-
-                <a-box id="frugt_ø_midtervæg" color="" depth="2" height="4" width="0.5" position="-8.008 1.434 -8"
-                    material="color:#242424" geometry="depth:0.03;height:1.08;width:3.96"></a-box>
-                <a-box id="frugt_ø_sidevæg" color="" depth="2" height="4" width="0.5" position="-9.99990608683546 1.434 -7.998654532102862"
-                    material="color:#242424" geometry="depth:0.03;height:1.08;width:1.6" rotation="0 90 0"></a-box>
-                <a-box id="frugt_ø_sidevæg" color="" depth="2" height="4" width="0.5" position="-6.017830470510596 1.434 -7.998654532102862"
-                    material="color:#242424" geometry="depth:0.03;height:1.08;width:1.6" rotation="0 90 0"></a-box>
-
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.2289004935343963 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.174172824344863 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.1161528405231202 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.0607453662930841 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.0036453966002776 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 0.9434928523615467 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.824585394192967 1.086 -5.983"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.65034974658792 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.498532420105004 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.348870842396577 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.194087602375472 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.05236996425085 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.904903461144619 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.742575678961485 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.575202711350128 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.395026637579193 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.203430553887635 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.029626009267096 1.086 -5.983"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.837865509709273 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.655159274521539 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.485328581126469 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.296182240308446 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.119328910812123 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.935629226380698 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.770830583291127 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.591644191377691 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.394811919418012 1.08618462574279 -5.982801551419873"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.210130298964861 1.08618462574279 -5.982846603720089"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.2289004935343963 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.174172824344863 -8.002" material="color:#808080"
-                    geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.1161528405231202 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.0607453662930841 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.0036453966002776 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 0.9434928523615467 -8.002"
-                    material="color:#808080" geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.167778815656345"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.336840980086685"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.508234388611639"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.667834183596753"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.839659948824227"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -7.021706530567414"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -7.193510554644119"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -8.80368694868693"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -8.987161401113937"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.170875219241383"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.333267900644799"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.494955529218709"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.659605174908561"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.8334972748888"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.229 -5.982892613444388"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.174 -5.982892613444388"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.116 -5.982892613444388"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.061 -5.982892613444388"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.004 -5.982892613444388"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 0.943 -5.982892613444388"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.167778815656345"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.336840980086685"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.508234388611639"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.667834183596753"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.839659948824227"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -7.021706530567414"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -7.193510554644119"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -8.80368694868693"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -8.987161401113937"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.170875219241383"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.333267900644799"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.494955529218709"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.659605174908561"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.8334972748888"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.229 -10.013865423247305"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.174 -10.014"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.116 -10.014"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.061 -10.014"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.004 -10.014"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 0.943 -10.014"
-                    material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.824585394192967 1.086 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.65034974658792 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.498532420105004 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.348870842396577 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.194087602375472 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.05236996425085 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.904903461144619 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.742575678961485 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.575202711350128 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.395026637579193 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.203430553887635 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.029626009267096 1.086 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.837865509709273 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.655159274521539 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.485328581126469 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.296182240308446 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.119328910812123 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.935629226380698 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.770830583291127 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.591644191377691 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.394811919418012 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-                <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.210130298964861 1.08618462574279 -10.014"
-                    material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
-
-                <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.011005666772935 1.6203065031129278 -7.713814609026583"
-                    rotation="100 0 0" material="color:#808080" geometry="depth:0.03;height:0.58;width:3.95"></a-box>
-                <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.006506170160215 1.1261725690188424 -7.600399815605115"
-                    rotation="100 0 0" material="color:#808080" geometry="depth:0.03;height:0.8;width:3.95"></a-box>
-                <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.003074223466408 1.622494362319767 -8.288397197083103"
-                    rotation="-100 0 0" material="color:#808080" geometry="depth:0.03;height:0.58;width:3.95"></a-box>
-                <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.009589510930955 1.1259452607864422 -8.394710209794855"
-                    rotation="-100 0 0" material="color:#808080" geometry="depth:0.03;height:0.7999999999999999;width:3.95"></a-box>
-
-                <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 1.5716109403084604 -7.41461867009698"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:4.000000000000001"></a-box>
-                <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 0.9962544457101932 -7.209157959728518"
-                    material="color:#595959" geometry="depth:0.02;height:0.2;width:4.000000000000001"></a-box>
-                <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 1.5716109403084604 -8.585369809444675"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:4.000000000000001"></a-box>
-                <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 0.9962544457101932 -8.787054148817587"
-                    material="color:#595959" geometry="depth:0.02;height:0.2;width:4.000000000000001"></a-box>
-            </a-entity>
-
-            <a-entity id="Oranges">
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.64951 -7.47636" rotation="20 90 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.67253 -7.59378" rotation="0 60 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.69282 -7.7114" rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.71491 -7.82931" rotation="30 90 20" scale="0.06 0.06 0.06" velocity=""></a-entity>
-
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.80174 1.64951 -7.47636" rotation="20 90 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.8024 1.67253 -7.59378" rotation="0 60 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.80253 1.69282 -7.7114" rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.80111 1.71491 -7.82931" rotation="30 90 20" scale="0.06 0.06 0.06" velocity=""></a-entity>
-
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.86296 1.73999 -7.52024" rotation="20 90 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.85914 1.76395 -7.63988" rotation="0 60 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
-              <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.85927 1.78569 -7.75634" rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
-            </a-entity>
-            <!-- endregion -->
-
-            <!-- #region Slagter Køl-->
-            <a-entity id="meat_box" static-body>
-                <a-box id="slagterkøl_bund" color="" depth="2" height="4" width="0.5" position="-7.5690305270068405 0.04836249529945569 -0.5278351005213164"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:3.6;width:5" rotation="90 0 0"></a-box>
-
-                <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-7.569 0.5005413113462791 -2.370231271757763"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:5"></a-box>
-                <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-7.569 0.5012213636373924 1.306"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:5"></a-box>
-                <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-5.025259362627741 0.5013736406537435 -0.5336350948668107"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:3.77" rotation="0 90 0"></a-box>
-                <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-10.11799770310465 0.501 -0.534"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:3.77" rotation="0 90 0"></a-box>
-
-                <a-box id="slagterkøl_midten" color="" depth="2" height="4" width="0.5" position="-7.569 0.6070664894328827 -0.531"
-                    material="color:#B0B0B0" geometry="depth:0.25;height:1.1;width:5"></a-box>
-                <a-cylinder id="slagterkøl_midten_panel" height="3" radius="1.5" position="-7.569723739340184 1.1495219695217425 -0.5311900009856816"
-                    rotation="90 90 0" material="color:#808080" geometry="height:4.99;radius:0.12"></a-cylinder>
-
-                <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-10.124717823306389 0.9872242155179627 -0.5334428254820666"
-                    rotation="90 0 0" material="color:#808080" geometry="height:3.78;radius:0.06"></a-cylinder>
-                <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-5.017743655268033 0.9872242155179627 -0.5334428254820666"
-                    rotation="90 0 0" material="color:#808080" geometry="height:3.78;radius:0.06"></a-cylinder>
-                <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-7.573996188114139 0.9872242155179627 -2.377396928756417"
-                    rotation="90 90 0" material="color:#808080" geometry="height:5.2;radius:0.06"></a-cylinder>
-                <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-7.573996188114139 0.9872242155179627 1.3100903862955866"
-                    rotation="90 90 0" material="color:#808080" geometry="height:5.2;radius:0.06"></a-cylinder>
-
-                <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-5.017676205530226 0.5241395360679305 1.3101327079469018"
-                    material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
-                <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-5.017309713312202 0.5241395360679305 -2.3771170034906866"
-                    material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
-                <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-10.125388235580099 0.5241395360679305 1.3101327079469018"
-                    material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
-                <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-10.124895036557717 0.5241395360679305 -2.3778589229219063"
-                    material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-
-            <!-- #region Konserves-->
-            <a-gltf-model id="canned_goods_shelf" static-body src="#small_shelf" position="-6.877 0 0" rotation="0 -90 0"
-                gltf-model="assets/small_shelf.gltf" scale="1 1.2 1"></a-gltf-model>
-            <!-- endregion -->
-
-
-            <!-- #region Køl-->
-            <a-entity id="køl">
-                <a-box id="køl_bund" color="" depth="2" height="4" width="0.5" position="5.518596980036763 0.020117169477509522 -13.73683321948068"
-                    material="color:#B0B0B0" geometry="depth:2.5;height:0.05;width:12"></a-box>
-                <a-box id="køl_frontvæg" color="" depth="2" height="4" width="0.5" position="5.5185 0.5013736406537435 -12.541182740602853"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:12"></a-box>
-                <a-box id="køl_midtervæg" color="" depth="2" height="4" width="0.5" position="5.5185 0.5013736406537435 -13.809936930915024"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:12"></a-box>
-                <a-box id="køl_bagvæg" color="" depth="2" height="4" width="0.5" position="5.5185 1.4973493525036243 -14.91126109179625"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:3;width:12"></a-box>
-                <a-box id="køl_sidevæg_stor-1" color="" depth="2" height="4" width="0.5" position="-0.4313489689705746 1.4973493525036243 -14.302317935928064"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:3;width:1.3" rotation="0 90 0"></a-box>
-                <a-box id="køl_sidevæg_stor-2" color="" depth="2" height="4" width="0.5" position="11.46724921718603 1.4973493525036243 -14.302317935928064"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:3;width:1.3" rotation="0 90 0"></a-box>
-                <a-box id="køl_sidevæg_lille-1" color="" depth="2" height="4" width="0.5" position="-0.4313489689705746 0.501 -13.125484446078415"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:1.1" rotation="0 90 0"></a-box>
-                <a-box id="køl_sidevæg_lille-2" color="" depth="2" height="4" width="0.5" position="11.46724921718603 0.501 -13.125484446078415"
-                    material="color:#B0B0B0" geometry="depth:0.1;height:1;width:1.1" rotation="0 90 0"></a-box>
-                <a-box id="køl_top" color="" depth="2" height="4" width="0.5" position="5.518596980036763 3.3357205193530257 -14.223162731931176"
-                    material="color:#808080" geometry="depth:1.5;height:0.7;width:12.06"></a-box>
-
-                <a-cylinder id="køl_frontvæg_panel" height="3" radius="1.5" position="5.518 0.974110789282951 -12.542"
-                    rotation="90 90 0" material="color:#808080" geometry="height:12.002;radius:0.06"></a-cylinder>
-                <a-cylinder id="køl_sidevæg_lille_panel-1" height="3" radius="1.5" position="-0.4286145983660204 0.974 -13.070246343999196"
-                    rotation="90 0 0" material="color:#808080" geometry="height:1.165;radius:0.06"></a-cylinder>
-                <a-cylinder id="køl_sidevæg_lille_panel-2" height="3" radius="1.5" position="11.464299978115191 0.974 -13.070246343999196"
-                    rotation="90 0 0" material="color:#808080" geometry="height:1.165;radius:0.06"></a-cylinder>
-                <a-cylinder id="køl_sidevæg_stor_panel-1" height="3" radius="1.5" position="-0.4286145983660204 1.9656621352001147 -13.653853931038402"
-                    material="color:#808080" geometry="height:2.04;radius:0.06"></a-cylinder>
-                <a-cylinder id="køl_sidevæg_stor_panel-2" height="3" radius="1.5" position="11.464299978115191 1.9656621352001147 -13.653853931038402"
-                    material="color:#808080" geometry="height:2.04;radius:0.06"></a-cylinder>
-                <a-box id="køl_hjørne-1" color="" depth="2" height="4" width="0.5" position="-0.42932022137238945 0.5241395360679305 -12.541021453383243"
-                    material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
-                <a-box id="køl_hjørne-2" color="" depth="2" height="4" width="0.5" position="11.464299978115191 0.5241395360679305 -12.541021453383243"
-                    material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
-                <a-box id="køl_hjørne-3" color="" depth="2" height="4" width="0.5" position="-0.44924705839183365 1.4941533282502857 -14.898472699717841"
-                    material="color:#808080" geometry="depth:0.12;height:3;width:0.12"></a-box>
-                <a-box id="køl_hjørne-4" color="" depth="2" height="4" width="0.5" position="11.485527153391104 1.4941533282502857 -14.898472699717841"
-                    material="color:#808080" geometry="depth:0.12;height:3;width:0.12"></a-box>
-                <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="11.464498717773086 0.012908921140919682 -13.796967638565464"
-                    material="color:#808080" geometry="depth:0.12;height:2.4;width:0.12" rotation="90 0 0"></a-box>
-                <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="-0.42918221706862636 0.012908921140919682 -13.796967638565464"
-                    material="color:#808080" geometry="depth:0.12;height:2.4;width:0.12" rotation="90 0 0"></a-box>
-                <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="5.51346229983849 0.012908921140919682 -12.542474478240184"
-                    material="color:#808080" geometry="depth:0.12;height:11.84;width:0.12" rotation="90 0 90"></a-box>
-
-                <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 1.0705673969743663 -14.287306669696244"
-                    rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
-                <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 1.738 -14.287306669696244"
-                    rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
-                <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 2.4046 -14.287306669696244"
-                    rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
-
-                <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 2.2972254122449987 -13.702599180942816"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
-                <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 1.6327823335695644 -13.702599180942816"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
-                <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 0.9669908324361172 -13.702599180942816"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-
-            <!-- #region Spot Fryser-->
-            <a-gltf-model id="spot_freezer1" src="#small_freezer" position="-1.742 0 -12.868127556680653" gltf-model="assets/small_freezer.gltf"
-                scale="0.82 1 0.5" rotation="0 90 0"></a-gltf-model>
-            <a-gltf-model id="spot_freezer2" src="#small_freezer" position="9.065632649561833 0 -12.868127556680653"
-                gltf-model="assets/small_freezer.gltf" scale="0.8200000000000001 1 0.5" rotation="0 90 0"></a-gltf-model>
-            <!-- endregion -->
-
-
-            <!-- #region Fryser-->
-            <a-gltf-model id="freezer_area" src="#freezer" position="16.264098304864245 0 -6.049" gltf-model="assets/freezer.gltf"
-                scale="1.7 1 1.13"></a-gltf-model>
-            <!-- endregion -->
-
-
-            <!-- #region Mejeri/Æg/osv.-->
-            <a-entity id="mejeri/æg/osv">
-                <a-box id="mejeri/æg/osv_bund" color="" depth="2" height="4" width="0.5" position="14.054 0.119 -6.482"
-                    material="color:#242424" geometry="depth:11.96;height:0.25;width:1.75"></a-box>
-                <a-box id="mejeri/æg/osv_bagvæg" color="" depth="2" height="4" width="0.5" position="14.858298078586927 1.504 -6.482"
-                    material="color:#242424" geometry="depth:11.96;height:0.15;width:3" rotation="0 0 90"></a-box>
-                <a-box id="mejeri/æg/osv_sidevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.5055245893105553 -12.4"
-                    material="color:#242424" geometry="depth:0.25;height:3;width:1.75"></a-box>
-                <a-box id="mejeri/æg/osv_sidevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.5055245893105553 -0.4"
-                    material="color:#242424" geometry="depth:0.25;height:3;width:1.75"></a-box>
-                <a-box id="mejeri/æg/osv_topvæg" color="" depth="2" height="4" width="0.5" position="14.054 3.0000071242351325 -6.482"
-                    material="color:#242424" geometry="depth:11.96;height:0.009999999999999998;width:1.75"></a-box>
-                <a-box id="mejeri/æg/osv_toppen" color="" depth="2" height="4" width="0.5" position="14.018069073931406 3.350887627474314 -6.401879043037204"
-                    material="color:#595959" geometry="depth:1.9;height:0.7;width:12.349999999999998" rotation="0 90 0"></a-box>
-
-                <a-box id="mejeri/æg/osv_skillevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.506 -9.3"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:1.75"></a-box>
-                <a-box id="mejeri/æg/osv_skillevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.506 -6.2"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:1.75"></a-box>
-                <a-box id="mejeri/æg/osv_skillevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.506 -3.1"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:1.75"></a-box>
-
-                <a-box id="mejeri/æg/osv_hylde" color="" depth="2" height="4" width="0.5" position="14.00830439899395 2.2 -6.394335337369467"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:11.89;width:1.5999999999999999"></a-box>
-                <a-box id="mejeri/æg/osv_hylde" color="" depth="2" height="4" width="0.5" position="14.00830439899395 1.4 -6.394335337369467"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:11.89;width:1.6"></a-box>
-                <a-box id="mejeri/æg/osv_hylde" color="" depth="2" height="4" width="0.5" position="14.007858946668321 0.2613377361334389 -6.394335337369467"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:11.89;width:1.5999999999999999"></a-box>
-
-                <a-box id="mejeri/æg/osv_paneler" color="" depth="2" height="4" width="0.5" position="13.211244485549702 2.19 -6.394"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:11.89" rotation="0 90 0"></a-box>
-                <a-box id="mejeri/æg/osv_paneler" color="" depth="2" height="4" width="0.5" position="13.211244485549702 1.4 -6.394"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:11.89" rotation="0 90 0"></a-box>
-                <a-box id="mejeri/æg/osv_paneler" color="" depth="2" height="4" width="0.5" position="13.211244485549702 0.261 -6.394"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:11.89" rotation="0 90 0"></a-box>
-
-                <a-box id="mejeri/æg/osv_placeholder_glass" depth="2" height="4" width="0.5" position="13.18929096762282 1.6199819783913776 -6.405660482914552"
-                    material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:2.8000000000000003;width:11.96"
-                    rotation="0 90 0"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-
-            <!-- #region Pasta/Ris/Andet kolonial-->
-            <a-gltf-model id="pasta_rice_other" src="#big_shelf" position="-1.492 0 -14.178799419029051" gltf-model="assets/big_shelf.gltf"
-                scale="0.75 1 1"></a-gltf-model>
-            <!-- endregion -->
-
-
-            <!-- #region Drikkevarer-->
-            <a-gltf-model id="drinks" src="#big_shelf" position="9.718734723811725 0 15.773813376626403" rotation="0 180 0"
-                gltf-model="assets/big_shelf.gltf" scale="0.75 1 1"></a-gltf-model>
-            <!-- endregion -->
-
-
-            <!-- #region Vin & Spiritus-->
-            <a-gltf-model id="vin_og_spiritus" src="#big_shelf" position="-0.008067213105741544 0 10.75035055463159"
-                rotation="0 90 0" gltf-model="assets/big_shelf.gltf" scale="0.7 1 1"></a-gltf-model>
-
-          <a-entity id="hvidvins_flasker">
-            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.02" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.49" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.96" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.43" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.9" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.37" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.84" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-          </a-entity>
-
-          <a-entity id="rødvins_flasker">
-            <a-gltf-model id="rødvin" src="#rødvins_flasker" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.47" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.94" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.41" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.88" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.35" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.82" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-          </a-entity>
-            <!-- endregion -->
-
-
-            <!-- #region Diverse nonfood ting (husholdning)-->
-            <a-gltf-model id="diverse_nonfood_stuff" src="#big_shelf" position="-1.492 0 -7.243907012226542" gltf-model="assets/big_shelf.gltf"
-                scale="0.75 1 1"></a-gltf-model>
-            <!-- endregion -->
-
-
-            <!-- #region Baby stuff og personlig pleje-->
-            <a-gltf-model id="baby_stuff_and_personel_care_shelf" src="#big_shelf" position="9.718734723811725 0 22.699096033522476"
-                rotation="0 180 0" gltf-model="assets/big_shelf.gltf" scale="0.75 1 1"></a-gltf-model>
-            <!-- endregion -->
-
-
-            <!-- #region Slik og Snacks-->
-            <a-entity id="candy_and_snacks">
-                <a-box id="slik_og_snacks_bagvæg" color="" depth="2" height="4" width="0.5" position="7.473730931470994 1.4920319055658708 14.910141488078983"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:15"></a-box>
-                <a-box id="slik_og_snacks_sidevæg" color="" depth="2" height="4" width="0.5" position="14.92367563551891 1.4908892095020871 14.112728216929394"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:1.5" rotation="0 90 0"></a-box>
-                <a-box id="slik_og_snacks_midtervæg" color="" depth="2" height="4" width="0.5" position="10.107159924380042 1.4915209496148267 14.111574648332432"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:1.5" rotation="0 90 0"></a-box>
-                <a-box id="slik_og_snacks_midtervæg" color="" depth="2" height="4" width="0.5" position="5.01230551294914 1.493323309463143 14.111574648332432"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:1.51" rotation="0 90 0"></a-box>
-                <a-box id="slik_og_snacks_sidevæg" color="" depth="2" height="4" width="0.5" position="0.023834953937472064 1.4917190160857592 14.111574648332432"
-                    material="color:#242424" geometry="depth:0.1;height:3;width:1.5" rotation="0 90 0"></a-box>
-
-                <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.498570763663627 2.671794586036607 14.138899658690972"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
-                <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 2.672 13.38842740066098"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:14.88"></a-box>
-                <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.498570763663627 1.8693620705889913 14.138899658690972"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
-                <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 1.869 13.38842740066098"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:14.88"></a-box>
-                <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.487949835666367 1.0160725177745538 14.138899658690972"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
-                <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 1.016 13.38842740066098"
-                    material="color:#595959" geometry="depth:0.02;height:0.1;width:14.88"></a-box>
-                <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.498570763663627 0.17278035216008725 14.138899658690972"
-                    rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
-                <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 0.1085610061609048 13.38842740066098"
-                    material="color:#595959" geometry="depth:0.02;height:0.22000000000000003;width:14.88"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-            <!-- #region Krydderier/mel/køkken-->
-            <a-gltf-model id="spices_flour_and_kitchen" src="#small_shelf" position="-3.1467727255285585 -0.0068279998165956535 -7.034527198479602"
-                rotation="0 90 0" gltf-model="assets/small_shelf.gltf"></a-gltf-model>
-            <!-- endregion -->
-
-            <!-- #region Selvbetjenings Kasse-->
-            <a-entity id="selvbetjenings_kasse">
-                <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-2.1505097864893647 0.7434802855760996 14.188827135756139"
-                    material="color:#242424" geometry="depth:0.1;height:1.5;width:1.5" rotation="0 90 0"></a-box>
-                <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-3.69100648423096 0.7434802855760996 14.887672438373714"
-                    material="color:#242424" geometry="depth:0.1;height:1.5;width:3"></a-box>
-
-                <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-2.1505097864893647 0.7434802855760996 14.188827135756139"
-                    material="color:#242424" geometry="depth:0.1;height:1.5;width:1.5" rotation="0 90 0"></a-box>
-                <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-3.947739397693634 0.7434802855760996 14.887672438373714"
-                    material="color:#242424" geometry="depth:0.1;height:1.5;width:3.5"></a-box>
-                <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-5.747250873504417 0.7434802855760996 14.188435263221105"
-                    material="color:#242424" geometry="depth:0.1;height:1.5;width:1.5" rotation="0 90 0"></a-box>
-                <a-box id="selvbetjening_kasse_midtervæg" color="" depth="2" height="4" width="0.5" position="-3.6916125169194567 0.5453002461775603 14.188827135756139"
-                    material="color:#242424" geometry="depth:0.05;height:1.1;width:1.5" rotation="0 90 0"></a-box>
-
-                <a-box id="selvbetjening_kasse_varehylde" color="" depth="2" height="4" width="0.5" position="-2.945 0.29648279361355107 14.161"
-                    material="color:#595959" geometry="depth:1.35;height:0.6;width:1.5"></a-box>
-                <a-box id="selvbetjening_kasse_scanner/betaling_bund" color="" depth="2" height="4" width="0.5"
-                    position="-4.694387389259007 0.4975502574153322 14.161" material="color:#595959" geometry="depth:1.35;height:1;width:2"></a-box>
-
-                <a-box id="skærm" color="" depth="2" height="4" width="0.5" position="-4.329497092459057 1.555 14.387382660990761"
-                    material="color:#3e3e3e" geometry="depth:0.1;height:0.6599999999999999;width:0.9" rotation="35 0 0"></a-box>
-                <a-box id="skærm_billede" color="" depth="2" height="4" width="0.5" position="-4.32856227046585 1.585581905103418 14.343897449799512"
-                    material="color:#efefef" geometry="depth:0.01;height:0.56;width:0.8" rotation="35 0 0"></a-box>
-                <a-box id="skærm_ramme_top" color="" depth="2" height="4" width="0.5" position="-4.329 1.839408621575602 14.513180730632715"
-                    material="color:#3e3e3e" geometry="depth:0.02;height:0.05;width:0.9" rotation="35 0 0"></a-box>
-                <a-box id="skærm_ramme_bund" color="" depth="2" height="4" width="0.5" position="-4.329 1.3393302592691232 14.1641542536764"
-                    material="color:#3e3e3e" geometry="depth:0.02;height:0.05;width:0.9" rotation="35 0 0"></a-box>
-                <a-box id="skærm_ramme_venstre" color="" depth="2" height="4" width="0.5" position="-3.904096271987451 1.5886030400436189 14.33876303534786"
-                    material="color:#3e3e3e" geometry="depth:0.02;height:0.66;width:0.05" rotation="35 0 0"></a-box>
-                <a-box id="skærm_ramme_højre" color="" depth="2" height="4" width="0.5" position="-4.754615322542857 1.5895024289887145 14.33876303534786"
-                    material="color:#3e3e3e" geometry="depth:0.02;height:0.66;width:0.05" rotation="35 0 0"></a-box>
-                <a-box id="skærm_bund" color="" depth="2" height="4" width="0.5" position="-4.329 1.084 14.46323912423443"
-                    material="color:#3e3e3e" geometry="depth:0.5;height:0.18;width:0.8"></a-box>
-                <a-box id="skærm_stativ-1" color="" depth="2" height="4" width="0.5" position="-4.086467100028052 1.4193017984556004 14.449057916972903"
-                    material="color:#808080" geometry="depth:0.08000000000000002;height:0.49999999999999994;width:0.08"></a-box>
-                <a-box id="skærm_stativ-2" color="" depth="2" height="4" width="0.5" position="-4.572699024163469 1.4193017984556004 14.449"
-                    material="color:#808080" geometry="depth:0.08000000000000002;height:0.49999999999999994;width:0.08"></a-box>
-
-                <a-box id="betaling_bund" color="" depth="2" height="4" width="0.5" position="-5.128047741372538 1.084 14.21324395510222"
-                    material="color:#3e3e3e" geometry="depth:1;height:0.18;width:0.8"></a-box>
-                <a-box id="betaling_stativ" color="" depth="2" height="4" width="0.5" position="-5.181812649676617 1.2975002712628134 14.06859328471272"
-                    material="color:#808080" geometry="depth:0.05000000000000002;height:0.24999999999999994;width:0.05"
-                    rotation="0 -15 0"></a-box>
-                <a-box id="kort_betaling" color="" depth="2" height="4" width="0.5" position="-5.179931210582248 1.431075328021553 14.056395499975784"
-                    material="color:#3e3e3e" geometry="depth:0.06;height:0.25;width:0.15" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_skærm" color="" depth="2" height="4" width="0.5" position="-5.189836282398869 1.5016956162536756 14.093451901123727"
-                    material="color:#efefef" geometry="depth:0.005;height:0.07;width:0.1" rotation="50 -15 0"></a-box>
-
-                <a-box id="skanner_bund" color="" depth="2" height="4" width="0.5" position="-4.324845469606348 1.0067180694145066 13.92019671499823"
-                    material="color:#808080" geometry="depth:0.5;height:0.02;width:0.7"></a-box>
-                <a-box id="skanner" color="" depth="2" height="4" width="0.5" position="-4.333697381930976 1.0111980799379219 14.024134774492392"
-                    material="color:#242424" geometry="depth:0.22;height:0.015;width:0.33"></a-box>
-
-                <a-box id="kort_betaling_knapramme" color="" depth="2" height="4" width="0.5" position="-5.113238604624158 1.4318181549715787 14.016128400964435"
-                    material="colowar:#242424" geometry="depth:0.015000000000000001;height:0.11000000000000001;width:0.005"
-                    rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knapramme" color="" depth="2" height="4" width="0.5" position="-5.218467134023698 1.4314591569907726 13.986766362786891"
-                    material="color:#242424" geometry="depth:0.015000000000000001;height:0.11000000000000001;width:0.005"
-                    rotation="50 -15 0"></a-box>
-
-                <a-box id="kort_betaling_knap_1" color="" depth="2" height="4" width="0.5" position="-5.14744114207809 1.4493710589542705 14.035706648073496"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_2" color="" depth="2" height="4" width="0.5" position="-5.174219059225162 1.4494131201574076 14.02850466827218"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_3" color="" depth="2" height="4" width="0.5" position="-5.201055771735555 1.4493130340041092 14.021287034282256"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_4" color="" depth="2" height="4" width="0.5" position="-5.142455248676681 1.4348015156230556 14.019222764987619"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_5" color="" depth="2" height="4" width="0.5" position="-5.16962427725515 1.4347237938331 14.011864562927194"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_6" color="" depth="2" height="4" width="0.5" position="-5.19643806090788 1.434817143636541 14.004632535671044"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_7" color="" depth="2" height="4" width="0.5" position="-5.137695181369743 1.4197026133355277 14.001820401567194"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_8" color="" depth="2" height="4" width="0.5" position="-5.164801242945915 1.4197592110715471 13.994524905755231"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_9" color="" depth="2" height="4" width="0.5" position="-5.191661231868675 1.4196848349927957 13.98720331579664"
-                    material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_rød" color="" depth="2" height="4" width="0.5" position="-5.132521478993243 1.4036931423471284 13.983440929681608"
-                    material="color:red" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_gul" color="" depth="2" height="4" width="0.5" position="-5.159552155398854 1.4036634389135318 13.976115026101112"
-                    material="color:yellow" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-                <a-box id="kort_betaling_knap_grøn" color="" depth="2" height="4" width="0.5" position="-5.186715482275379 1.4036360051485892 13.968846453237465"
-                    material="color:green" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
-            </a-entity>
-            <!-- endregion -->
-
-            <!--
+        <a-plane id="building floor" width="30" height="30" rotation="-90 0 0" geometry="height:31.8" position="0 0.01 0"
+            src="#blueprint"></a-plane>
+        <a-plane id="outdoors floor" static-body="mass: 9999999" width="100" height="100" rotation="-90 0 0" position="0 0 0"
+            color="lime"></a-plane>
+        <a-plane static-body="sphereRadius:NaN" width="30" position="0 0.01 0" height="30" rotation="-90 0 0" geometry="height:31.8"
+            position="0 0 0.8998282614486417" src="#floor" material="repeat: 15 15"></a-plane>
+        <a-plane width="100" height="100" rotation="-90 0 0" static-body="mass: 9999" position="0 0 0" color="lime"></a-plane>
+
+        <!--Lys-->
+        <a-entity light="intensity:0.6;castShadow:true" position="12.49073075572284 4.500811208049429 -12.430845045592315"
+            data-aframe-default-light="" aframe-injected=""></a-entity>
+
+        <!-- #endregion -->
+
+
+        <!-- #region Taget-->
+
+        <a-entity id="roof">
+            <a-box id="roof_part_1" position="0.057950258640787844 4.969211414447982 -3.5962897355459558" material="src:#ceiling_test; repeat: 40 40"
+                geometry="width:30.36;height:0.1;depth:23.28"></a-box>
+            <a-box id="roof_part_2" position="3.687 4.969 11.577004136846819" material="src:#ceiling_test;repeat:30 11"
+                geometry="width:23.12;height:0.1;depth:7.09"></a-box>
+        </a-entity>
+
+        <!-- #endregion -->
+
+
+        <!-- #region Vægge og Entré Parti -->
+        <a-entity id="walls">
+            <a-box id="innerwall_1" static-body position="3.5 2.5 15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
+                material="src: #wall_texture; repeat: 8 2;" geometry="width:22.83;height:5;depth:0.1"></a-box>
+            <a-box id="innerwall_2" static-body position="0 2.5 -15" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
+                material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
+            <a-box id="innerwall_3" static-body position="-15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
+                material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
+            <a-box id="innerwall_4" static-body position="15 2.5 0" width="1" height="1" depth="1" rotation="-0.06 90 -0.017"
+                material="src: #wall_texture; repeat: 8 2;" geometry="width:30;height:5;depth:0.1"></a-box>
+
+            <a-box id="outerwall_1" body="type: static; mass: 100; shape: box;" position="3.6730003656464634 2.5 15.10767582070222"
+                width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="src:#outer_wall_texture;repeat:15 4"
+                geometry="width:23.179999999999996;height:5;depth:0.1"></a-box>
+            <a-box id="outerwall_2" position="15.202839050117527 2.5 0.004533618116581817" width="1" height="1" depth="1"
+                rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.29;height:5;depth:0.1"></a-box>
+            <a-box id="outerwall_3" position="0.09404463456994346 2.5 -15.197" width="1" height="1" depth="1" rotation="-0.06 -0.002 -0.017"
+                material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.25;height:5;depth:0.1"></a-box>
+            <a-box id="outerwall_4" position="-15.077640397081407 2.5 -0.03579503719629429" width="1" height="1" depth="1"
+                rotation="-0.06 90 -0.017" material="src:#outer_wall_texture;repeat:15 4" geometry="width:30.419999999999998;height:5;depth:0.1"></a-box>
+        </a-entity>
+
+        <!--Indgang-->
+        <a-entity id="entrance">
+            <a-box id="entrance_box1" position="-11.40508146707056 4.378193271051162 8.000426781988928" width="1"
+                height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5"
+                geometry="width:7.180000000000001;height:1.25;depth:0.1"></a-box>
+            <a-box id="entrance_box2" position="-7.859842744155859 4.368477978174847 11.486268254298775" width="1"
+                height="1" depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:2 0.5"
+                geometry="width:7.05;height:1.25;depth:0.1"></a-box>
+
+            <!-- Glass -->
+            <a-box id="entrance_glass_panel" static-body depth="2" height="4" width="0.5" position="-13.735956176656767 2.486509693493699 15.10"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:5;width:2.61"></a-box>
+            <a-box id="entrance_glass_panel_2" static-body depth="2" height="4" width="0.5" position="-8.956094981089306 2.444670681085263 15.10"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:4.9;width:2.1"></a-box>
+            <a-box id="entrance_glass_panel_3" static-body depth="2" height="4" width="0.5" position="-11.230739674123631 4.191 15.1"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:1.5;width:2.4"></a-box>
+            <a-triangle id="entrance_glass_triangle_1" material="side:double;color:#7FFAFF;opacity:0.2" position="-11.480287628538154 5.416570288885511 14.842024735590698"
+                rotation="-35.848926617784926 0 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
+            <a-triangle id="entrance_glass_triangle_2" material="side:double;color:#7FFAFF;opacity:0.2" position="-14.75948637743945 5.417 11.531"
+                rotation="-35.849 -90 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
+            <a-triangle id="entrance_glass_triangle_3" material="side:double;color:#7FFAFF;opacity:0.2" position="-11.431627074993251 5.417 8.291177594776842"
+                rotation="-35.849 -180 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
+            <a-triangle id="entrance_glass_triangle_4" material="side:double;color:#7FFAFF;opacity:0.2" position="-8.15691646386476 5.417 11.61234635985537"
+                rotation="-35.849 -270 0" geometry="vertexA:0 5.6 0;vertexB:-3.52 -0.5 0;vertexC:3.6 -0.52 0"></a-triangle>
+
+
+            <!-- Crossbars -->
+            <a-box id="entrance_crossbar_1" color="gray" position="-12.467663504511634 2.465928323242208 15.1" material=""
+                geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
+            <a-box id="entrance_crossbar_2" color="gray" position="-11.453652914200193 4.950090243932034 15.1" material=""
+                geometry="depth:0.1;height:0.1;width:7.119999999999999"></a-box>
+            <a-box id="entrance_crossbar_3" color="gray" position="-10.012809865333013 2.465928323242208 15.1" material=""
+                geometry="depth:0.1;height:0.1;width:5" rotation="0 0 -90"></a-box>
+            <a-box id="entrance_crossbar_4" color="gray" position="-11.22704354187545 3.3624582852290645 15.1" material=""
+                geometry="depth:0.1;height:0.1;width:2.5"></a-box>
+            <a-box id="entrance_crossbar_5" color="gray" position="-14.978176393863409 2.466 15.1" material="" geometry="depth:0.1;height:0.1;width:5"
+                rotation="0 0 -90"></a-box>
+            <a-box id="entrance_crossbar_6" color="gray" position="-7.962654802611064 2.466 15.1" material="" geometry="depth:0.1;height:0.1;width:5"
+                rotation="0 0 -90"></a-box>
+            <a-box id="entrance_crossbar_7" color="gray" position="-8.956248175909245 0.051292002609708565 15.1"
+                material="" geometry="depth:0.1;height:0.1;width:2.07"></a-box>
+            <a-box id="entrance_crossbar_8" color="gray" position="-13.766573924091112 0.051292002609708565 15.1"
+                material="" geometry="depth:0.1;height:0.1;width:2.5599999999999996"></a-box>
+            <a-box id="entrance_crossbar_9" color="gray" position="-9.696497386645603 7.5 13.349910464671167" material=""
+                geometry="depth:0.1;height:0.1;width:7.05" rotation="45 -135 -90"></a-box>
+            <a-box id="entrance_crossbar_10" color="gray" position="-13.235117311102726 7.5 13.35" material="" geometry="depth:0.1;height:0.1;width:7.05"
+                rotation="44.99999999999999 135 -89.99999999999999"></a-box>
+            <a-box id="entrance_crossbar_11" color="gray" position="-13.21423617278304 7.540081314173948 9.846669873265293"
+                material="" geometry="depth:0.1;height:0.1;width:7.05" rotation="45 45 -90"></a-box>
+            <a-box id="entrance_crossbar_12" color="gray" position="-9.65614005586507 7.463097408519945 9.75538013321273"
+                material="" geometry="depth:0.1;height:0.1;width:7.1" rotation="45.00000000000003 -45 -90.00000000000007"></a-box>
+        </a-entity>
+
+        <!-- Indre vægge -->
+        <a-entity id="inner_entrance_walls">
+            <a-box id="indre_væg" static-body position="-14.354365121443022 1.8774555848413006 8.000426781988928" width="1"
+                height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
+                geometry="width:1.2;height:3.76;depth:0.1"></a-box>
+            <a-box id="indre_væg" static-body position="-8.416431519577031 1.8774555848413006 8.000426781988928" width="1"
+                height="1" depth="1" rotation="-0.06 -0.002 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
+                geometry="width:1.2;height:3.76;depth:0.1"></a-box>
+            <a-box id="indre_væg" static-body position="-7.859761923201203 1.862988848040187 8.561500362185097" width="1"
+                height="1" depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5"
+                geometry="width:1.2;height:3.76;depth:0.1"></a-box>
+            <a-box id="indre_væg" static-body position="-7.86 1.8660759215442142 14.409561129477272" width="1" height="1"
+                depth="1" rotation="-0.06 90 -0.017" material="color:#FFF;src:#wall_texture;repeat:0.3 1.5" geometry="width:1.2;height:3.76;depth:0.1"></a-box>
+
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-13.190020915770866 1.877983059421863 7.995836712884794"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14"></a-box>
+            <a-box id="indre_glas_væg_top" static-body depth="2" height="4" width="0.5" position="-11.388 3.407120235314852 7.996"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:0.7;width:2.4"></a-box>
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-9.58942667119515 1.877983059421863 7.995836712884794"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_big" static-body color="gray" position="-11.386769454623959 3.705040493557511 7.998385204135042"
+                material="" geometry="depth:0.1;height:0.1;width:4.739999999999999"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_medium" static-body color="gray" position="-11.405649955400143 3.033991078080981 7.996"
+                material="" geometry="depth:0.1;height:0.1;width:2.4"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-9.623626326001006 0.04515017924449927 7.996"
+                material="" geometry="depth:0.1;height:0.1;width:1.14"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-13.163649040265355 0.04515017924449927 7.996"
+                material="" geometry="depth:0.1;height:0.1;width:1.14"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-13.70357992800745 1.8723229489174162 7.996"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-12.627409288023031 1.8723229489174162 7.996"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-10.182305147144726 1.8723229489174162 7.996"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-9.06666975571357 1.8723229489174162 7.996"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-7.860281555576407 1.877983059421863 9.729589133517651"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14" rotation="0 90 0"></a-box>
+            <a-box id="indre_glas_væg_top" static-body depth="2" height="4" width="0.5" position="-7.86 3.407 11.48526831867891"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:0.7;width:2.34" rotation="0 90 0"></a-box>
+            <a-box id="indre_glas_væg" static-body depth="2" height="4" width="0.5" position="-7.86 1.877983059421863 13.23814989462669"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:3.76;width:1.14" rotation="0 90 0"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_big" static-body color="gray" position="-7.86 3.705040493557511 11.485493918825302"
+                material="" geometry="depth:0.1;height:0.1;width:4.6499999999999995" rotation="0 90 0"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_medium" static-body color="gray" position="-7.86 3.033991078080981 11.484796024583696"
+                material="" geometry="depth:0.1;height:0.1;width:2.4" rotation="0 90 0"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-7.86 0.04515017924449927 9.747583638936847"
+                material="" geometry="depth:0.1;height:0.1;width:1.14" rotation="0 90 0"></a-box>
+            <a-box id="indre_glas_væg_panel_horizontal_small" static-body color="gray" position="-7.86 0.04515017924449927 13.219491284065585"
+                material="" geometry="depth:0.1;height:0.1;width:1.14" rotation="0 90 0"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 9.210395734736357"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 10.284493105181221"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 12.684545431759297"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+            <a-box id="indre_glas_væg_panel_vertical" static-body color="gray" position="-7.86 1.8723229489174162 13.759694895230908"
+                material="" geometry="depth:0.1;height:0.1;width:3.76" rotation="0 0 -90"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+
+        <!-- #region Bakeoff -->
+        <a-entity id="bakeoff_skab" static-body>
+            <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
+                rotation="0 90 0"></a-entity>
+
+            <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.12770370466901 2.839736658205316 1.805"
+                rotation="0 90 0" material="color:#3f2a14" geometry="depth:1.6500000000000001;height:0.7;width:7.1"></a-box>
+            <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.91 1.24 1.805" rotation="0 90 0"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:7"></a-box>
+            <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.124321322940913 0.018501284135189866 1.805"
+                rotation="90 90 0" material="color:#242424" geometry="depth:0.05;height:1.5;width:7"></a-box>
+            <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.117 1.24 5.254" material="color:#242424"
+                geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+            <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.11155612991003 1.24 -1.6436708460679783"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+            <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 1.8 1.805" rotation="100 90 0"
+                material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
+            <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 1.2 1.805" rotation="100 90 0"
+                material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
+            <a-box id="bakeoff_hylder" depth="2" height="4" width="0.5" position="-14.124 0.6 1.805" rotation="100 90 0"
+                material="color:#808080" geometry="depth:0.05;height:1.5;width:6.8"></a-box>
+
+            <a-box id="bakeoff_paneler" depth="2" height="4" width="0.5" position="-13.371 1.6752104338604916 1.805"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07;width:6.8"></a-box>
+            <a-box id="bakeoff_paneler" depth="2" height="4" width="0.5" position="-13.371 1.0753150712558028 1.805"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.07000000000000002;width:6.8"></a-box>
+            <a-box id="bakeoff_paneler" depth="2" height="4" width="0.5" position="-13.371 0.2526912745986588 1.805"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.51;width:6.8"></a-box>
+
+            <a-box id="bakeoff_midtervæg" depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 2.9027"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+            <a-box id="bakeoff_midtervæg" depth="2" height="4" width="0.5" position="-14.106420982560106 1.24 0.5873"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+
+            <a-box id="bakeoff_glas" depth="2" height="4" width="0.5" position="-13.418600289900285 2.251456653885017 1.805"
+                rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.49;width:6.8"></a-box>
+            <a-box id="bakeoff_glas" depth="2" height="4" width="0.5" position="-13.418600289900285 1.5012815069996575 1.805"
+                rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
+            <a-box id="bakeoff_glas" depth="2" height="4" width="0.5" position="-13.419 0.9033963807268064 1.805"
+                rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
+        </a-entity>
+
+        <a-entity static-body="shape:cylinder" id="bread_model" obj-model="obj:assets/bread.obj;mtl:assets/bread.mtl"
+            position="-13.806022386734831 1.7504538795192668 2.5632448654463436" rotation="10 90 0.00020000249919888317"
+            scale="0.4 0.4 0.4" velocity="">
+        </a-entity>
+        <script>
+            document.getElementById('bread_model')[0].addEventListener('click', function () {
+                console.log(productInfoRaw[0].p_navn);
+            });
+        </script>
+
+        <!-- endregion -->
+
+
+        <!-- #region Marmelade/Chokolade-->
+        <a-entity id="marmalade_and_choolade_drawer" static-body>
+            <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -1.8628952314954694"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+            <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.246709023963693"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+            <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.903679534667896 1.24 -3.5561797333612972"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:3.5" rotation="0 90 0"></a-box>
+
+            <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 2.2845474740141842 -3.549"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.5"></a-box>
+            <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 1.52 -3.549"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.5"></a-box>
+            <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 0.7650000000000001 -3.549"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.5"></a-box>
+            <a-box id="marmelade/chokolade_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 0.125 -3.5489766808433525"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:3.4;width:1.45"></a-box>
+
+            <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.367141782788918 2.288 -3.557"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
+            <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.370348191438758 1.516435970688553 -3.556734198277924"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
+            <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.375 0.7656752842555152 -3.556734198277924"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.08;width:3.3"></a-box>
+            <a-box id="marmelade/chokolade_paneler" color="" depth="2" height="4" width="0.5" position="-13.393060590239026 0.08202992418277075 -3.556734198277924"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.17;width:3.3"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+
+        <!-- #region Øko Grønt-->
+        <a-entity id="organic_vege" static-body>
+            <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.4512462361084815"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+            <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -13.027532991592029"
+                material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
+            <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.91 1.24 -9.240121870187442"
+                rotation="0 90 0" material="color:#242424" geometry="depth:0.1;height:2.5;width:7.65"></a-box>
+
+            <a-box id="økogrønt_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 2 -9.241452866316452"
+                rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:7.5"></a-box>
+            <a-box id="økogrønt_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 1.1575431103084735 -9.241452866316452"
+                rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:7.5"></a-box>
+            <a-box id="økogrønt_hylder" color="" depth="2" height="4" width="0.5" position="-14.124 0.25 -9.241"
+                rotation="100 90 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:7.5"></a-box>
+
+            <a-box id="økogrønt_paneler" color="" depth="2" height="4" width="0.5" position="-13.375 1.8701434533427919 -9.241"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.1;width:7.48"></a-box>
+            <a-box id="økogrønt_paneler" color="" depth="2" height="4" width="0.5" position="-13.37547083669862 1.0254647707413511 -9.241101139201064"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.1;width:7.48"></a-box>
+            <a-box id="økogrønt_paneler" color="" depth="2" height="4" width="0.5" position="-13.37547083669862 0.07677876666577366 -9.241101139201064"
+                rotation="0 90 0" material="color:#595959" geometry="depth:0.02;height:0.16;width:7.48"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+
+        <!-- #region Alm Grønt-->
+        <a-gltf-model id="vegetable_shelf" static-body src="#vegetables" position="-18.773384328805058 0 0" rotation="0 -90 0"
+            gltf-model="assets/organic_vege.gltf"></a-gltf-model>
+        <!-- endregion -->
+
+        <!-- #region Frugt Ø-->
+        <a-entity id="fruit_island" static-body>
+            <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.998995225271198 0.6213002725412748 -5.982490438661892"
+                material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
+            <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.6174522886669437 -5.982490438661892"
+                material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
+            <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.999050233081594 0.6176186596757036 -10.014490748451838"
+                material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
+            <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.6179317730124633 -10.014050542214232"
+                material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
+            <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-6.016463973178505 0.9890212507001996 -8.002469724752897"
+                material="color:#808080" geometry="height:2;radius:0.02"></a-cylinder>
+            <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.99901963394356 0.9745648220537588 -8.002469724752897"
+                material="color:#808080" geometry="height:2;radius:0.02"></a-cylinder>
+
+            <a-box id="frugt_ø_bund" color="" depth="2" height="4" width="0.5" position="-8.010458959491668 0.8689724895284214 -8.000350641362662"
+                material="color:#242424" geometry="depth:0.05;height:4.1;width:4.05" rotation="90 0 0"></a-box>
+            <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-9.999043604506083 0.8126840700493152 -8.002469724752897"
+                material="color:#808080" geometry="height:4.05;radius:0.01" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-6.01679286358271 0.8126840700493152 -8.002469724752897"
+                material="color:#808080" geometry="height:4.05;radius:0.01" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-8.008232479116707 0.8126840700493152 -10.013671234645686"
+                material="color:#808080" geometry="height:4;radius:0.01" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-8.008232479116707 0.8126840700493152 -10.013671234645686"
+                material="color:#808080" geometry="height:4;radius:0.01" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_bund" height="3" radius="1.5" position="-8.008232479116707 0.8126840700493152 -5.983348740751858"
+                material="color:#808080" geometry="height:4;radius:0.01" rotation="90 90 0"></a-cylinder>
+
+            <a-box id="frugt_ø_midtervæg" color="" depth="2" height="4" width="0.5" position="-8.008 1.434 -8" material="color:#242424"
+                geometry="depth:0.03;height:1.08;width:3.96"></a-box>
+            <a-box id="frugt_ø_sidevæg" color="" depth="2" height="4" width="0.5" position="-9.99990608683546 1.434 -7.998654532102862"
+                material="color:#242424" geometry="depth:0.03;height:1.08;width:1.6" rotation="0 90 0"></a-box>
+            <a-box id="frugt_ø_sidevæg" color="" depth="2" height="4" width="0.5" position="-6.017830470510596 1.434 -7.998654532102862"
+                material="color:#242424" geometry="depth:0.03;height:1.08;width:1.6" rotation="0 90 0"></a-box>
+
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.2289004935343963 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.174172824344863 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.1161528405231202 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.0607453662930841 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 1.0036453966002776 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-6.017 0.9434928523615467 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.824585394192967 1.086 -5.983"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.65034974658792 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.498532420105004 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.348870842396577 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.194087602375472 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.05236996425085 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.904903461144619 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.742575678961485 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.575202711350128 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.395026637579193 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.203430553887635 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.029626009267096 1.086 -5.983"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.837865509709273 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.655159274521539 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.485328581126469 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.296182240308446 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.119328910812123 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.935629226380698 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.770830583291127 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.591644191377691 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.394811919418012 1.08618462574279 -5.982801551419873"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.210130298964861 1.08618462574279 -5.982846603720089"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.2289004935343963 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.174172824344863 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.1161528405231202 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.0607453662930841 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 1.0036453966002776 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-10 0.9434928523615467 -8.002" material="color:#808080"
+                geometry="height:4.05;radius:0.005" rotation="90 0 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.167778815656345"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.336840980086685"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.508234388611639"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.667834183596753"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -6.839659948824227"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -7.021706530567414"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -7.193510554644119"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -8.80368694868693"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -8.987161401113937"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.170875219241383"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.333267900644799"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.494955529218709"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.659605174908561"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-10.000 1.08618462574279 -9.8334972748888"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.229 -5.982892613444388"
+                material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.174 -5.982892613444388"
+                material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.116 -5.982892613444388"
+                material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.061 -5.982892613444388"
+                material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.004 -5.982892613444388"
+                material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 0.943 -5.982892613444388"
+                material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.167778815656345"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.336840980086685"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.508234388611639"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.667834183596753"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -6.839659948824227"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -7.021706530567414"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -7.193510554644119"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -8.80368694868693"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -8.987161401113937"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.170875219241383"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.333267900644799"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.494955529218709"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.659605174908561"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.01697587050275 1.08618462574279 -9.8334972748888"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.229 -10.013865423247305"
+                material="color:#808080" geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.174 -10.014" material="color:#808080"
+                geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.116 -10.014" material="color:#808080"
+                geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.061 -10.014" material="color:#808080"
+                geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 1.004 -10.014" material="color:#808080"
+                geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme" height="3" radius="1.5" position="-8.01125395405024 0.943 -10.014" material="color:#808080"
+                geometry="height:3.96;radius:0.005" rotation="90 90 0"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.824585394192967 1.086 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.65034974658792 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.498532420105004 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.348870842396577 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.194087602375472 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-9.05236996425085 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.904903461144619 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.742575678961485 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.575202711350128 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.395026637579193 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.203430553887635 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-8.029626009267096 1.086 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.837865509709273 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.655159274521539 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.485328581126469 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.296182240308446 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-7.119328910812123 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.935629226380698 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.770830583291127 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.591644191377691 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.394811919418012 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+            <a-cylinder id="frugt_ø_ramme_inner" height="3" radius="1.5" position="-6.210130298964861 1.08618462574279 -10.014"
+                material="color:#808080" geometry="height:0.285;radius:0.005"></a-cylinder>
+
+            <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.011005666772935 1.6203065031129278 -7.713814609026583"
+                rotation="100 0 0" material="color:#808080" geometry="depth:0.03;height:0.58;width:3.95"></a-box>
+            <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.006506170160215 1.1261725690188424 -7.600399815605115"
+                rotation="100 0 0" material="color:#808080" geometry="depth:0.03;height:0.8;width:3.95"></a-box>
+            <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.003074223466408 1.622494362319767 -8.288397197083103"
+                rotation="-100 0 0" material="color:#808080" geometry="depth:0.03;height:0.58;width:3.95"></a-box>
+            <a-box id="frugt_ø_hylder" color="" depth="2" height="4" width="0.5" position="-8.009589510930955 1.1259452607864422 -8.394710209794855"
+                rotation="-100 0 0" material="color:#808080" geometry="depth:0.03;height:0.7999999999999999;width:3.95"></a-box>
+
+            <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 1.5716109403084604 -7.41461867009698"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:4.000000000000001"></a-box>
+            <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 0.9962544457101932 -7.209157959728518"
+                material="color:#595959" geometry="depth:0.02;height:0.2;width:4.000000000000001"></a-box>
+            <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 1.5716109403084604 -8.585369809444675"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:4.000000000000001"></a-box>
+            <a-box id="frugt_ø_hyldekant" color="" depth="2" height="4" width="0.5" position="-8.010033913684639 0.9962544457101932 -8.787054148817587"
+                material="color:#595959" geometry="depth:0.02;height:0.2;width:4.000000000000001"></a-box>
+        </a-entity>
+
+        <a-entity id="Oranges">
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.64951 -7.47636"
+                rotation="20 90 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.67253 -7.59378"
+                rotation="0 60 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.69282 -7.7114"
+                rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.92101 1.71491 -7.82931"
+                rotation="30 90 20" scale="0.06 0.06 0.06" velocity=""></a-entity>
+
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.80174 1.64951 -7.47636"
+                rotation="20 90 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.8024 1.67253 -7.59378"
+                rotation="0 60 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.80253 1.69282 -7.7114"
+                rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.80111 1.71491 -7.82931"
+                rotation="30 90 20" scale="0.06 0.06 0.06" velocity=""></a-entity>
+
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.86296 1.73999 -7.52024"
+                rotation="20 90 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.85914 1.76395 -7.63988"
+                rotation="0 60 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
+            <a-entity id="Orange_model" obj-model="obj:assets/Orange.obj;mtl:assets/Orange.mtl" position="-9.85927 1.78569 -7.75634"
+                rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
+        </a-entity>
+        <!-- endregion -->
+
+        <!-- #region Slagter Køl-->
+        <a-entity id="meat_box" static-body>
+            <a-box id="slagterkøl_bund" color="" depth="2" height="4" width="0.5" position="-7.5690305270068405 0.04836249529945569 -0.5278351005213164"
+                material="color:#B0B0B0" geometry="depth:0.1;height:3.6;width:5" rotation="90 0 0"></a-box>
+
+            <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-7.569 0.5005413113462791 -2.370231271757763"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:5"></a-box>
+            <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-7.569 0.5012213636373924 1.306"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:5"></a-box>
+            <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-5.025259362627741 0.5013736406537435 -0.5336350948668107"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:3.77" rotation="0 90 0"></a-box>
+            <a-box id="slagterkøl_væg" color="" depth="2" height="4" width="0.5" position="-10.11799770310465 0.501 -0.534"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:3.77" rotation="0 90 0"></a-box>
+
+            <a-box id="slagterkøl_midten" color="" depth="2" height="4" width="0.5" position="-7.569 0.6070664894328827 -0.531"
+                material="color:#B0B0B0" geometry="depth:0.25;height:1.1;width:5"></a-box>
+            <a-cylinder id="slagterkøl_midten_panel" height="3" radius="1.5" position="-7.569723739340184 1.1495219695217425 -0.5311900009856816"
+                rotation="90 90 0" material="color:#808080" geometry="height:4.99;radius:0.12"></a-cylinder>
+
+            <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-10.124717823306389 0.9872242155179627 -0.5334428254820666"
+                rotation="90 0 0" material="color:#808080" geometry="height:3.78;radius:0.06"></a-cylinder>
+            <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-5.017743655268033 0.9872242155179627 -0.5334428254820666"
+                rotation="90 0 0" material="color:#808080" geometry="height:3.78;radius:0.06"></a-cylinder>
+            <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-7.573996188114139 0.9872242155179627 -2.377396928756417"
+                rotation="90 90 0" material="color:#808080" geometry="height:5.2;radius:0.06"></a-cylinder>
+            <a-cylinder id="slagterkøl_panel" height="3" radius="1.5" position="-7.573996188114139 0.9872242155179627 1.3100903862955866"
+                rotation="90 90 0" material="color:#808080" geometry="height:5.2;radius:0.06"></a-cylinder>
+
+            <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-5.017676205530226 0.5241395360679305 1.3101327079469018"
+                material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+            <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-5.017309713312202 0.5241395360679305 -2.3771170034906866"
+                material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+            <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-10.125388235580099 0.5241395360679305 1.3101327079469018"
+                material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+            <a-box id="slagterkøl_panel" color="" depth="2" height="4" width="0.5" position="-10.124895036557717 0.5241395360679305 -2.3778589229219063"
+                material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+
+        <!-- #region Konserves-->
+        <a-gltf-model id="canned_goods_shelf" static-body src="#small_shelf" position="-6.877 0 0" rotation="0 -90 0"
+            gltf-model="assets/small_shelf.gltf" scale="1 1.2 1"></a-gltf-model>
+        <!-- endregion -->
+
+
+        <!-- #region Køl-->
+        <a-entity id="køl">
+            <a-box id="køl_bund" color="" depth="2" height="4" width="0.5" position="5.518596980036763 0.020117169477509522 -13.73683321948068"
+                material="color:#B0B0B0" geometry="depth:2.5;height:0.05;width:12"></a-box>
+            <a-box id="køl_frontvæg" color="" depth="2" height="4" width="0.5" position="5.5185 0.5013736406537435 -12.541182740602853"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:12"></a-box>
+            <a-box id="køl_midtervæg" color="" depth="2" height="4" width="0.5" position="5.5185 0.5013736406537435 -13.809936930915024"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:12"></a-box>
+            <a-box id="køl_bagvæg" color="" depth="2" height="4" width="0.5" position="5.5185 1.4973493525036243 -14.91126109179625"
+                material="color:#B0B0B0" geometry="depth:0.1;height:3;width:12"></a-box>
+            <a-box id="køl_sidevæg_stor-1" color="" depth="2" height="4" width="0.5" position="-0.4313489689705746 1.4973493525036243 -14.302317935928064"
+                material="color:#B0B0B0" geometry="depth:0.1;height:3;width:1.3" rotation="0 90 0"></a-box>
+            <a-box id="køl_sidevæg_stor-2" color="" depth="2" height="4" width="0.5" position="11.46724921718603 1.4973493525036243 -14.302317935928064"
+                material="color:#B0B0B0" geometry="depth:0.1;height:3;width:1.3" rotation="0 90 0"></a-box>
+            <a-box id="køl_sidevæg_lille-1" color="" depth="2" height="4" width="0.5" position="-0.4313489689705746 0.501 -13.125484446078415"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:1.1" rotation="0 90 0"></a-box>
+            <a-box id="køl_sidevæg_lille-2" color="" depth="2" height="4" width="0.5" position="11.46724921718603 0.501 -13.125484446078415"
+                material="color:#B0B0B0" geometry="depth:0.1;height:1;width:1.1" rotation="0 90 0"></a-box>
+            <a-box id="køl_top" color="" depth="2" height="4" width="0.5" position="5.518596980036763 3.3357205193530257 -14.223162731931176"
+                material="color:#808080" geometry="depth:1.5;height:0.7;width:12.06"></a-box>
+
+            <a-cylinder id="køl_frontvæg_panel" height="3" radius="1.5" position="5.518 0.974110789282951 -12.542"
+                rotation="90 90 0" material="color:#808080" geometry="height:12.002;radius:0.06"></a-cylinder>
+            <a-cylinder id="køl_sidevæg_lille_panel-1" height="3" radius="1.5" position="-0.4286145983660204 0.974 -13.070246343999196"
+                rotation="90 0 0" material="color:#808080" geometry="height:1.165;radius:0.06"></a-cylinder>
+            <a-cylinder id="køl_sidevæg_lille_panel-2" height="3" radius="1.5" position="11.464299978115191 0.974 -13.070246343999196"
+                rotation="90 0 0" material="color:#808080" geometry="height:1.165;radius:0.06"></a-cylinder>
+            <a-cylinder id="køl_sidevæg_stor_panel-1" height="3" radius="1.5" position="-0.4286145983660204 1.9656621352001147 -13.653853931038402"
+                material="color:#808080" geometry="height:2.04;radius:0.06"></a-cylinder>
+            <a-cylinder id="køl_sidevæg_stor_panel-2" height="3" radius="1.5" position="11.464299978115191 1.9656621352001147 -13.653853931038402"
+                material="color:#808080" geometry="height:2.04;radius:0.06"></a-cylinder>
+            <a-box id="køl_hjørne-1" color="" depth="2" height="4" width="0.5" position="-0.42932022137238945 0.5241395360679305 -12.541021453383243"
+                material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+            <a-box id="køl_hjørne-2" color="" depth="2" height="4" width="0.5" position="11.464299978115191 0.5241395360679305 -12.541021453383243"
+                material="color:#808080" geometry="depth:0.12;height:1.05;width:0.12"></a-box>
+            <a-box id="køl_hjørne-3" color="" depth="2" height="4" width="0.5" position="-0.44924705839183365 1.4941533282502857 -14.898472699717841"
+                material="color:#808080" geometry="depth:0.12;height:3;width:0.12"></a-box>
+            <a-box id="køl_hjørne-4" color="" depth="2" height="4" width="0.5" position="11.485527153391104 1.4941533282502857 -14.898472699717841"
+                material="color:#808080" geometry="depth:0.12;height:3;width:0.12"></a-box>
+            <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="11.464498717773086 0.012908921140919682 -13.796967638565464"
+                material="color:#808080" geometry="depth:0.12;height:2.4;width:0.12" rotation="90 0 0"></a-box>
+            <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="-0.42918221706862636 0.012908921140919682 -13.796967638565464"
+                material="color:#808080" geometry="depth:0.12;height:2.4;width:0.12" rotation="90 0 0"></a-box>
+            <a-box id="køl_bund_panel" color="" depth="2" height="4" width="0.5" position="5.51346229983849 0.012908921140919682 -12.542474478240184"
+                material="color:#808080" geometry="depth:0.12;height:11.84;width:0.12" rotation="90 0 90"></a-box>
+
+            <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 1.0705673969743663 -14.287306669696244"
+                rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
+            <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 1.738 -14.287306669696244"
+                rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
+            <a-box id="køl_hylder" color="" depth="2" height="4" width="0.5" position="5.511451791688075 2.4046 -14.287306669696244"
+                rotation="100 0 0" material="color:#808080" geometry="depth:0.05;height:1.18;width:11.889999999999999"></a-box>
+
+            <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 2.2972254122449987 -13.702599180942816"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
+            <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 1.6327823335695644 -13.702599180942816"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
+            <a-box id="køl_hylder_paneler" color="" depth="2" height="4" width="0.5" position="5.511 0.9669908324361172 -13.702599180942816"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:11.790000000000001"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+
+        <!-- #region Spot Fryser-->
+        <a-gltf-model id="spot_freezer1" src="#small_freezer" position="-1.742 0 -12.868127556680653" gltf-model="assets/small_freezer.gltf"
+            scale="0.82 1 0.5" rotation="0 90 0"></a-gltf-model>
+        <a-gltf-model id="spot_freezer2" src="#small_freezer" position="9.065632649561833 0 -12.868127556680653"
+            gltf-model="assets/small_freezer.gltf" scale="0.8200000000000001 1 0.5" rotation="0 90 0"></a-gltf-model>
+        <!-- endregion -->
+
+
+        <!-- #region Fryser-->
+        <a-gltf-model id="freezer_area" src="#freezer" position="16.264098304864245 0 -6.049" gltf-model="assets/freezer.gltf"
+            scale="1.7 1 1.13"></a-gltf-model>
+        <!-- endregion -->
+
+
+        <!-- #region Mejeri/Æg/osv.-->
+        <a-entity id="mejeri/æg/osv">
+            <a-box id="mejeri/æg/osv_bund" color="" depth="2" height="4" width="0.5" position="14.054 0.119 -6.482"
+                material="color:#242424" geometry="depth:11.96;height:0.25;width:1.75"></a-box>
+            <a-box id="mejeri/æg/osv_bagvæg" color="" depth="2" height="4" width="0.5" position="14.858298078586927 1.504 -6.482"
+                material="color:#242424" geometry="depth:11.96;height:0.15;width:3" rotation="0 0 90"></a-box>
+            <a-box id="mejeri/æg/osv_sidevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.5055245893105553 -12.4"
+                material="color:#242424" geometry="depth:0.25;height:3;width:1.75"></a-box>
+            <a-box id="mejeri/æg/osv_sidevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.5055245893105553 -0.4"
+                material="color:#242424" geometry="depth:0.25;height:3;width:1.75"></a-box>
+            <a-box id="mejeri/æg/osv_topvæg" color="" depth="2" height="4" width="0.5" position="14.054 3.0000071242351325 -6.482"
+                material="color:#242424" geometry="depth:11.96;height:0.009999999999999998;width:1.75"></a-box>
+            <a-box id="mejeri/æg/osv_toppen" color="" depth="2" height="4" width="0.5" position="14.018069073931406 3.350887627474314 -6.401879043037204"
+                material="color:#595959" geometry="depth:1.9;height:0.7;width:12.349999999999998" rotation="0 90 0"></a-box>
+
+            <a-box id="mejeri/æg/osv_skillevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.506 -9.3"
+                material="color:#242424" geometry="depth:0.1;height:3;width:1.75"></a-box>
+            <a-box id="mejeri/æg/osv_skillevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.506 -6.2"
+                material="color:#242424" geometry="depth:0.1;height:3;width:1.75"></a-box>
+            <a-box id="mejeri/æg/osv_skillevæg" color="" depth="2" height="4" width="0.5" position="14.054 1.506 -3.1"
+                material="color:#242424" geometry="depth:0.1;height:3;width:1.75"></a-box>
+
+            <a-box id="mejeri/æg/osv_hylde" color="" depth="2" height="4" width="0.5" position="14.00830439899395 2.2 -6.394335337369467"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:11.89;width:1.5999999999999999"></a-box>
+            <a-box id="mejeri/æg/osv_hylde" color="" depth="2" height="4" width="0.5" position="14.00830439899395 1.4 -6.394335337369467"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:11.89;width:1.6"></a-box>
+            <a-box id="mejeri/æg/osv_hylde" color="" depth="2" height="4" width="0.5" position="14.007858946668321 0.2613377361334389 -6.394335337369467"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:11.89;width:1.5999999999999999"></a-box>
+
+            <a-box id="mejeri/æg/osv_paneler" color="" depth="2" height="4" width="0.5" position="13.211244485549702 2.19 -6.394"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:11.89" rotation="0 90 0"></a-box>
+            <a-box id="mejeri/æg/osv_paneler" color="" depth="2" height="4" width="0.5" position="13.211244485549702 1.4 -6.394"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:11.89" rotation="0 90 0"></a-box>
+            <a-box id="mejeri/æg/osv_paneler" color="" depth="2" height="4" width="0.5" position="13.211244485549702 0.261 -6.394"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:11.89" rotation="0 90 0"></a-box>
+
+            <a-box id="mejeri/æg/osv_placeholder_glass" depth="2" height="4" width="0.5" position="13.18929096762282 1.6199819783913776 -6.405660482914552"
+                material="color:#7FFAFF;opacity:0.2" geometry="depth:0.01;height:2.8000000000000003;width:11.96"
+                rotation="0 90 0"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+
+        <!-- #region Pasta/Ris/Andet kolonial-->
+        <a-gltf-model id="pasta_rice_other" src="#big_shelf" position="-1.492 0 -14.178799419029051" gltf-model="assets/big_shelf.gltf"
+            scale="0.75 1 1"></a-gltf-model>
+        <!-- endregion -->
+
+
+        <!-- #region Drikkevarer-->
+        <a-gltf-model id="drinks" src="#big_shelf" position="9.718734723811725 0 15.773813376626403" rotation="0 180 0"
+            gltf-model="assets/big_shelf.gltf" scale="0.75 1 1"></a-gltf-model>
+        <!-- endregion -->
+
+
+        <!-- #region Vin & Spiritus-->
+        <a-gltf-model id="vin_og_spiritus" src="#big_shelf" position="-0.008067213105741544 0 10.75035055463159"
+            rotation="0 90 0" gltf-model="assets/big_shelf.gltf" scale="0.7 1 1"></a-gltf-model>
+
+      <a-entity id="hvidvins_flasker">
+        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.02" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.49" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.96" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.43" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.9" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.37" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.84" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+      </a-entity>
+
+      <a-entity id="rødvins_flasker">
+        <a-gltf-model id="rødvin" src="#rødvins_flasker" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.47" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.94" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.41" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.88" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.35" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.82" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+      </a-entity>
+        <!-- endregion -->
+
+
+        <!-- #region Diverse nonfood ting (husholdning)-->
+        <a-gltf-model id="diverse_nonfood_stuff" src="#big_shelf" position="-1.492 0 -7.243907012226542" gltf-model="assets/big_shelf.gltf"
+            scale="0.75 1 1"></a-gltf-model>
+        <!-- endregion -->
+
+
+        <!-- #region Baby stuff og personlig pleje-->
+        <a-gltf-model id="baby_stuff_and_personel_care_shelf" src="#big_shelf" position="9.718734723811725 0 22.699096033522476"
+            rotation="0 180 0" gltf-model="assets/big_shelf.gltf" scale="0.75 1 1"></a-gltf-model>
+        <!-- endregion -->
+
+
+        <!-- #region Slik og Snacks-->
+        <a-entity id="candy_and_snacks">
+            <a-box id="slik_og_snacks_bagvæg" color="" depth="2" height="4" width="0.5" position="7.473730931470994 1.4920319055658708 14.910141488078983"
+                material="color:#242424" geometry="depth:0.1;height:3;width:15"></a-box>
+            <a-box id="slik_og_snacks_sidevæg" color="" depth="2" height="4" width="0.5" position="14.92367563551891 1.4908892095020871 14.112728216929394"
+                material="color:#242424" geometry="depth:0.1;height:3;width:1.5" rotation="0 90 0"></a-box>
+            <a-box id="slik_og_snacks_midtervæg" color="" depth="2" height="4" width="0.5" position="10.107159924380042 1.4915209496148267 14.111574648332432"
+                material="color:#242424" geometry="depth:0.1;height:3;width:1.5" rotation="0 90 0"></a-box>
+            <a-box id="slik_og_snacks_midtervæg" color="" depth="2" height="4" width="0.5" position="5.01230551294914 1.493323309463143 14.111574648332432"
+                material="color:#242424" geometry="depth:0.1;height:3;width:1.51" rotation="0 90 0"></a-box>
+            <a-box id="slik_og_snacks_sidevæg" color="" depth="2" height="4" width="0.5" position="0.023834953937472064 1.4917190160857592 14.111574648332432"
+                material="color:#242424" geometry="depth:0.1;height:3;width:1.5" rotation="0 90 0"></a-box>
+
+            <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.498570763663627 2.671794586036607 14.138899658690972"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
+            <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 2.672 13.38842740066098"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:14.88"></a-box>
+            <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.498570763663627 1.8693620705889913 14.138899658690972"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
+            <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 1.869 13.38842740066098"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:14.88"></a-box>
+            <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.487949835666367 1.0160725177745538 14.138899658690972"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
+            <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 1.016 13.38842740066098"
+                material="color:#595959" geometry="depth:0.02;height:0.1;width:14.88"></a-box>
+            <a-box id="slik_og_snacks_hylder" color="" depth="2" height="4" width="0.5" position="7.498570763663627 0.17278035216008725 14.138899658690972"
+                rotation="90 0 0" material="color:#808080" geometry="depth:0.05;height:1.5;width:14.88"></a-box>
+            <a-box id="slik_og_snacks_paneler" color="" depth="2" height="4" width="0.5" position="7.452281290250825 0.1085610061609048 13.38842740066098"
+                material="color:#595959" geometry="depth:0.02;height:0.22000000000000003;width:14.88"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+        <!-- #region Krydderier/mel/køkken-->
+        <a-gltf-model id="spices_flour_and_kitchen" src="#small_shelf" position="-3.1467727255285585 -0.0068279998165956535 -7.034527198479602"
+            rotation="0 90 0" gltf-model="assets/small_shelf.gltf"></a-gltf-model>
+        <!-- endregion -->
+
+        <!-- #region Selvbetjenings Kasse-->
+        <a-entity id="selvbetjenings_kasse">
+            <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-2.1505097864893647 0.7434802855760996 14.188827135756139"
+                material="color:#242424" geometry="depth:0.1;height:1.5;width:1.5" rotation="0 90 0"></a-box>
+            <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-3.69100648423096 0.7434802855760996 14.887672438373714"
+                material="color:#242424" geometry="depth:0.1;height:1.5;width:3"></a-box>
+
+            <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-2.1505097864893647 0.7434802855760996 14.188827135756139"
+                material="color:#242424" geometry="depth:0.1;height:1.5;width:1.5" rotation="0 90 0"></a-box>
+            <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-3.947739397693634 0.7434802855760996 14.887672438373714"
+                material="color:#242424" geometry="depth:0.1;height:1.5;width:3.5"></a-box>
+            <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-5.747250873504417 0.7434802855760996 14.188435263221105"
+                material="color:#242424" geometry="depth:0.1;height:1.5;width:1.5" rotation="0 90 0"></a-box>
+            <a-box id="selvbetjening_kasse_midtervæg" color="" depth="2" height="4" width="0.5" position="-3.6916125169194567 0.5453002461775603 14.188827135756139"
+                material="color:#242424" geometry="depth:0.05;height:1.1;width:1.5" rotation="0 90 0"></a-box>
+
+            <a-box id="selvbetjening_kasse_varehylde" color="" depth="2" height="4" width="0.5" position="-2.945 0.29648279361355107 14.161"
+                material="color:#595959" geometry="depth:1.35;height:0.6;width:1.5"></a-box>
+            <a-box id="selvbetjening_kasse_scanner/betaling_bund" color="" depth="2" height="4" width="0.5" position="-4.694387389259007 0.4975502574153322 14.161"
+                material="color:#595959" geometry="depth:1.35;height:1;width:2"></a-box>
+
+            <a-box id="skærm" color="" depth="2" height="4" width="0.5" position="-4.329497092459057 1.555 14.387382660990761"
+                material="color:#3e3e3e" geometry="depth:0.1;height:0.6599999999999999;width:0.9" rotation="35 0 0"></a-box>
+            <a-box id="skærm_billede" color="" depth="2" height="4" width="0.5" position="-4.32856227046585 1.585581905103418 14.343897449799512"
+                material="color:#efefef" geometry="depth:0.01;height:0.56;width:0.8" rotation="35 0 0"></a-box>
+            <a-box id="skærm_ramme_top" color="" depth="2" height="4" width="0.5" position="-4.329 1.839408621575602 14.513180730632715"
+                material="color:#3e3e3e" geometry="depth:0.02;height:0.05;width:0.9" rotation="35 0 0"></a-box>
+            <a-box id="skærm_ramme_bund" color="" depth="2" height="4" width="0.5" position="-4.329 1.3393302592691232 14.1641542536764"
+                material="color:#3e3e3e" geometry="depth:0.02;height:0.05;width:0.9" rotation="35 0 0"></a-box>
+            <a-box id="skærm_ramme_venstre" color="" depth="2" height="4" width="0.5" position="-3.904096271987451 1.5886030400436189 14.33876303534786"
+                material="color:#3e3e3e" geometry="depth:0.02;height:0.66;width:0.05" rotation="35 0 0"></a-box>
+            <a-box id="skærm_ramme_højre" color="" depth="2" height="4" width="0.5" position="-4.754615322542857 1.5895024289887145 14.33876303534786"
+                material="color:#3e3e3e" geometry="depth:0.02;height:0.66;width:0.05" rotation="35 0 0"></a-box>
+            <a-box id="skærm_bund" color="" depth="2" height="4" width="0.5" position="-4.329 1.084 14.46323912423443"
+                material="color:#3e3e3e" geometry="depth:0.5;height:0.18;width:0.8"></a-box>
+            <a-box id="skærm_stativ-1" color="" depth="2" height="4" width="0.5" position="-4.086467100028052 1.4193017984556004 14.449057916972903"
+                material="color:#808080" geometry="depth:0.08000000000000002;height:0.49999999999999994;width:0.08"></a-box>
+            <a-box id="skærm_stativ-2" color="" depth="2" height="4" width="0.5" position="-4.572699024163469 1.4193017984556004 14.449"
+                material="color:#808080" geometry="depth:0.08000000000000002;height:0.49999999999999994;width:0.08"></a-box>
+
+            <a-box id="betaling_bund" color="" depth="2" height="4" width="0.5" position="-5.128047741372538 1.084 14.21324395510222"
+                material="color:#3e3e3e" geometry="depth:1;height:0.18;width:0.8"></a-box>
+            <a-box id="betaling_stativ" color="" depth="2" height="4" width="0.5" position="-5.181812649676617 1.2975002712628134 14.06859328471272"
+                material="color:#808080" geometry="depth:0.05000000000000002;height:0.24999999999999994;width:0.05"
+                rotation="0 -15 0"></a-box>
+            <a-box id="kort_betaling" color="" depth="2" height="4" width="0.5" position="-5.179931210582248 1.431075328021553 14.056395499975784"
+                material="color:#3e3e3e" geometry="depth:0.06;height:0.25;width:0.15" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_skærm" color="" depth="2" height="4" width="0.5" position="-5.189836282398869 1.5016956162536756 14.093451901123727"
+                material="color:#efefef" geometry="depth:0.005;height:0.07;width:0.1" rotation="50 -15 0"></a-box>
+
+            <a-box id="skanner_bund" color="" depth="2" height="4" width="0.5" position="-4.324845469606348 1.0067180694145066 13.92019671499823"
+                material="color:#808080" geometry="depth:0.5;height:0.02;width:0.7"></a-box>
+            <a-box id="skanner" color="" depth="2" height="4" width="0.5" position="-4.333697381930976 1.0111980799379219 14.024134774492392"
+                material="color:#242424" geometry="depth:0.22;height:0.015;width:0.33"></a-box>
+
+            <a-box id="kort_betaling_knapramme" color="" depth="2" height="4" width="0.5" position="-5.113238604624158 1.4318181549715787 14.016128400964435"
+                material="colowar:#242424" geometry="depth:0.015000000000000001;height:0.11000000000000001;width:0.005"
+                rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knapramme" color="" depth="2" height="4" width="0.5" position="-5.218467134023698 1.4314591569907726 13.986766362786891"
+                material="color:#242424" geometry="depth:0.015000000000000001;height:0.11000000000000001;width:0.005"
+                rotation="50 -15 0"></a-box>
+
+            <a-box id="kort_betaling_knap_1" color="" depth="2" height="4" width="0.5" position="-5.14744114207809 1.4493710589542705 14.035706648073496"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_2" color="" depth="2" height="4" width="0.5" position="-5.174219059225162 1.4494131201574076 14.02850466827218"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_3" color="" depth="2" height="4" width="0.5" position="-5.201055771735555 1.4493130340041092 14.021287034282256"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_4" color="" depth="2" height="4" width="0.5" position="-5.142455248676681 1.4348015156230556 14.019222764987619"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_5" color="" depth="2" height="4" width="0.5" position="-5.16962427725515 1.4347237938331 14.011864562927194"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_6" color="" depth="2" height="4" width="0.5" position="-5.19643806090788 1.434817143636541 14.004632535671044"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_7" color="" depth="2" height="4" width="0.5" position="-5.137695181369743 1.4197026133355277 14.001820401567194"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_8" color="" depth="2" height="4" width="0.5" position="-5.164801242945915 1.4197592110715471 13.994524905755231"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_9" color="" depth="2" height="4" width="0.5" position="-5.191661231868675 1.4196848349927957 13.98720331579664"
+                material="color:#efefef" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_rød" color="" depth="2" height="4" width="0.5" position="-5.132521478993243 1.4036931423471284 13.983440929681608"
+                material="color:red" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_gul" color="" depth="2" height="4" width="0.5" position="-5.159552155398854 1.4036634389135318 13.976115026101112"
+                material="color:yellow" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+            <a-box id="kort_betaling_knap_grøn" color="" depth="2" height="4" width="0.5" position="-5.186715482275379 1.4036360051485892 13.968846453237465"
+                material="color:green" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
+        </a-entity>
+        <!-- endregion -->
+
+        <!--
         <script>
             var playerEl = document.querySelector('#head');
             console.log("This is the head " + playerEl)
@@ -1007,7 +1039,7 @@
             });
         </script>
 -->
-        </a-scene>
+    </a-scene>
 
 </body>
 
