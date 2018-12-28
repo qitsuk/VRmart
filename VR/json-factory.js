@@ -4,8 +4,8 @@ var productInfoRaw;
 function getProduct(productID) {
     xhr.open('GET', url + "?data=" + productID, false);
     xhr.send();
-    console.log(xhr.responseText);
-    return JSON.parse(xhr.responseText);
+    productInfoRaw = JSON.parse(xhr.responseText);
+    return productInfoRaw;
 }
 
 
