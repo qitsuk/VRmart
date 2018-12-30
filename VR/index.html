@@ -33,10 +33,6 @@
             <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
             <a-asset-item id="shopping_basket" src="assets/shopping_basket.gltf"></a-asset-item>
 
-            <!-- <a-asset>
-                <audio id="music" src="assets/music.mp3" preload="auto"></audio>
-            </a-asset> -->
-
 
             <!-- Varer -->
             <a-asset-item id="bread-mtl" src="assets/bread.mtl"></a-asset-item>
@@ -46,14 +42,14 @@
             <a-asset-item id="orange-mtl" src="assets/orange.mtl"></a-asset-item>
             <a-asset-item id="orange-obj" src="assets/orange.obj"></a-asset-item>
 
-                <a-asset-item id="White_Wine-mtl" src="assets/Wine_Bottle_White.mtl"></a-asset-item>
-                <a-asset-item id="White_Wine-obj" src="assets/Wine_Bottle_White.obj"></a-asset-item>
-                <a-asset-item id="hvidvins_flasker" src="assets/hvidvins_flasker.gltf"></a-asset-item>
+            <a-asset-item id="White_Wine-mtl" src="assets/wine_bottle_white.mtl"></a-asset-item>
+            <a-asset-item id="White_Wine-obj" src="assets/wine_bottle_white.obj"></a-asset-item>
+            <a-asset-item id="hvidvins_flasker" src="assets/hvidvins_flasker.gltf"></a-asset-item>
 
 
-                <a-asset-item id="Red_Wine-mtl" src="assets/Wine_Bottle_Red.mtl"></a-asset-item>
-                <a-asset-item id="Red_Wine-obj" src="assets/Wine_Bottle_Red.obj"></a-asset-item>
-                <a-asset-item id="rødvins_flasker" src="assets/rødvins_flasker.gltf"></a-asset-item>
+            <a-asset-item id="Red_Wine-mtl" src="assets/wine_bottle_red.mtl"></a-asset-item>
+            <a-asset-item id="Red_Wine-obj" src="assets/wine_bottle_red.obj"></a-asset-item>
+            <a-asset-item id="rødvins_flasker" src="assets/rødvins_flasker.gltf"></a-asset-item>
 
 
 
@@ -79,7 +75,7 @@
             <a-entity id="head" camera wasd-controls look-controls user-height="3" rotation="0 90 0">
                 <a-gltf-model id="basket" src="#shopping_basket" position="1.0 -1.2 0.1" scale="0.08 0.08 0.08"></a-gltf-model>
                 <a-entity position="0 0 -1" geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.05; material: color: red;"
-                    cursor="maxDistance: 30; fuse: true;">
+                    cursor="fuse: true;">
                     <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1"
                         to="1 1 1" dur="150"></a-animation>
                     <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1"
@@ -343,15 +339,18 @@
         </a-entity>
         <script>
             document.getElementById("bread_model").addEventListener('click', function () {
+                var rawData = getProduct(1);
+                var text = rawData[0].p_navn + "\n" + rawData[0].p_pris + "\n" + rawData[0].p_beskrivelse;
                 var sceneEl = document.querySelector('a-scene');
                 var el = document.createElement('a-entity');
                 el.setAttribute('geometry', {
                     primitive: 'box',
                     height: 3,
-                    width: 1
+                    width: 0.01,
+                    depth: 1
                 });
                 el.setAttribute('position', {
-                    x: -14,
+                    x: -13,
                     y: 1.5,
                     z: 2.5
                 });
@@ -359,7 +358,23 @@
                     color: 'white'
                 });
                 sceneEl.appendChild(el);
+                var el2 = document.createElement('a-entity');
+                el2.setAttribute('text', {
+                    color: "black",
+                    value: text 
+                });
+                el2.setAttribute('position', {
+                    x: 12.9,
+                    y: 1.5,
+                    z: 2.5
+                });
+                el2.setAttribute('geometry', {
+                    primitive: 'plane'
+                });
+                sceneEl.appendChild(el2);
+
                 console.log("A-Box has been appended to the scene!");
+                console.log(text);
             });
         </script>
 
@@ -704,7 +719,7 @@
                 rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
         </a-entity>
         <script>
-            document.getElementById("oranges").addEventListener('click', function() {
+            document.getElementById("oranges").addEventListener('click', function () {
                 console.log(getProduct(2)[0].p_navn);
             });
         </script>
@@ -892,25 +907,31 @@
         <a-gltf-model id="vin_og_spiritus" src="#big_shelf" position="-0.008067213105741544 0 10.75035055463159"
             rotation="0 90 0" gltf-model="assets/big_shelf.gltf" scale="0.7 1 1"></a-gltf-model>
 
-      <a-entity id="hvidvins_flasker">
-        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.02" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.49" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.96" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.43" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.9" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.37" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-        <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.84" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
-      </a-entity>
+        <a-entity id="hvidvins_flasker">
+            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.02" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.49" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 0.96" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.43" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 1.9" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.37" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+            <a-gltf-model id="hvidvin" src="#hvidvins_flasker" position="0 0 2.84" material="" gltf-model="assets/hvidvins_flasker.gltf"></a-gltf-model>
+        </a-entity>
 
-      <a-entity id="rødvins_flasker">
-        <a-gltf-model id="rødvin" src="#rødvins_flasker" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.47" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.94" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.41" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.88" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.35" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-        <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.82" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
-      </a-entity>
+        <a-entity id="rødvins_flasker">
+            <a-gltf-model id="rødvin" src="#rødvins_flasker" material="" gltf-model="assets/rødvins_flasker.gltf" scale="1 1 0.98"></a-gltf-model>
+            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.47" material="" gltf-model="assets/rødvins_flasker.gltf"
+                scale="1 1 0.98"></a-gltf-model>
+            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 0.94" material="" gltf-model="assets/rødvins_flasker.gltf"
+                scale="1 1 0.98"></a-gltf-model>
+            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.41" material="" gltf-model="assets/rødvins_flasker.gltf"
+                scale="1 1 0.98"></a-gltf-model>
+            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 1.88" material="" gltf-model="assets/rødvins_flasker.gltf"
+                scale="1 1 0.98"></a-gltf-model>
+            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.35" material="" gltf-model="assets/rødvins_flasker.gltf"
+                scale="1 1 0.98"></a-gltf-model>
+            <a-gltf-model id="rødvin" src="#rødvins_flasker" position="0 0 2.82" material="" gltf-model="assets/rødvins_flasker.gltf"
+                scale="1 1 0.98"></a-gltf-model>
+        </a-entity>
         <!-- endregion -->
 
 
