@@ -340,14 +340,14 @@
         <script>
             document.getElementById("bread_model").addEventListener('click', function () {
                 var rawData = getProduct(1);
-                var text = rawData[0].p_navn + "\n" + rawData[0].p_pris + "\n" + rawData[0].p_beskrivelse;
+                var text = rawData[0].p_navn + "\n" + rawData[0].p_pris + " kr.\n" + rawData[0].p_beskrivelse;
                 var sceneEl = document.querySelector('a-scene');
                 var el = document.createElement('a-entity');
                 el.setAttribute('geometry', {
                     primitive: 'box',
-                    height: 3,
+                    height: 1.2,
                     width: 0.01,
-                    depth: 1
+                    depth: 5
                 });
                 el.setAttribute('position', {
                     x: -13,
@@ -358,18 +358,22 @@
                     color: 'white'
                 });
                 sceneEl.appendChild(el);
-                var el2 = document.createElement('a-entity');
+                var el2 = document.createElement('a-text');
                 el2.setAttribute('text', {
                     color: "black",
-                    value: text 
+                    value: text,
+                    font: 'dejavu',
+                    align: 'center'
                 });
                 el2.setAttribute('position', {
-                    x: 12.9,
+                    x: -12.9,
                     y: 1.5,
                     z: 2.5
                 });
-                el2.setAttribute('geometry', {
-                    primitive: 'plane'
+                el2.setAttribute('rotation', {
+                    x: 0,
+                    y: 90,
+                    z: 0
                 });
                 sceneEl.appendChild(el2);
 
