@@ -16,7 +16,7 @@
 
 <body class="a-body" onload="objectListeners();">
 
-    <a-scene id="VRmartScene" physics="debug: true; driver:local; iterations: 40" gltf-exporter>
+    <a-scene id="VRmartScene" physics="driver:local; iterations: 40" gltf-exporter>
 
         <a-entity gltf-exporter></a-entity>
         <a-assets>
@@ -74,7 +74,7 @@
         <a-entity id="theCamera" position="-11 2 16.5">
             <a-entity id="head" camera wasd-controls look-controls user-height="3" rotation="0 90 0">
                 <a-gltf-model id="basket" src="#shopping_basket" position="1.0 -1.2 0.1" scale="0.08 0.08 0.08"></a-gltf-model>
-                <a-entity id="cursor" position="0 0 -1" geometry="primitive: ring; radiusOuter: 0.05; radiusInner: 0.03;" material="color: red;"
+                <a-entity id="cursor" position="0 0 -1" geometry="primitive: ring; radiusOuter: 0.04; radiusInner: 0.03;" material="color: red;"
                     cursor="fuse: true; fuse-timeout: 1500">
                     <!-- <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1"
                         to="1 1 1" dur="150"></a-animation>
@@ -113,9 +113,9 @@
 
 
         <a-box id="door_test" position="-11.245 1.603 14.99853990382453" material="color:#7FFAFF;opacity:0.2" geometry="depth:0.1;height:3.5;width:2.44">
-            <a-animation delay="3000" attribute="position" from="-11.245 1.603 14.99853990382453" to="-8.805 1.603 14.99853990382453"
-                dur="2000" easing="linear" fill="forwards"></a-animation>
-            <a-animation delay="8000" attribute="position" from="-8.805 1.603 14.99853990382453" to="-11.245 1.603 14.99853990382453"
+            <a-animation delay="7000" attribute="position" from="-11.245 1.603 14.99853990382453" to="-8.805 1.603 14.99853990382453"
+                dur="3000" easing="linear" fill="forwards"></a-animation>
+            <a-animation delay="12000" attribute="position" from="-8.805 1.603 14.99853990382453" to="-11.245 1.603 14.99853990382453"
                 dur="3000" easing="linear" fill="forwards"></a-animation>
         </a-box>
 
@@ -334,7 +334,7 @@
                 rotation="0 90 0" material="color:#7FFAFF;opacity:0.15" geometry="depth:0.01;height:0.3;width:6.8"></a-box>
         </a-entity>
 
-        <a-entity static-body="shape:cylinder" id="bread_model" obj-model="obj:assets/bread.obj;mtl:assets/bread.mtl"
+        <a-entity static-body="shape:box" id="bread_model" obj-model="obj:assets/bread.obj;mtl:assets/bread.mtl"
             position="-13.806022386734831 1.7504538795192668 2.5632448654463436" rotation="10 90 0.00020000249919888317"
             scale="0.4 0.4 0.4">
 
@@ -679,7 +679,7 @@
                 material="color:#595959" geometry="depth:0.02;height:0.2;width:4.000000000000001"></a-box>
         </a-entity>
 
-        <a-entity id="oranges">
+        <a-entity id="oranges" static-body="box">
             <a-entity id="orange_model" obj-model="obj:assets/orange.obj;mtl:assets/orange.mtl" position="-9.92101 1.64951 -7.47636"
                 rotation="20 90 50" scale="0.06 0.06 0.06" velocity=""></a-entity>
             <a-entity id="orange_model" obj-model="obj:assets/orange.obj;mtl:assets/orange.mtl" position="-9.92101 1.67253 -7.59378"
@@ -1104,17 +1104,6 @@
                 material="color:green" geometry="depth:0.005;height:0.015;width:0.02" rotation="50 -15 0"></a-box>
         </a-entity>
         <!-- endregion -->
-
-        <!--
-        <script>
-            var playerEl = document.querySelector('#head');
-            console.log("This is the head " + playerEl)
-
-            playerEl.addEventListener('collide', function (e) {
-                console.log('Player has collided with body #' + e.detail.body.id);
-            });
-        </script>
--->
     </a-scene>
 
 </body>
