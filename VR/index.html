@@ -9,11 +9,12 @@
     <script src="assets/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-gltf-exporter-component/dist/aframe-gltf-exporter-component.min.js"></script>
     <script src="json-factory.js"></script>
+    <script src="function.js"></script>
     <title>VRmart</title>
 </head>
 
 
-<body class="a-body ">
+<body class="a-body" onload="objectListeners();">
 
     <a-scene id="VRmartScene" physics="debug: true; driver:local; iterations: 40" gltf-exporter>
 
@@ -52,10 +53,6 @@
             <a-asset-item id="rødvins_flasker" src="assets/rødvins_flasker.gltf"></a-asset-item>
 
 
-
-
-
-
             <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
 
         </a-assets>
@@ -74,16 +71,15 @@
         <a-entity id="theCamera" position="-11 2 16.5">
             <a-entity id="head" camera wasd-controls look-controls user-height="3" rotation="0 90 0">
                 <a-gltf-model id="basket" src="#shopping_basket" position="1.0 -1.2 0.1" scale="0.08 0.08 0.08"></a-gltf-model>
-                <a-entity position="0 0 -1" geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.05; material: color: red;"
-                    cursor="fuse: true;">
-                    <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1"
+                <a-entity id="cursor" position="0 0 -1" geometry="primitive: ring; radiusOuter: 0.05; radiusInner: 0.03;" material="color: red;"
+                    cursor="fuse: true; fuse-timeout: 1500">
+                    <!-- <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1"
                         to="1 1 1" dur="150"></a-animation>
                     <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1"
-                        dur="1500"></a-animation>
+                        dur="1500"></a-animation> -->
                 </a-entity>
             </a-entity>
         </a-entity>
-        <a-entity sound="src: #music"></a-entity>
 
         <!--
         <a-entity id="cameraRig" position="-11 2 21">
@@ -334,56 +330,9 @@
 
         <a-entity static-body="shape:cylinder" id="bread_model" obj-model="obj:assets/bread.obj;mtl:assets/bread.mtl"
             position="-13.806022386734831 1.7504538795192668 2.5632448654463436" rotation="10 90 0.00020000249919888317"
-            scale="0.4 0.4 0.4" velocity="">
+            scale="0.4 0.4 0.4">
+
         </a-entity>
-        <script>
-            document.getElementById("bread_model").addEventListener('click', function () {
-                var rawData = getProduct(1);
-                var text = rawData[0].p_navn + "\n" + rawData[0].p_pris + " kr.\n" + rawData[0].p_beskrivelse;
-                var sceneEl = document.querySelector('a-scene');
-                var el = document.createElement('a-entity');
-                el.setAttribute('geometry', {
-                    primitive: 'box',
-                    height: 1.2,
-                    width: 0.01,
-                    depth: 5
-                });
-                el.setAttribute('position', {
-                    x: -13,
-                    y: 1.5,
-                    z: 2.5
-                });
-                el.setAttribute('material', {
-                    color: 'white'
-                });
-                sceneEl.appendChild(el);
-                var el2 = document.createElement('a-text');
-                el2.setAttribute('text', {
-                    color: "black",
-
-                    value: text
-
-                    value: text,
-                    font: 'dejavu',
-                    align: 'center'
-
-                });
-                el2.setAttribute('position', {
-                    x: -12.9,
-                    y: 1.5,
-                    z: 2.5
-                });
-                el2.setAttribute('rotation', {
-                    x: 0,
-                    y: 90,
-                    z: 0
-                });
-                sceneEl.appendChild(el2);
-
-                console.log("A-Box has been appended to the scene!");
-                console.log(text);
-            });
-        </script>
 
         <!-- endregion -->
 
@@ -750,11 +699,6 @@
             <a-entity id="orange_model" obj-model="obj:assets/orange.obj;mtl:assets/orange.mtl" position="-9.85927 1.78569 -7.75634"
                 rotation="35 40 30" scale="0.06 0.06 0.06" velocity=""></a-entity>
         </a-entity>
-        <script>
-            document.getElementById("oranges").addEventListener('click', function () {
-                console.log(getProduct(2)[0].p_navn);
-            });
-        </script>
         <!-- endregion -->
 
         <!-- #region Slagter Køl-->
