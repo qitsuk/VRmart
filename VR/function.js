@@ -103,7 +103,6 @@ function objectListeners() {
 
     //#region Rødvin
     document.getElementById('rødvin').addEventListener('mouseenter', function() {
-        console.log("Looking at it!");
         var redWineData = getProduct(3);
         var text = redWineData[0].p_navn + "\n" + redWineData[0].p_pris + " kr.\n" + redWineData[0].p_beskrivelse;
         var redWineBox = document.createElement('a-entity');
@@ -160,6 +159,10 @@ function objectListeners() {
     document.getElementById('oranges').addEventListener('mouseleave', function() {
         setTimeout(removeOrangeSign, 5000);
     });
+
+    document.getElementById('rødvin').addEventListener('mouseleave', function() {
+        setTimeout(removeRedWineSign, 10000);
+    });
 }
 
 function removeBreadSign() {
@@ -174,6 +177,15 @@ function removeOrangeSign() {
     if ((document.getElementById("orangeBox") && document.getElementById("orangeText")) !== null) {
         var text = document.getElementById("orangeText");
         var box = document.getElementById("orangeBox");
+        text.parentNode.removeChild(text);
+        box.parentNode.removeChild(box);
+    }
+}
+
+function removeRedWineSign() {
+    if ((document.getElementById("redWineBox") && document.getElementById("redWineText")) !== null) {
+        var text = document.getElementById("redWineText");
+        var box = document.getElementById("redWineBox");
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
     }
