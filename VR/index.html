@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     <script src="assets/aframe-physics-system.min.js"></script>
@@ -26,6 +26,7 @@
             <img id="outer_wall_texture" src="assets/outer_wall_texture.jpg">
             <img id="sky" src="assets/sky.jpg">
             <img id="ceiling_test" src="assets/ceiling_texture_test_3.jpg">
+            <img id="entre_billede" src="assets/entre_billede.png">
 
             <a-asset-item id="small_shelf" src="assets/small_shelf.gltf"></a-asset-item>
             <a-asset-item id="vegetables" src="assets/organic_vege.gltf"></a-asset-item>
@@ -33,6 +34,8 @@
             <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
             <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
             <a-asset-item id="shopping_basket" src="assets/shopping_basket.gltf"></a-asset-item>
+            <a-asset item="" id="text-sign.mtl" src="assets/text-sign.mtl"></a-asset>
+            <a-asset item="" id="text-sign.obj" src="assets/text-sign.obj"></a-asset>
 
 
             <!-- Varer -->
@@ -148,6 +151,9 @@
 
         <!-- #endregion -->
 
+        <a-entity id="Entre_skilt" obj-model="mtl:assets/text-sign.mtl;obj:assets/text-sign.obj" scale="-0.02 0.015 0.015" position="-8.61363 -0.003 8.74329" rotation="0 -45 0"></a-entity>
+        <a-image id="Entre_skilt_billede" src="#entre_billede" position="-8.53816 1.59469 8.68013" rotation="-42.16 -45 0" scale="0.9 0.98 1" material="" geometry=""></a-image>
+        <!--  <a-box id="Entre_skilt_billede" material="src: #entre_billede; repeat: 1 1;" position="-10.49456 0.70802 10.84223" width="1" height="0.5"></a-box> -->
 
         <!-- #region Vægge og Entré Parti -->
         <a-entity id="walls">
