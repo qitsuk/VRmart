@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     <script src="assets/aframe-physics-system.min.js"></script>
@@ -293,8 +293,7 @@
 
         <!-- #region Bakeoff -->
         <a-entity id="bakeoff_skab" static-body>
-            <a-entity id="logo" text-geometry="value:Bageri Varer;size:0.35;height:0.15" position="-13.399197297117881 2.7292752450191466 3.0777236112991644"
-                rotation="0 90 0"></a-entity>
+            <a-entity id="sektion_Bagværk" text-geometry="height:0.15;size:0.35;value:Bageri Varer" position="-13.399 2.701 3.078" rotation="0 90 0" material="color:#595959"></a-entity>
 
             <a-box id="bakeoff_ydre" depth="2" height="4" width="0.5" position="-14.12770370466901 2.839736658205316 1.805"
                 rotation="0 90 0" material="color:#3f2a14" geometry="depth:1.6500000000000001;height:0.7;width:7.1"></a-box>
@@ -361,13 +360,13 @@
                 var el2 = document.createElement('a-text');
                 el2.setAttribute('text', {
                     color: "black",
-<<<<<<< HEAD
+
                     value: text
-=======
+
                     value: text,
                     font: 'dejavu',
                     align: 'center'
->>>>>>> 7067a3aa29c0c49929f5f3bbfca4d54af544c88d
+
                 });
                 el2.setAttribute('position', {
                     x: -12.9,
@@ -390,6 +389,11 @@
 
 
         <!-- #region Marmelade/Chokolade-->
+        <a-entity id="sektion_Marmelade/Chokolade" static-body="sphereRadius:NaN" velocity="">
+          <a-entity id="text_Marmelade/Chokolade" text-geometry="size:0.23;bevelSize:7.21;height:0.15;value:Marmelade/Chokolade" position="-15.018 3.949 -1.911" rotation="0 90 0" material="color:#595959"></a-entity>
+          <a-box id="skilt_Marmelade/Chokolade" depth="2" height="4" width="0.5" position="-15.004 4.064 -3.555" rotation="0 90 0" material="color:#242424" geometry="width:3.5;depth:0.2;height:0.6"></a-box>
+        </a-entity>
+
         <a-entity id="marmalade_and_choolade_drawer" static-body>
             <a-box id="marmelade/chokolade_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -1.8628952314954694"
                 material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
@@ -420,6 +424,11 @@
 
 
         <!-- #region Øko Grønt-->
+        <a-entity id="sektion_Øko-Grønt" static-body="sphereRadius:NaN" velocity="">
+          <a-entity id="text_Øko-Grønt" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Oeko Groent" position="-15.018 3.915 -7.954" rotation="0 90 0" material="color:#595959"></a-entity>
+          <a-box id="skilt_Øko-Grønt" depth="2" height="4" width="0.5" position="-15.004 4.064 -9.113" rotation="0 90 0" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
+
         <a-entity id="organic_vege" static-body>
             <a-box id="økogrønt_vægge" color="" depth="2" height="4" width="0.5" position="-14.117 1.24 -5.4512462361084815"
                 material="color:#242424" geometry="depth:0.1;height:2.5;width:1.5"></a-box>
@@ -446,11 +455,26 @@
 
 
         <!-- #region Alm Grønt-->
+        <a-entity id="sektion_Alm-Grønt" static-body="sphereRadius:NaN" velocity="">
+          <a-entity id="text_Alm-Grønt" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Alm. Groent" position="-10.635 3.915 -14.985" material="color:#595959"></a-entity>
+          <a-box id="skilt_Alm-Grønt" depth="2" height="4" width="0.5" position="-9.546 4.064 -14.966" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
+
         <a-gltf-model id="vegetable_shelf" static-body src="#vegetables" position="-18.773384328805058 0 0" rotation="0 -90 0"
             gltf-model="assets/organic_vege.gltf"></a-gltf-model>
         <!-- endregion -->
 
         <!-- #region Frugt Ø-->
+        <a-entity id="sektion_Frugt-Ø" static-body>
+          <a-cylinder id="loftpanel-1" height="3" radius="1.5" position="-9.317 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel-2" height="3" radius="1.5" position="-6.687 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-1" height="3" radius="1.5" position="-9.317 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-2" height="3" radius="1.5" position="-6.687 4.362 -8.005" material="color:#808080" geometry="radius:0.04;height:1.12"></a-cylinder>
+          <a-entity id="text_Frugt-Ø" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Frugt" position="-8.484 3.95 -8.001" material="color:#595959"></a-entity>
+          <a-entity id="text_Frugt-Ø" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Frugt" position="-7.547 3.956 -8.001" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Frugt-Ø" depth="2" height="4" width="0.5" position="-8.004 4.064 -8.002" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
+
         <a-entity id="fruit_island" static-body>
             <a-cylinder id="frugt_ø_fundament" height="3" radius="1.5" position="-9.998995225271198 0.6213002725412748 -5.982490438661892"
                 material="color:#808080" geometry="height:1.25;radius:0.02"></a-cylinder>
@@ -734,6 +758,16 @@
         <!-- endregion -->
 
         <!-- #region Slagter Køl-->
+        <a-entity id="sektion_Slagter_Køl" static-body="sphereRadius:NaN" position="0.43 0 7.47" velocity="">
+          <a-cylinder id="loftpanel-1" height="3" radius="1.5" position="-9.317 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel-2" height="3" radius="1.5" position="-6.687 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-1" height="3" radius="1.5" position="-9.317 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-2" height="3" radius="1.5" position="-6.687 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-entity id="text_Slagter_Køl-1" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Slagter Koel" position="-9.126 3.94 -8.001" material="color:#595959"></a-entity>
+          <a-entity id="text_Slagter_Køl-2" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Slagter Koel" position="-6.88 3.929 -8.001" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Slagter_Køl" depth="2" height="4" width="0.5" position="-8.004 4.064 -8.002" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
+
         <a-entity id="meat_box" static-body>
             <a-box id="slagterkøl_bund" color="" depth="2" height="4" width="0.5" position="-7.5690305270068405 0.04836249529945569 -0.5278351005213164"
                 material="color:#B0B0B0" geometry="depth:0.1;height:3.6;width:5" rotation="90 0 0"></a-box>
@@ -774,12 +808,19 @@
 
 
         <!-- #region Konserves-->
+        <a-entity id="sektion_Konserves" static-body="sphereRadius:NaN" velocity="">
+          <a-entity id="text_Konserves" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Konserves" position="-4.307 3.915 -14.985" material="color:#595959"></a-entity>
+          <a-box id="skilt_Konserves" depth="2" height="4" width="0.5" position="-3.336 4.064 -14.966" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
+
         <a-gltf-model id="canned_goods_shelf" static-body src="#small_shelf" position="-6.877 0 0" rotation="0 -90 0"
             gltf-model="assets/small_shelf.gltf" scale="1 1.2 1"></a-gltf-model>
         <!-- endregion -->
 
 
         <!-- #region Køl-->
+        <a-entity id="sektion_Køl" text-geometry="height:0.15;size:0.35;value:Koel" position="4.972 3.182 -13.567" material="color:#B0B0B0"></a-entity>
+
         <a-entity id="køl">
             <a-box id="køl_bund" color="" depth="2" height="4" width="0.5" position="5.518596980036763 0.020117169477509522 -13.73683321948068"
                 material="color:#B0B0B0" geometry="depth:2.5;height:0.05;width:12"></a-box>
@@ -842,14 +883,22 @@
         <!-- endregion -->
 
 
+        <a-entity id="sektion_Fryser" static-body="sphereRadius:NaN" position="11.41 0 1.35" velocity="">
+          <a-cylinder id="loftpanel-1" height="3" radius="1.5" position="-9.317 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel-2" height="3" radius="1.5" position="-6.687 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-1" height="3" radius="1.5" position="-9.317 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-2" height="3" radius="1.5" position="-6.687 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-entity id="text_Fryser" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Fryser" position="-8.584 3.95 -8.001" material="color:#595959"></a-entity>
+          <a-entity id="text_Fryser" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Fryser" position="-7.488 3.956 -8.001" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Fryser" depth="2" height="4" width="0.5" position="-8.004 4.064 -8.002" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
+
         <!-- #region Spot Fryser-->
         <a-gltf-model id="spot_freezer1" src="#small_freezer" position="-1.742 0 -12.868127556680653" gltf-model="assets/small_freezer.gltf"
             scale="0.82 1 0.5" rotation="0 90 0"></a-gltf-model>
         <a-gltf-model id="spot_freezer2" src="#small_freezer" position="9.065632649561833 0 -12.868127556680653"
             gltf-model="assets/small_freezer.gltf" scale="0.8200000000000001 1 0.5" rotation="0 90 0"></a-gltf-model>
         <!-- endregion -->
-
-
         <!-- #region Fryser-->
         <a-gltf-model id="freezer_area" src="#freezer" position="16.264098304864245 0 -6.049" gltf-model="assets/freezer.gltf"
             scale="1.7 1 1.13"></a-gltf-model>
@@ -857,6 +906,8 @@
 
 
         <!-- #region Mejeri/Æg/osv.-->
+        <a-entity id="sektion_Mejeri/Æg/Osv." text-geometry="height:0.15;size:0.35;value:Mejeri / Aeg / Osv..." position="13.168 3.219 -8.482" material="color:#808080" rotation="0 -90 0"></a-entity>
+
         <a-entity id="mejeri/æg/osv">
             <a-box id="mejeri/æg/osv_bund" color="" depth="2" height="4" width="0.5" position="14.054 0.119 -6.482"
                 material="color:#242424" geometry="depth:11.96;height:0.25;width:1.75"></a-box>
@@ -904,6 +955,15 @@
             scale="0.75 1 1"></a-gltf-model>
         <!-- endregion -->
 
+        <a-entity id="sektion_Kolonial/Drikkevarer" static-body="sphereRadius:NaN" position="12.16 0 8.8" velocity="">
+          <a-cylinder id="loftpanel-1" height="3" radius="1.5" position="-9.317 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel-2" height="3" radius="1.5" position="-6.687 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-1" height="3" radius="1.5" position="-9.317 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-2" height="3" radius="1.5" position="-6.687 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-entity id="text_Drikkevarer" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Drikkevarer" position="-9.059 3.93 -8.001" material="color:#595959"></a-entity>
+          <a-entity id="text_Kolonial" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Kolonial" position="-7.3 3.929 -8.001" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Kolonial/Drikkevarer" depth="2" height="4" width="0.5" position="-8.004 4.064 -8.002" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
 
         <!-- #region Drikkevarer-->
         <a-gltf-model id="drinks" src="#big_shelf" position="9.718734723811725 0 15.773813376626403" rotation="0 180 0"
@@ -912,6 +972,11 @@
 
 
         <!-- #region Vin & Spiritus-->
+        <a-entity id="sektion_Vin/Spiritus" static-body="sphereRadius:NaN" velocity="">
+          <a-entity id="text_Vin/Spiritus" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Vin &amp; Spiritus" position="15.006 3.93 4.263" material="color:#595959" rotation="0 -90 0"></a-entity>
+          <a-box id="skilt_Vin/Spiritus" depth="2" height="4" width="0.5" position="14.992 4.064 5.466" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5" rotation="0 -90 0"></a-box>
+        </a-entity>
+
         <a-gltf-model id="vin_og_spiritus" src="#big_shelf" position="-0.008067213105741544 0 10.75035055463159"
             rotation="0 90 0" gltf-model="assets/big_shelf.gltf" scale="0.7 1 1"></a-gltf-model>
 
@@ -930,6 +995,15 @@
             scale="0.75 1 1"></a-gltf-model>
         <!-- endregion -->
 
+        <a-entity id="sektion_Husholdning/Baby_og_Pleje" static-body="sphereRadius:NaN" position="12.16 0 15.73" velocity="">
+          <a-cylinder id="loftpanel-1" height="3" radius="1.5" position="-9.317 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel-2" height="3" radius="1.5" position="-6.687 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-1" height="3" radius="1.5" position="-9.317 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-2" height="3" radius="1.5" position="-6.687 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-entity id="text_Baby_og_Pleje" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Baby &amp; Pleje" position="-9.197 3.93 -8.001" material="color:#595959"></a-entity>
+          <a-entity id="text_Husholdning" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Husholdning" position="-6.901 3.946 -8.001" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Husholdning/Baby_og_Pleje" depth="2" height="4" width="0.5" position="-8.004 4.064 -8.002" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
 
         <!-- #region Baby stuff og personlig pleje-->
         <a-gltf-model id="baby_stuff_and_personel_care_shelf" src="#big_shelf" position="9.718734723811725 0 22.699096033522476"
@@ -937,7 +1011,12 @@
         <!-- endregion -->
 
 
-        <!-- #region Slik og Snacks-->
+        <!-- #region Slik & Snacks-->
+        <a-entity id="sektion_Slik/Snacks" static-body="sphereRadius:NaN" velocity="">
+          <a-entity id="text_Slik/Snacks" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Slik &amp; Snacks" position="8.846 3.914 15.022" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Slik/Snacks" depth="2" height="4" width="0.5" position="7.587 4.064 15.009" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5" rotation="0 -180 0"></a-box>
+        </a-entity>
+
         <a-entity id="candy_and_snacks">
             <a-box id="slik_og_snacks_bagvæg" color="" depth="2" height="4" width="0.5" position="7.473730931470994 1.4920319055658708 14.910141488078983"
                 material="color:#242424" geometry="depth:0.1;height:3;width:15"></a-box>
@@ -970,11 +1049,25 @@
         <!-- endregion -->
 
         <!-- #region Krydderier/mel/køkken-->
+        <a-entity id="sektion_Krydderier" static-body="sphereRadius:NaN" position="1.305 0 15.5" velocity="">
+          <a-cylinder id="loftpanel-1" height="3" radius="1.5" position="-9.317 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel-2" height="3" radius="1.5" position="-6.687 4.92 -8.005" material="color:#808080" geometry="height:0.09;radius:0.18"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-1" height="3" radius="1.5" position="-9.317 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-cylinder id="loftpanel_lang-2" height="3" radius="1.5" position="-6.687 4.362 -8.005" material="color:#808080" geometry="height:1.12;radius:0.04"></a-cylinder>
+          <a-entity id="text_Krydderier" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Krydderier" position="-7.048 3.946 -8.001" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Krydderier" depth="2" height="4" width="0.5" position="-8.004 4.064 -8.002" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5"></a-box>
+        </a-entity>
+
         <a-gltf-model id="spices_flour_and_kitchen" src="#small_shelf" position="-3.1467727255285585 -0.0068279998165956535 -7.034527198479602"
             rotation="0 90 0" gltf-model="assets/small_shelf.gltf"></a-gltf-model>
         <!-- endregion -->
 
         <!-- #region Selvbetjenings Kasse-->
+        <a-entity id="sektion_Betaling" static-body="sphereRadius:NaN" velocity="">
+          <a-entity id="text_Betaling" text-geometry="bevelSize:7.21;height:0.15;size:0.3;value:Betaling" position="-3.247 3.943 15.022" material="color:#595959" rotation="0 -180 0"></a-entity>
+          <a-box id="skilt_Betaling" depth="2" height="4" width="0.5" position="-3.946 4.065 15.009" material="color:#242424" geometry="depth:0.2;height:0.6;width:3.5" rotation="0 -180 0"></a-box>
+        </a-entity>
+
         <a-entity id="selvbetjenings_kasse">
             <a-box id="selvbetjening_kasse_væg" color="" depth="2" height="4" width="0.5" position="-2.1505097864893647 0.7434802855760996 14.188827135756139"
                 material="color:#242424" geometry="depth:0.1;height:1.5;width:1.5" rotation="0 90 0"></a-box>
