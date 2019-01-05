@@ -1,5 +1,6 @@
 function objectListeners() {
     var sceneEl = document.querySelector('a-scene');
+    var headEl = document.getElementById("head");
 //#region Bread
     document.getElementById("bread_model").addEventListener('mouseenter', function () {
             var breadData = getProduct(1);
@@ -101,7 +102,7 @@ function objectListeners() {
     });
     //#endregion
 
-    //#region Rødvin
+ //#region Rødvin
     document.getElementById('rødvin').addEventListener('mouseenter', function() {
         var redWineData = getProduct(3);
         var text = redWineData[0].p_navn + "\n" + redWineData[0].p_pris + " kr.\n" + redWineData[0].p_beskrivelse;
@@ -150,7 +151,7 @@ function objectListeners() {
         } else {
             console.log('RedWineBox already exists. NOT spawning another.');
         }
-    })
+    });
 
     document.getElementById('bread_model').addEventListener('mouseleave', function() {
         setTimeout(removeBreadSign, 5000);
@@ -163,7 +164,42 @@ function objectListeners() {
     document.getElementById('rødvin').addEventListener('mouseleave', function() {
         setTimeout(removeRedWineSign, 10000);
     });
+
+    document.getElementById("hvidvin").addEventListener('mouseenter', function() {
+        var whiteWineData = getProduct(4);
+        var text = whiteWineData[0].p_navn + "\n" + whiteWineData[0].p_pris + " kr.\n" + whiteWineData[0].p_beskrivelse;
+        var whiteWineBox = document.createElement("a-entity");
+        whiteWineBox.setAttribute("id", "whiteWineBox");
+        whiteWineBox.setAttribute("geometry", {
+            primitive: 'box',
+            height: 1,
+            width: 0.01,
+            depth: 1
+        });
+        whiteWineBox.setAttribute("position", {
+            x: 0,
+            y: 0,
+            z: -0.9
+        });
+        whiteWineBox.setAttribute("rotation", {
+            x: 0,
+            y: -90,
+            z: 0
+        });
+        whiteWineBox.setAttribute("material", {
+            color: "white"
+        });
+        if (document.getElementById('whiteWineBox') == null) {
+            headEl.appendChild(whiteWineBox);
+            //sceneEl.appendChild(redWineBoxText);
+        } else {
+            console.log('WhiteWineBox already exists. NOT spawning another.');
+        }
+    });
 }
+
+//#endregion
+
 
 function removeBreadSign() {
     if ((document.getElementById("breadBox") && document.getElementById("breadText")) !== null) {
