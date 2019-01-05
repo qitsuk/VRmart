@@ -9,19 +9,23 @@ function objectListeners() {
             breadBoxEl.setAttribute("id", "breadBox");
             breadBoxEl.setAttribute('geometry', {
                 primitive: 'box',
-                height: 1.2,
+                height: 0.4,
                 width: 0.01,
-                depth: 5
+                depth: 1.5
             });
             breadBoxEl.setAttribute('position', {
-                x: -13,
-                y: 1.5,
-                z: 2.5
+                x: 0,
+                y: 0,
+                z: -0.9
             });
             breadBoxEl.setAttribute('material', {
                 color: 'white'
             });
-
+            breadBoxEl.setAttribute("rotation", {
+                x: 0,
+                y: -90,
+                z: 0
+            });
             var breadBoxTextEl = document.createElement('a-text');
             breadBoxTextEl.setAttribute("id", "breadText");
             breadBoxTextEl.setAttribute('text', {
@@ -31,18 +35,23 @@ function objectListeners() {
                 align: 'center'
             });
             breadBoxTextEl.setAttribute('position', {
-                x: -12.9,
-                y: 1.5,
-                z: 2.5
+                x: 0,
+                y: 0,
+                z: -0.8
             });
             breadBoxTextEl.setAttribute('rotation', {
                 x: 0,
-                y: 90,
+                y: 0,
                 z: 0
             });
+            breadBoxTextEl.setAttribute("scale", {
+                x: 0.25,
+                y: 0.25,
+                z: 0.25
+            });
             if (document.getElementById('breadBox') == null) {
-                sceneEl.appendChild(breadBoxEl);
-                sceneEl.appendChild(breadBoxTextEl);
+                headEl.appendChild(breadBoxEl);
+                headEl.appendChild(breadBoxTextEl);
             } else {
                 console.log('BreadBox already exists. NOT spawning another.');
             }
@@ -57,24 +66,23 @@ function objectListeners() {
         orangeBox.setAttribute("id", "orangeBox");
         orangeBox.setAttribute('geometry', {
             primitive: 'box',
-            height: 1.575,
+            height: 0.5,
             width: 0.01,
-            depth: 5
+            depth: 1.4
         });
         orangeBox.setAttribute('position', {
-            x: -9,
-            y: 2,
-            z: -7
+            x: 0,
+            y: 0,
+            z: -0.9
         });
         orangeBox.setAttribute("rotation", {
             x: 0,
-            y: 90,
+            y: -90,
             z: 0
         });
         orangeBox.setAttribute('material', {
             color: 'white'
         });
-
         var orangeBoxText = document.createElement('a-text');
         orangeBoxText.setAttribute("id", "orangeText");
         orangeBoxText.setAttribute('text', {
@@ -84,18 +92,23 @@ function objectListeners() {
             align: 'center'
         });
         orangeBoxText.setAttribute('position', {
-            x: -9,
-            y: 2,
-            z: -6.9
+            x: 0,
+            y: 0,
+            z: -0.8
         });
         orangeBoxText.setAttribute('rotation', {
             x: 0,
             y: 0,
             z: 0
         });
+        orangeBoxText.setAttribute("scale", {
+            x: 0.25,
+            y: 0.25,
+            z: 0.25
+        });
         if (document.getElementById('orangeBox') == null) {
-            sceneEl.appendChild(orangeBox);
-            sceneEl.appendChild(orangeBoxText);
+            headEl.appendChild(orangeBox);
+            headEl.appendChild(orangeBoxText);
         } else {
             console.log('OrangeBox already exists. NOT spawning another.');
         }
@@ -110,18 +123,18 @@ function objectListeners() {
         redWineBox.setAttribute("id", "redWineBox");
         redWineBox.setAttribute("geometry", {
             primitive: 'box',
-            height: 4.2,
+            height: 1,
             width: 0.01,
-            depth: 5
+            depth: 1.4
         });
         redWineBox.setAttribute('position', {
-            x: 13,
-            y: 2,
-            z: 3
+            x: 0,
+            y: 0,
+            z: -0.9
         });
         redWineBox.setAttribute("rotation", {
             x: 0,
-            y: 0,
+            y: -90,
             z: 0
         });
         redWineBox.setAttribute('material', {
@@ -136,18 +149,18 @@ function objectListeners() {
             align: 'center'
         });
         redWineBoxText.setAttribute('position', {
-            x: 12.9,
-            y: 2,
-            z: 3
-        });
-        redWineBoxText.setAttribute("rotation", {
             x: 0,
-            y: -90,
-            z: 0
+            y: 0,
+            z: -0.8
+        });
+        redWineBoxText.setAttribute("scale", {
+            x: 0.25,
+            y: 0.25,
+            z: 0.25
         });
         if (document.getElementById('redWineBox') == null) {
-            sceneEl.appendChild(redWineBox);
-            sceneEl.appendChild(redWineBoxText);
+            headEl.appendChild(redWineBox);
+            headEl.appendChild(redWineBoxText);
         } else {
             console.log('RedWineBox already exists. NOT spawning another.');
         }
@@ -162,7 +175,7 @@ function objectListeners() {
         whiteWineBox.setAttribute("id", "whiteWineBox");
         whiteWineBox.setAttribute("geometry", {
             primitive: 'box',
-            height: 1,
+            height: 1.1,
             width: 0.01,
             depth: 1.4
         });
@@ -224,7 +237,6 @@ function objectListeners() {
 
     
 }
-
 //#endregion
 
 //#region RemoveBoxes Functions
