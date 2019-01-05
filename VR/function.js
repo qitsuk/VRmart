@@ -152,19 +152,9 @@ function objectListeners() {
             console.log('RedWineBox already exists. NOT spawning another.');
         }
     });
+//#endregion
 
-    document.getElementById('bread_model').addEventListener('mouseleave', function() {
-        setTimeout(removeBreadSign, 5000);
-    });
-    
-    document.getElementById('oranges').addEventListener('mouseleave', function() {
-        setTimeout(removeOrangeSign, 5000);
-    });
-
-    document.getElementById('rødvin').addEventListener('mouseleave', function() {
-        setTimeout(removeRedWineSign, 10000);
-    });
-
+//#region Hvidvin
     document.getElementById("hvidvin").addEventListener('mouseenter', function() {
         var whiteWineData = getProduct(4);
         var text = whiteWineData[0].p_navn + "\n" + whiteWineData[0].p_pris + " kr.\n" + whiteWineData[0].p_beskrivelse;
@@ -174,7 +164,7 @@ function objectListeners() {
             primitive: 'box',
             height: 1,
             width: 0.01,
-            depth: 1
+            depth: 1.4
         });
         whiteWineBox.setAttribute("position", {
             x: 0,
@@ -189,18 +179,55 @@ function objectListeners() {
         whiteWineBox.setAttribute("material", {
             color: "white"
         });
+        var whiteWineText = document.createElement('a-text');
+        whiteWineText.setAttribute("id", "whiteWineBoxText");
+        whiteWineText.setAttribute("text", {
+            color: "black",
+            value: text,
+            font: 'dejavu',
+            align: 'center'
+        });
+        whiteWineText.setAttribute("position", {
+            x: 0,
+            y: 0,
+            z: -0.8
+        });
+        whiteWineText.setAttribute("scale", {
+            x: 0.25,
+            y: 0.25,
+            z: 0.25
+        });
         if (document.getElementById('whiteWineBox') == null) {
             headEl.appendChild(whiteWineBox);
-            //sceneEl.appendChild(redWineBoxText);
+            headEl.appendChild(whiteWineText);
         } else {
             console.log('WhiteWineBox already exists. NOT spawning another.');
         }
     });
+//#endregion
+
+//#region MouseLeave Events
+    document.getElementById('bread_model').addEventListener('mouseleave', function() {
+        setTimeout(removeBreadSign, 5000);
+    });
+    
+    document.getElementById('oranges').addEventListener('mouseleave', function() {
+        setTimeout(removeOrangeSign, 5000);
+    });
+
+    document.getElementById('rødvin').addEventListener('mouseleave', function() {
+        setTimeout(removeRedWineSign, 10000);
+    });
+    document.getElementById('hvidvin').addEventListener('mouseleave', function() {
+        setTimeout(removeWhiteWineSign, 10000);
+    });
+
+    
 }
 
 //#endregion
 
-
+//#region RemoveBoxes Functions
 function removeBreadSign() {
     if ((document.getElementById("breadBox") && document.getElementById("breadText")) !== null) {
         var text = document.getElementById("breadText");
@@ -226,3 +253,14 @@ function removeRedWineSign() {
         box.parentNode.removeChild(box);
     }
 }
+
+function removeWhiteWineSign() {
+    if ((document.getElementById("whiteWineBox") && document.getElementById("whiteWineBoxText") !== null)) {
+        var text = document.getElementById("whiteWineBoxText");
+        var box = document.getElementById("whiteWineBox");
+        text.parentNode.removeChild(text);
+        box.parentNode.removeChild(box);
+    }
+}
+
+//#endregion
