@@ -34,6 +34,7 @@
             <a-asset-item id="freezer" src="assets/freezer.gltf"></a-asset-item>
             <a-asset-item id="small_freezer" src="assets/small_freezer.gltf"></a-asset-item>
             <a-asset-item id="shopping_basket" src="assets/shopping_basket.gltf"></a-asset-item>
+            <a-asset-item id="shopping_basket_stackable" src="assets/shopping_basket_stackable.gltf"></a-asset-item>
             <a-asset item="" id="text-sign.mtl" src="assets/text-sign.mtl"></a-asset>
             <a-asset item="" id="text-sign.obj" src="assets/text-sign.obj"></a-asset>
 
@@ -150,6 +151,11 @@
         </a-entity>
 
         <!-- #endregion -->
+
+        <a-gltf-model id="entrance_basket-1" src="#shopping_basket_stackable" position="-14.38697 -0.05593 8.62637" scale="0.08 0.08 0.08" gltf-model="assets/shopping_basket_stackable.gltf"></a-gltf-model>
+        <a-gltf-model id="entrance_basket-2" src="#shopping_basket_stackable" position="-14.38697 0.14391 8.62637" scale="0.08 0.08 0.08" gltf-model="assets/shopping_basket_stackable.gltf"></a-gltf-model>
+        <a-gltf-model id="entrance_basket-3" src="#shopping_basket_stackable" position="-14.38697 0.34512 8.62637" scale="0.08 0.08 0.08" gltf-model="assets/shopping_basket_stackable.gltf"></a-gltf-model>
+        <a-gltf-model id="entrance_basket-4" src="#shopping_basket_stackable" position="-14.38697 0.54602 8.62637" scale="0.08 0.08 0.08" gltf-model="assets/shopping_basket_stackable.gltf"></a-gltf-model>
 
         <a-entity id="Entre_skilt" obj-model="mtl:assets/text-sign.mtl;obj:assets/text-sign.obj" scale="-0.02 0.015 0.015" position="-8.61363 -0.003 8.74329" rotation="0 -45 0"></a-entity>
         <a-image id="Entre_skilt_billede" src="#entre_billede" position="-8.54056 1.59469 8.68013" rotation="-42.16 -45 0" scale="0.9 0.98 1" material="" geometry=""></a-image>
