@@ -1,5 +1,4 @@
 function objectListeners() {
-    var sceneEl = document.querySelector('a-scene');
     var headEl = document.getElementById("head");
 //#region Bread
     document.getElementById("bread_model").addEventListener('mouseenter', function () {
@@ -19,7 +18,8 @@ function objectListeners() {
                 z: -0.9
             });
             breadBoxEl.setAttribute('material', {
-                color: 'white'
+                color: 'black',
+                opacity: 0.75
             });
             breadBoxEl.setAttribute("rotation", {
                 x: 0,
@@ -29,7 +29,7 @@ function objectListeners() {
             var breadBoxTextEl = document.createElement('a-text');
             breadBoxTextEl.setAttribute("id", "breadText");
             breadBoxTextEl.setAttribute('text', {
-                color: "black",
+                color: "white",
                 value: text,
                 font: 'dejavu',
                 align: 'center'
@@ -81,12 +81,13 @@ function objectListeners() {
             z: 0
         });
         orangeBox.setAttribute('material', {
-            color: 'white'
+            color: 'black',
+            opacity: 0.75
         });
         var orangeBoxText = document.createElement('a-text');
         orangeBoxText.setAttribute("id", "orangeText");
         orangeBoxText.setAttribute('text', {
-            color: "black",
+            color: "white",
             value: text,
             font: 'dejavu',
             align: 'center'
@@ -123,7 +124,7 @@ function objectListeners() {
         redWineBox.setAttribute("id", "redWineBox");
         redWineBox.setAttribute("geometry", {
             primitive: 'box',
-            height: 1,
+            height: 1.1,
             width: 0.01,
             depth: 1.4
         });
@@ -138,12 +139,13 @@ function objectListeners() {
             z: 0
         });
         redWineBox.setAttribute('material', {
-            color: 'white'
+            color: 'black',
+            opacity: 0.75
         });
         var redWineBoxText = document.createElement('a-text');
         redWineBoxText.setAttribute("id", "redWineText");
         redWineBoxText.setAttribute('text', {
-            color: "black",
+            color: "white",
             value: text,
             font: 'dejavu',
             align: 'center'
@@ -190,12 +192,13 @@ function objectListeners() {
             z: 0
         });
         whiteWineBox.setAttribute("material", {
-            color: "white"
+            color: "black",
+            opacity: 0.75
         });
         var whiteWineText = document.createElement('a-text');
         whiteWineText.setAttribute("id", "whiteWineBoxText");
         whiteWineText.setAttribute("text", {
-            color: "black",
+            color: "white",
             value: text,
             font: 'dejavu',
             align: 'center'
