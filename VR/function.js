@@ -277,5 +277,11 @@ function removeWhiteWineSign() {
         box.parentNode.removeChild(box);
     }
 }
-
+$(document).ready(function() {
+	
+	setTimeout(function(){
+		$('body').addClass('loaded');
+	}, 12000);
+	
+});
 //#endregion

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>VRmart</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
@@ -11,7 +13,10 @@
     <script src="https://unpkg.com/aframe-gltf-exporter-component/dist/aframe-gltf-exporter-component.min.js"></script>
     <script src="json-factory.js"></script>
     <script src="function.js"></script>
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="main.css">
+   
 </head>
 
 
@@ -21,6 +26,13 @@
 
 <body class="a-body" onload="objectListeners();">
 
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
 
     <a-scene id="VRmartScene" physics="driver:local; iterations: 40" gltf-exporter>
 
