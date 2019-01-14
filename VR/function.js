@@ -1,64 +1,64 @@
 function objectListeners() {
     var headEl = document.getElementById("head");
-//#region Bread
+    //#region Bread
     document.getElementById("bread_model").addEventListener('mouseenter', function () {
-            var breadData = getProduct(1);
-            var text = breadData[0].p_navn + "\n" + breadData[0].p_pris + " kr.\n" + breadData[0].p_beskrivelse;
-            var breadBoxEl = document.createElement('a-entity');
-            breadBoxEl.setAttribute("id", "breadBox");
-            breadBoxEl.setAttribute('geometry', {
-                primitive: 'box',
-                height: 0.4,
-                width: 0.01,
-                depth: 1.5
-            });
-            breadBoxEl.setAttribute('position', {
-                x: 0,
-                y: 0,
-                z: -0.9
-            });
-            breadBoxEl.setAttribute('material', {
-                color: 'black',
-                opacity: 0.75
-            });
-            breadBoxEl.setAttribute("rotation", {
-                x: 0,
-                y: -90,
-                z: 0
-            });
-            var breadBoxTextEl = document.createElement('a-text');
-            breadBoxTextEl.setAttribute("id", "breadText");
-            breadBoxTextEl.setAttribute('text', {
-                color: "white",
-                value: text,
-                font: 'dejavu',
-                align: 'center'
-            });
-            breadBoxTextEl.setAttribute('position', {
-                x: 0,
-                y: 0,
-                z: -0.8
-            });
-            breadBoxTextEl.setAttribute('rotation', {
-                x: 0,
-                y: 0,
-                z: 0
-            });
-            breadBoxTextEl.setAttribute("scale", {
-                x: 0.25,
-                y: 0.25,
-                z: 0.25
-            });
-            if (document.getElementById('breadBox') == null) {
-                headEl.appendChild(breadBoxEl);
-                headEl.appendChild(breadBoxTextEl);
-            } else {
-                console.log('BreadBox already exists. NOT spawning another.');
-            }
+        var breadData = getProduct(1);
+        var text = breadData[0].p_navn + "\n" + breadData[0].p_pris + " kr.\n" + breadData[0].p_beskrivelse;
+        var breadBoxEl = document.createElement('a-entity');
+        breadBoxEl.setAttribute("id", "breadBox");
+        breadBoxEl.setAttribute('geometry', {
+            primitive: 'box',
+            height: 0.4,
+            width: 0.01,
+            depth: 1.5
         });
-//#endregion
+        breadBoxEl.setAttribute('position', {
+            x: 0,
+            y: 0,
+            z: -0.9
+        });
+        breadBoxEl.setAttribute('material', {
+            color: 'black',
+            opacity: 0.75
+        });
+        breadBoxEl.setAttribute("rotation", {
+            x: 0,
+            y: -90,
+            z: 0
+        });
+        var breadBoxTextEl = document.createElement('a-text');
+        breadBoxTextEl.setAttribute("id", "breadText");
+        breadBoxTextEl.setAttribute('text', {
+            color: "white",
+            value: text,
+            font: 'dejavu',
+            align: 'center'
+        });
+        breadBoxTextEl.setAttribute('position', {
+            x: 0,
+            y: 0,
+            z: -0.8
+        });
+        breadBoxTextEl.setAttribute('rotation', {
+            x: 0,
+            y: 0,
+            z: 0
+        });
+        breadBoxTextEl.setAttribute("scale", {
+            x: 0.25,
+            y: 0.25,
+            z: 0.25
+        });
+        if (document.getElementById('breadBox') == null) {
+            headEl.appendChild(breadBoxEl);
+            headEl.appendChild(breadBoxTextEl);
+        } else {
+            console.log('BreadBox already exists. NOT spawning another.');
+        }
+    });
+    //#endregion
 
-//#region Oranges
+    //#region Oranges
     document.getElementById("oranges").addEventListener('mouseenter', function () {
         var orangeData = getProduct(2);
         var text = orangeData[0].p_navn + "\n" + orangeData[0].p_pris + " kr.\n" + orangeData[0].p_beskrivelse;
@@ -116,8 +116,8 @@ function objectListeners() {
     });
     //#endregion
 
- //#region Rødvin
-    document.getElementById('rødvin').addEventListener('mouseenter', function() {
+    //#region Rødvin
+    document.getElementById('rødvin').addEventListener('mouseenter', function () {
         var redWineData = getProduct(3);
         var text = redWineData[0].p_navn + "\n" + redWineData[0].p_pris + " kr.\n" + redWineData[0].p_beskrivelse;
         var redWineBox = document.createElement('a-entity');
@@ -167,10 +167,10 @@ function objectListeners() {
             console.log('RedWineBox already exists. NOT spawning another.');
         }
     });
-//#endregion
+    //#endregion
 
-//#region Hvidvin
-    document.getElementById("hvidvin").addEventListener('mouseenter', function() {
+    //#region Hvidvin
+    document.getElementById("hvidvin").addEventListener('mouseenter', function () {
         var whiteWineData = getProduct(4);
         var text = whiteWineData[0].p_navn + "\n" + whiteWineData[0].p_pris + " kr.\n" + whiteWineData[0].p_beskrivelse;
         var whiteWineBox = document.createElement("a-entity");
@@ -220,25 +220,25 @@ function objectListeners() {
             console.log('WhiteWineBox already exists. NOT spawning another.');
         }
     });
-//#endregion
+    //#endregion
 
-//#region MouseLeave Events
-    document.getElementById('bread_model').addEventListener('mouseleave', function() {
+    //#region MouseLeave Events
+    document.getElementById('bread_model').addEventListener('mouseleave', function () {
         setTimeout(removeBreadSign, 5000);
     });
-    
-    document.getElementById('oranges').addEventListener('mouseleave', function() {
+
+    document.getElementById('oranges').addEventListener('mouseleave', function () {
         setTimeout(removeOrangeSign, 5000);
     });
 
-    document.getElementById('rødvin').addEventListener('mouseleave', function() {
+    document.getElementById('rødvin').addEventListener('mouseleave', function () {
         setTimeout(removeRedWineSign, 10000);
     });
-    document.getElementById('hvidvin').addEventListener('mouseleave', function() {
+    document.getElementById('hvidvin').addEventListener('mouseleave', function () {
         setTimeout(removeWhiteWineSign, 10000);
     });
 
-    
+
 }
 //#endregion
 
