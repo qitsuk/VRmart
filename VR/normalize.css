@@ -86,7 +86,7 @@ h1 {
     margin: 200px 0 0 0;
     z-index: 10000;
 }
-.ldBar
+#loadBar
  {
     display: block;
     position: relative;
