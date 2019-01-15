@@ -278,10 +278,10 @@ function removeWhiteWineSign() {
     }
 }
 $(document).ready(function() {
-	
+
 	setTimeout(function(){
 		$('body').addClass('loaded');
 	}, 12000);
-	
+
 });
 //#endregion
