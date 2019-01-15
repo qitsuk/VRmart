@@ -95,6 +95,10 @@ h1 {
     z-index: 10000;
 }
 
+.ldBar-label {
+  color: #efefef !important;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
