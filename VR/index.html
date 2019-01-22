@@ -99,6 +99,15 @@
 
         <a-entity id="theCamera" position="-11 2 16.5">
             <a-entity id="head" camera wasd-controls look-controls user-height="3" rotation="0 90 0">
+              <a-box id="controlsGuide" position="-0.975 0.389 -0.64" color="black" opacity="0.75" depth="1.5" height="0.4" width="0.002" geometry="width:0.32;depth:0.002;height:0.3"></a-box>
+              <a-text value="Controls" position="-1.096 0.514 -0.635" color="#efefef" scale="0.15 0.12 1"></a-text>
+              <a-text value="(W) = Fremad" position="-1.096 0.48 -0.635" color="#efefef" scale="0.075 0.075 1"></a-text>
+              <a-text value="(S) = Tilbage" position="-1.096 0.445 -0.635" color="#efefef" scale="0.075 0.075 1"></a-text>
+              <a-text value="(A) = Venstre" position="-1.096 0.41 -0.635" color="#efefef" scale="0.075 0.075 1"></a-text>
+              <a-text value="(D) = Hoejre" position="-1.096 0.375 -0.635" color="#efefef" scale="0.075 0.075 1"></a-text>
+              <a-text value="(Q) / (Esc) = Luk Produktvisning" position="-1.096 0.34 -0.635" color="#efefef" scale="0.075 0.075 1"></a-text>
+              <a-text value="(E) / (Mellemrum) = Tilfoej til Kurven" position="-1.096 0.305 -0.635" color="#efefef" scale="0.075 0.075 1"></a-text>
+              <a-text value="(Shift) = Vis/Skjul Kurv" position="-1.096 0.27 -0.635" color="#efefef" scale="0.075 0.075 1"></a-text>
                 <a-gltf-model id="basket" src="#shopping_basket" position="1 -1.25 -0.7" scale="0.08 0.08 0.08" rotation="0 0 0" gltf-model="assets/shopping_basket.gltf"></a-gltf-model>
                 <a-entity id="cursor" position="0 0 -1" geometry="primitive: ring; radiusOuter: 0.04; radiusInner: 0.03;"
                     material="color: red;" cursor="fuse: true; fuse-timeout: 1500">
