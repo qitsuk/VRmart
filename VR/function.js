@@ -1,5 +1,8 @@
+var basket = Array();
+
 function objectListeners() {
     var headEl = document.getElementById("head");
+
     //#region Bread
     document.getElementById("bread_model").addEventListener('mouseenter', function () {
         var breadData = getProduct(1);
@@ -52,6 +55,19 @@ function objectListeners() {
         if (document.getElementById('breadBox') == null) {
             headEl.appendChild(breadBoxEl);
             headEl.appendChild(breadBoxTextEl);
+            if (breadBoxEl !== null) {
+                console.log("The breadbox exists!");
+                window.addEventListener("keydown", function(e) {
+                    if (e.keyCode === 81 || e.keyCode === 27) {
+                        removeBreadSign();
+                    }
+                    if (e.keyCode === 69 || e.keyCode === 32) {
+                        basket.push(breadData[0].p_id);
+                        alert("Varen er nu tilføjet til din kurv.");
+                    }
+                    e.preventDefault();
+                });
+            }
         } else {
             console.log('BreadBox already exists. NOT spawning another.');
         }
@@ -223,9 +239,9 @@ function objectListeners() {
     //#endregion
 
     //#region MouseLeave Events
-    document.getElementById('bread_model').addEventListener('mouseleave', function () {
-        setTimeout(removeBreadSign, 5000);
-    });
+    // document.getElementById('bread_model').addEventListener('mouseleave', function () {
+    //     setTimeout(removeBreadSign, 5000);
+    // });
 
     document.getElementById('oranges').addEventListener('mouseleave', function () {
         setTimeout(removeOrangeSign, 5000);
