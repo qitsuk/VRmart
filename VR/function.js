@@ -1,11 +1,14 @@
 var basket = Array();
+var boxShowing = false;
+var breadData = getProduct(1);
+var orangeData = getProduct(2);
+var redWineData = getProduct(3);
+var whiteWineData = getProduct(4);
 
 function objectListeners() {
     var headEl = document.getElementById("head");
-
     //#region Bread
     document.getElementById("bread_model").addEventListener('mouseenter', function () {
-        var breadData = getProduct(1);
         var text = breadData[0].p_navn + "\n" + breadData[0].p_pris + " kr.\n" + breadData[0].p_beskrivelse;
         var breadBoxEl = document.createElement('a-entity');
         breadBoxEl.setAttribute("id", "breadBox");
@@ -52,21 +55,13 @@ function objectListeners() {
             y: 0.25,
             z: 0.25
         });
-        if (document.getElementById('breadBox') == null) {
+        if (document.getElementById('breadBox') == null && boxShowing === false) {
             headEl.appendChild(breadBoxEl);
             headEl.appendChild(breadBoxTextEl);
+            boxShowing = true;
             if (breadBoxEl !== null) {
                 console.log("The breadbox exists!");
-                window.addEventListener("keydown", function(e) {
-                    if (e.keyCode === 81 || e.keyCode === 27) {
-                        removeBreadSign();
-                    }
-                    if (e.keyCode === 69 || e.keyCode === 32) {
-                        basket.push(breadData[0].p_id);
-                        alert("Varen er nu tilføjet til din kurv.");
-                    }
-                    e.preventDefault();
-                });
+                window.addEventListener("keydown", addButtons(event, "b"));
             }
         } else {
             console.log('BreadBox already exists. NOT spawning another.');
@@ -76,7 +71,6 @@ function objectListeners() {
 
     //#region Oranges
     document.getElementById("oranges").addEventListener('mouseenter', function () {
-        var orangeData = getProduct(2);
         var text = orangeData[0].p_navn + "\n" + orangeData[0].p_pris + " kr.\n" + orangeData[0].p_beskrivelse;
         var orangeBox = document.createElement('a-entity');
         orangeBox.setAttribute("id", "orangeBox");
@@ -123,9 +117,13 @@ function objectListeners() {
             y: 0.25,
             z: 0.25
         });
-        if (document.getElementById('orangeBox') == null) {
+        if (document.getElementById('orangeBox') == null && boxShowing === false) {
             headEl.appendChild(orangeBox);
             headEl.appendChild(orangeBoxText);
+            boxShowing = true;
+            if (orangeBox !== null) {
+                window.addEventListener("keydown", addButtons("o"));
+            }
         } else {
             console.log('OrangeBox already exists. NOT spawning another.');
         }
@@ -134,7 +132,6 @@ function objectListeners() {
 
     //#region Rødvin
     document.getElementById('rødvin').addEventListener('mouseenter', function () {
-        var redWineData = getProduct(3);
         var text = redWineData[0].p_navn + "\n" + redWineData[0].p_pris + " kr.\n" + redWineData[0].p_beskrivelse;
         var redWineBox = document.createElement('a-entity');
         redWineBox.setAttribute("id", "redWineBox");
@@ -176,9 +173,13 @@ function objectListeners() {
             y: 0.25,
             z: 0.25
         });
-        if (document.getElementById('redWineBox') == null) {
+        if (document.getElementById('redWineBox') == null && boxShowing === false) {
             headEl.appendChild(redWineBox);
             headEl.appendChild(redWineBoxText);
+            boxShowing = true;
+            if (redWineBox !== null) {
+                window.addEventListener("keydown", addButtons("rw"));
+            }
         } else {
             console.log('RedWineBox already exists. NOT spawning another.');
         }
@@ -187,7 +188,6 @@ function objectListeners() {
 
     //#region Hvidvin
     document.getElementById("hvidvin").addEventListener('mouseenter', function () {
-        var whiteWineData = getProduct(4);
         var text = whiteWineData[0].p_navn + "\n" + whiteWineData[0].p_pris + " kr.\n" + whiteWineData[0].p_beskrivelse;
         var whiteWineBox = document.createElement("a-entity");
         whiteWineBox.setAttribute("id", "whiteWineBox");
@@ -229,32 +229,25 @@ function objectListeners() {
             y: 0.25,
             z: 0.25
         });
-        if (document.getElementById('whiteWineBox') == null) {
+        if (document.getElementById('whiteWineBox') == null && boxShowing === false) {
             headEl.appendChild(whiteWineBox);
             headEl.appendChild(whiteWineText);
+            boxShowing = true;
+            if (whiteWineBox !== null) {
+                window.addEventListener("keydown", addButtons("ww"));
+            }
         } else {
             console.log('WhiteWineBox already exists. NOT spawning another.');
         }
     });
     //#endregion
-
-    //#region MouseLeave Events
-    // document.getElementById('bread_model').addEventListener('mouseleave', function () {
-    //     setTimeout(removeBreadSign, 5000);
-    // });
-
-    document.getElementById('oranges').addEventListener('mouseleave', function () {
-        setTimeout(removeOrangeSign, 5000);
-    });
-
-    document.getElementById('rødvin').addEventListener('mouseleave', function () {
-        setTimeout(removeRedWineSign, 10000);
-    });
-    document.getElementById('hvidvin').addEventListener('mouseleave', function () {
-        setTimeout(removeWhiteWineSign, 10000);
-    });
-
-
+    function addButtons(e, grocery) {
+        e = e || window.event;
+        e.preventDefault();
+        if (e.keyCode === 81 || e.keyCode === 27) {
+            removeBreadSign();
+        }
+    }
 }
 //#endregion
 
@@ -265,6 +258,8 @@ function removeBreadSign() {
         var box = document.getElementById("breadBox");
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
+        boxShowing = false;
+        window.removeEventListener("keydown", addButtons);
     }
 }
 function removeOrangeSign() {
@@ -273,6 +268,8 @@ function removeOrangeSign() {
         var box = document.getElementById("orangeBox");
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
+        boxShowing = false;
+        window.removeEventListener("keydown");
     }
 }
 
@@ -282,6 +279,8 @@ function removeRedWineSign() {
         var box = document.getElementById("redWineBox");
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
+        boxShowing = false;
+        window.removeEventListener("keydown");
     }
 }
 
@@ -291,6 +290,8 @@ function removeWhiteWineSign() {
         var box = document.getElementById("whiteWineBox");
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
+        boxShowing = false;
+        window.removeEventListener("keydown");
     }
 }
 $(document).ready(function () {
