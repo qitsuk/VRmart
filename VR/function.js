@@ -55,13 +55,18 @@ function objectListeners() {
             y: 0.25,
             z: 0.25
         });
-        if (document.getElementById('breadBox') == null && boxShowing === false) {
+        if (document.getElementById('breadBox') === null && boxShowing === false) {
             headEl.appendChild(breadBoxEl);
             headEl.appendChild(breadBoxTextEl);
             boxShowing = true;
             if (breadBoxEl !== null) {
                 console.log("The breadbox exists!");
-                window.addEventListener("keydown", addButtons(event, "b"));
+                window.addEventListener("keydown", function (e) {
+                    if (e.keyCode === 81 || e.keyCode === 27) {
+                        removeBreadSign();
+                    }
+                    e.preventDefault();
+                });
             }
         } else {
             console.log('BreadBox already exists. NOT spawning another.');
@@ -122,7 +127,12 @@ function objectListeners() {
             headEl.appendChild(orangeBoxText);
             boxShowing = true;
             if (orangeBox !== null) {
-                window.addEventListener("keydown", addButtons("o"));
+                window.addEventListener("keydown", function (e) {
+                    if (e.keyCode === 81 || e.keyCode === 27) {
+                        removeOrangeSign();
+                    }
+                    e.preventDefault();
+                });
             }
         } else {
             console.log('OrangeBox already exists. NOT spawning another.');
@@ -178,7 +188,12 @@ function objectListeners() {
             headEl.appendChild(redWineBoxText);
             boxShowing = true;
             if (redWineBox !== null) {
-                window.addEventListener("keydown", addButtons("rw"));
+                window.addEventListener("keydown", function (e) {
+                    if (e.keyCode === 81 || e.keyCode === 27) {
+                        removeRedWineSign();
+                    }
+                    e.preventDefault();
+                });
             }
         } else {
             console.log('RedWineBox already exists. NOT spawning another.');
@@ -234,20 +249,27 @@ function objectListeners() {
             headEl.appendChild(whiteWineText);
             boxShowing = true;
             if (whiteWineBox !== null) {
-                window.addEventListener("keydown", addButtons("ww"));
+                window.addEventListener("keydown", function (e) {
+                    if (e.keyCode === 81 || e.keyCode === 27) {
+                        removeWhiteWineSign();
+                    }
+                    if (boxShowing === false) {
+                        console.log("Nothing to add");
+                    } else {
+                        if (e.keyCode === 69 || e.keyCode === 32) {
+                            basket.push(breadData[0].p_id);
+                            alert("Du har tilføjet 1 flaske hvidvin til din kurv.");
+                            console.log(basket.length);
+                        }
+                    }
+                    e.preventDefault();
+                });
             }
         } else {
             console.log('WhiteWineBox already exists. NOT spawning another.');
         }
     });
     //#endregion
-    function addButtons(e, grocery) {
-        e = e || window.event;
-        e.preventDefault();
-        if (e.keyCode === 81 || e.keyCode === 27) {
-            removeBreadSign();
-        }
-    }
 }
 //#endregion
 
@@ -259,7 +281,6 @@ function removeBreadSign() {
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
         boxShowing = false;
-        window.removeEventListener("keydown", addButtons);
     }
 }
 function removeOrangeSign() {
@@ -269,7 +290,6 @@ function removeOrangeSign() {
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
         boxShowing = false;
-        window.removeEventListener("keydown");
     }
 }
 
@@ -280,7 +300,6 @@ function removeRedWineSign() {
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
         boxShowing = false;
-        window.removeEventListener("keydown");
     }
 }
 
@@ -291,7 +310,6 @@ function removeWhiteWineSign() {
         text.parentNode.removeChild(text);
         box.parentNode.removeChild(box);
         boxShowing = false;
-        window.removeEventListener("keydown");
     }
 }
 $(document).ready(function () {
@@ -302,4 +320,3 @@ $(document).ready(function () {
 
 });
 //#endregion
-
