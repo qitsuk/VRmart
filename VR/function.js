@@ -65,6 +65,15 @@ function objectListeners() {
                     if (e.keyCode === 81 || e.keyCode === 27) {
                         removeBreadSign();
                     }
+                    if (boxShowing === false) {
+                        console.log("Nothing to add");
+                    } else {
+                        if (e.keyCode === 69 || e.keyCode === 32) {
+                            basket.push(breadData[0].p_id);
+                            alert("Du har tilføjet 1 brød til din kurv.");
+                            console.log(basket.length);
+                        }
+                    }
                     e.preventDefault();
                 });
             }
@@ -131,6 +140,15 @@ function objectListeners() {
                     if (e.keyCode === 81 || e.keyCode === 27) {
                         removeOrangeSign();
                     }
+                    if (boxShowing === false) {
+                        console.log("Nothing to add");
+                    } else {
+                        if (e.keyCode === 69 || e.keyCode === 32) {
+                            basket.push(orangeData[0].p_id);
+                            alert("Du har tilføjet 1 appelsin til din kurv.");
+                            console.log(basket.length);
+                        }
+                    }
                     e.preventDefault();
                 });
             }
@@ -191,6 +209,15 @@ function objectListeners() {
                 window.addEventListener("keydown", function (e) {
                     if (e.keyCode === 81 || e.keyCode === 27) {
                         removeRedWineSign();
+                    }
+                    if (boxShowing === false) {
+                        console.log("Nothing to add");
+                    } else {
+                        if (e.keyCode === 69 || e.keyCode === 32) {
+                            basket.push(breadData[0].p_id);
+                            alert("Du har tilføjet 1 flaske rødvin til din kurv.");
+                            console.log(basket.length);
+                        }
                     }
                     e.preventDefault();
                 });
@@ -270,10 +297,75 @@ function objectListeners() {
         }
     });
     //#endregion
+    window.addEventListener("keydown", function (e) {
+        if (!boxShowing) {
+            var text = "";
+            var totalPrice = 0.0;
+            if (e.keyCode === 16) {
+                boxShowing = true;
+                var basketBoxEl = document.createElement("a-entity");
+                basketBoxEl.setAttribute("id", "basketBox");
+                basketBoxEl.setAttribute("geometry", {
+                    primitive: "box",
+                    height: 1.1,
+                    width: 0.01,
+                    depth: 1.4
+                });
+                basketBoxEl.setAttribute("position", {
+                    x: 0,
+                    y: 0,
+                    z: -0.9
+                });
+                basketBoxEl.setAttribute("rotation", {
+                    x: 0,
+                    y: -90,
+                    z: 0
+                });
+                basketBoxEl.setAttribute("material", {
+                    color: "black",
+                    opacity: 0.75
+                });
+                if (document.getElementById("basketBox") === null) {
+                    headEl.appendChild(basketBoxEl);
+                } else {
+                    console.log("Basket already showing!");
+                }
+                if (basket.length === 0) {
+                    text = "Du har endnu ikke nogen varer i din kurv.";
+                } else {
+                    for (var i = 0; i < basket.length; i++) {
+                        totalPrice += eval(getProduct(basket[i])[0].p_pris);
+                        text += getProduct(basket[i])[0].p_navn;
+                        text += "\t" + getProduct(basket[i])[0].p_pris + "kr.";
+                        text += "\n";
+                        text += "\n";
+                    }
+                    text += "Total: \t \t \t" + totalPrice + "kr.";
+                }
+                console.log(text);
+            }
+        } else {
+            removeBasketBox();
+        }
+        e.preventDefault();
+    });
+
+    // #region Basket Overview
+
+
+    // #endregion
 }
 //#endregion
 
 //#region RemoveBoxes Functions
+function removeBasketBox() {
+    if (document.getElementById("basketBox") !== null) {
+        var box = document.getElementById("basketBox");
+        box.parentNode.removeChild(box);
+        boxShowing = false;
+    }
+}
+
 function removeBreadSign() {
     if ((document.getElementById("breadBox") && document.getElementById("breadText")) !== null) {
         var text = document.getElementById("breadText");
